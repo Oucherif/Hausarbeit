@@ -1,0 +1,196 @@
+/* Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl*/
+/* Im Folgenden wo angemerkt die Farben auf ein schlichtes blau und reines weiß geändert*/
+.container {
+  width: 710px;
+}
+
+body {
+  background: #336699;                  /*Allgemeine Hintergrundfarbe auf blau geändert*/
+}
+
+header {
+  padding-top: 20px;
+}
+
+header img {
+  padding: 1em;
+  background: #ffffff;                  /*Hintergrundfarbe des Kopfteils auf weiß geändert*/
+}
+
+section {
+  margin-top: 1em;
+  font-size: 120%;
+  padding: 20px;
+  background: #ffffff;                 /*Hintergrundfarbe auf weiß geändert*/
+}
+
+section h1 {
+  font-size: 200%;
+}
+
+/* Links */
+
+a {
+  color: #09c;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #336699;
+  text-decoration: underline;          /*Linkfarbe auf blau geändert*/
+}
+
+a:visited {
+  color: #336699;                      /*Linkfarbe auf blau geändert*/
+}
+
+/* Navigation */
+
+nav {
+  float: right;
+}
+
+nav {
+  background-color: white;
+  padding: 0 0.7em;
+  white-space: nowrap;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0.2em 0;
+}
+
+nav ul li a {
+  padding: 0 5px;
+  font-weight: bold;
+}
+
+nav ul li a:visited {
+  color: #336699;                    /*Linkfarbe auf blau geändert*/
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Sign up button */
+
+a.signup_button {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+  width: 190px;
+  color: #ffffff;                   /*Schriftfarbe auf weiß geändert*/
+  background: #247a24;              /*Hintergrundfarbe der Farbhelligkeit des Blautons angepasst*/
+  font-size: 150%;
+  font-weight: bold;
+  padding: 20px;
+}
+
+/* Round corners */
+
+.round {
+  -moz-border-radius:    10px;
+  -webkit-border-radius: 10px;
+  border-radius:         10px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 10px;
+  width: 710px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer nav {
+  float: none;
+}
+
+/* User show page */
+
+table.profile {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+td.main {
+  width: 70%;
+  padding: 1em;
+}
+
+td.sidebar {
+  width: 30%;
+  padding: 1em;
+  vertical-align: top;
+  background: #ffc;
+}
+
+.profile img.gravatar {
+  border: 1px solid #999;
+  margin-bottom: -15px;
+}
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+.field_with_errors {
+  margin-top: 0px;                                           /*Rahmen entfernt*/
+  padding: 0px;                                              /*Rahmen entfernt*/
+  background-color: #ffffff;                                 /*Farbe auf weiß gesetzt*/
+  display: table;
+}
+
+.field_with_errors label {
+  color: #000000;                                            /*Farbe auf schwarz gesetzt*/
+  background-color: #FF7F50;                                 /*Farbe auf orange gesetzt*/
+  padding: 5px 5px 5px;                                      /*Rahmen hinzugefügt*/
+  -moz-border-radius:    10px;                               /*Ecken abgerundet*/
+  -webkit-border-radius: 10px;                               /*Ecken abgerundet*/
+  border-radius:         10px;                               /*Ecken abgerundet*/
+}
+
+#error_explanation {
+  width: 400px;
+  border: 0px solid #FF7F50;                                /*Rahmen entfernt*//*Farbe auf orange gesetzt*/
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  -moz-border-radius:    10px;                              /*Ecken abgerundet*/
+  -webkit-border-radius: 10px;                              /*Ecken abgerundet*/
+  border-radius:         10px;                              /*Ecken abgerundet*/
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #FF7F50;                                /*Farbe auf orange gesetzt*/
+  color: #000000;                                           /*Farbe auf schwarz gesetzt*/
+  -moz-border-radius:    10px;                              /*Ecken abgerundet*/
+  -webkit-border-radius: 10px;                              /*Ecken abgerundet*/
+  border-radius:         10px;                              /*Ecken abgerundet*/
+}
+
+#error_explanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 10px;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
