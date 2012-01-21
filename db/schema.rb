@@ -10,7 +10,79 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111217123902) do
+ActiveRecord::Schema.define(:version => 20120121133748) do
+
+  create_table "addcapcosts", :force => true do |t|
+    t.integer  "timestep_id"
+    t.float    "addcapcostvalue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "capusages", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "segment_id"
+    t.integer  "preperiod_id"
+    t.float    "capusagevalue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "demands", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "timestep_id"
+    t.float    "demandvalue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "maxaddcaps", :force => true do |t|
+    t.integer  "segment_id"
+    t.integer  "timestep_id"
+    t.float    "maxaddcapvalue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "preperiods", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "preperiodnumber"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "prodcaps", :force => true do |t|
+    t.integer  "segment_id"
+    t.integer  "timestep_id"
+    t.float    "prodcapvalue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "products", :force => true do |t|
+    t.string   "productname"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "segments", :force => true do |t|
+    t.string   "segmentname"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "storagecosts", :force => true do |t|
+    t.integer  "product_id"
+    t.float    "storagecostvalue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "timesteps", :force => true do |t|
+    t.integer  "stepnumber"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

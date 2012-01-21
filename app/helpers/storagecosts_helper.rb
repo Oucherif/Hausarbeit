@@ -1,0 +1,2 @@
+module StoragecostsHelper
+end

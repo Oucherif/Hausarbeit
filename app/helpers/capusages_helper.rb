@@ -1,0 +1,2 @@
+module CapusagesHelper
+end

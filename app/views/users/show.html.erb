@@ -1,15 +1,12 @@
-<%# Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl%>
+<%# Struktur übernommen aus "Ruby on Rails Tutorial" von Michael Hartl%>
 <table class="profile" summary="Profile information">
   <tr>
     <td class="main">
       <h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
+        <%= link_to "Optimierungsproblem erstellen", problems_path %>
       </h1>
-    </td>
-    <td class="sidebar round">
-      <strong>Name</strong> <%= @user.name %><br />
-      <strong>URL</strong>  <%= link_to user_path(@user), @user %>
     </td>
   </tr>
 </table>

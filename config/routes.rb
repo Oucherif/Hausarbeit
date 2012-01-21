@@ -1,7 +1,40 @@
 # Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl
 SampleApp::Application.routes.draw do
+  get "problems/new"
+
+  get "addcapcosts/new"
+
+  get "maxaddcaps/new"
+
+  get "storagecosts/new"
+
+  get "capusages/new"
+
+  get "demands/new"
+
+  get "prodcaps/new"
+
+  get "segments/new"
+
+  get "timesteps/new"
+
+  get "preperiods/new"
+
+  get "products/new"
+
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :products
+  resources :addcapcosts
+  resources :maxaddcaps
+  resources :storagecosts
+  resources :capusages
+  resources :demands
+  resources :prodcaps
+  resources :segments
+  resources :timesteps
+  resources :preperiods
+  resources :problems
 
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
