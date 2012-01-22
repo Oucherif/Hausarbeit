@@ -1,18 +1,22 @@
 <%# Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl%>
 <header>
+  <% if signed_in? %>
+  <%= link_to logo, problems_path %>
+  <% else %>
   <%= link_to logo, root_path %>
+  <% end %>
   <nav class="round">
     <ul>
-      <li><%= link_to "Startseite", root_path %></li>                        <%# Linkbeschreibung übersetzt%>
       <% if signed_in? %>
+      <li><%= link_to "Optimierungsproblem", problems_path %> </li>
       <li><%= link_to "Profil", current_user %></li>                         <%# Linkbeschreibung übersetzt%>
-      <% end %>
-      <li><%= link_to "FAQ", faq_path %></li>                                <%# Linkbeschreibung verändert%>
-      <% if signed_in? %>
       <li><%= link_to "Abmelden", signout_path, :method => :delete %></li>
       <% else %>
+      <li><%= link_to "Startseite", root_path %></li>                        <%# Linkbeschreibung übersetzt%>
       <li><%= link_to "Anmelden", signin_path %></li>
       <% end %>
+
+      <li><%= link_to "FAQ", faq_path %></li>                                <%# Linkbeschreibung verändert%>
     </ul>
   </nav>
 </header>

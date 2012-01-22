@@ -1,2 +1,30 @@
-<h1>Maxaddcaps#new</h1>
-<p>Find me in app/views/maxaddcaps/new.html.erb</p>
+<h1>Maximale Zusatzkapazität hinzufügen</h1>
+
+<%= form_for(@maxaddcaps) do |f| %>
+
+    <div class="field">
+      <%= f.label "Segment" %>
+      <br/>
+      <%= f.collection_select :segment_id, Segment.find(:all), :id, :segmentname %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Zeitpunkt" %>
+      <br/>
+      <%= f.collection_select :timestep_id, Timestep.find(:all), :id, :stepnumber %>
+    </div>
+
+    <div class="field">
+      <%= f.label :labelexactcasedummy, "Maximaler Zusatzkapazitätswert" %>
+      <br/>
+      <%= f.text_field :maxaddcapvalue %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Maximale Zusatzkapazität speichern" %>
+    </div>
+
+<% end %>
+
+<%= link_to 'Änderungen verwerfen', problems_path%>
+

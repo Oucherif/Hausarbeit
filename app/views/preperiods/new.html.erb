@@ -1,2 +1,24 @@
-<h1>Preperiods#new</h1>
-<p>Find me in app/views/preperiods/new.html.erb</p>
+<h1>Vorlaufperioden hinzufügen</h1>
+
+<%= form_for(@preperiods) do |f| %>
+
+    <div class="field">
+      <%= f.label "Produkt" %>
+      <br/>
+      <%= f.collection_select :product_id, Product.find(:all), :id, :productname %>
+    </div>
+
+    <div class="field">
+      <%= f.label :labelexactcasedummy, "Anzahl Vorlaufperioden" %>
+      <br/>
+      <%= f.text_field :preperiodnumber %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Vorlaufperioden speichern" %>
+    </div>
+
+<% end %>
+
+<%= link_to 'Änderungen verwerfen', problems_path%>
+

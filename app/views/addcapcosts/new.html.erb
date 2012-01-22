@@ -1,2 +1,24 @@
-<h1>Addcapcosts#new</h1>
-<p>Find me in app/views/addcapcosts/new.html.erb</p>
+<h1>Kosten für Zusatzkapazität hinzufügen</h1>
+
+<%= form_for(@addcapcosts) do |f| %>
+
+    <div class="field">
+      <%= f.label "Zeitpunkt" %>
+      <br/>
+      <%= f.collection_select :timestep_id, Timestep.find(:all), :id, :stepnumber %>
+    </div>
+
+    <div class="field">
+      <%= f.label :labelexactcasedummy, "Kostenwert für Zusatzkapazität" %>
+      <br/>
+      <%= f.text_field :addcapcostvalue %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Kosten für Zusatzkapazität speichern" %>
+    </div>
+
+<% end %>
+
+<%= link_to 'Änderungen verwerfen', problems_path%>
+

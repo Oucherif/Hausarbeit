@@ -1,2 +1,15 @@
-<h1>Segments#new</h1>
-<p>Find me in app/views/segments/new.html.erb</p>
+<h1>Segment hinzufügen</h1>
+
+<%= form_for(@segments) do |f| %>
+
+    <div class="field">
+      <%= f.label "Segmentname" %>
+      <br/>
+      <%= f.text_field :segmentname %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Segment speichern" %>
+    </div>
+
+<% end %>

@@ -1,2 +1,19 @@
-<h1>Timesteps#new</h1>
-<p>Find me in app/views/timesteps/new.html.erb</p>
+<h1>Planungsintervall definieren</h1>
+
+<%= form_for(@timesteps) do |f| %>
+
+
+    <div class="field">
+      <%= f.label :labelexactcasedummy, "Anzahl Zeitpunkte im Planungsintervall" %>
+      <br/>
+      <%= f.text_field :stepnumber %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Planungsintervall speichern" %>
+    </div>
+
+<% end %>
+
+<%= link_to 'Änderungen verwerfen', problems_path%>
+

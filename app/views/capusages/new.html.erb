@@ -1,2 +1,37 @@
-<h1>Capusages#new</h1>
-<p>Find me in app/views/capusages/new.html.erb</p>
+<h1>Kapazitätsbelastung hinzufügen</h1>
+
+<%= form_for(@capusages) do |f| %>
+
+    <div class="field">
+      <%= f.label "Produkt" %>
+      <br/>
+      <%= f.collection_select :product_id, Product.find(:all), :id, :productname %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Segment" %>
+      <br/>
+      <%= f.collection_select :segment_id, Segment.find(:all), :id, :segmentname %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Vorlaufperiode" %>
+      <br/>
+      <%= f.collection_select :preperiod_id, Preperiod.find(:all), :id, :preperiodnumber %>
+    </div>
+
+
+    <div class="field">
+      <%= f.label "Kapazitätsbelastungswert" %>
+      <br/>
+      <%= f.text_field :capusagevalue %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Kapazitätsbelastung speichern" %>
+    </div>
+
+<% end %>
+
+<%= link_to 'Änderungen verwerfen', problems_path%>
+

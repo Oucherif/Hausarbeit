@@ -1,2 +1,24 @@
-<h1>Storagecosts#new</h1>
-<p>Find me in app/views/storagecosts/new.html.erb</p>
+<h1>Lagerhaltungskosten hinzufügen</h1>
+
+<%= form_for(@storagecosts) do |f| %>
+
+    <div class="field">
+      <%= f.label "Produkt" %>
+      <br/>
+      <%= f.collection_select :product_id, Product.find(:all), :id, :productname %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Lagerhaltungskostenwert" %>
+      <br/>
+      <%= f.text_field :storagecostvalue %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Lagerhaltungskosten speichern" %>
+    </div>
+
+<% end %>
+
+<%= link_to 'Änderungen verwerfen', problems_path%>
+

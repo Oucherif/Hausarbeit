@@ -1,5 +1,11 @@
 class ProductsController < ApplicationController
   def new
+
+  end
+
+  def index
+    @products = Product.new
+    render 'new'
   end
 
   def create
@@ -12,7 +18,7 @@ class ProductsController < ApplicationController
         format.xml {render :xml => @product, :status => created, :location => @product}
       else
         format.html {render :action => "new"}
-        format.xml {render :xml => @site.errors, :status => unprocessable_entity}
+        format.xml {render :xml => @product.errors, :status => unprocessable_entity}
       end
     end
 
