@@ -1,38 +1,37 @@
-# coding: utf-8                                               # erlaubt Sonderzeichen
 class AddcapcostsController < ApplicationController
-  def new
+     def view
+     end
+     def data
+         @addcapcosts = Addcapcost.all()
+     end
+     def dbaction
+         #called for all db actions
+         timestep_id = params["c0"]
+         addcapcostvalue = params["c1"]
 
-    end
+         @mode = params["!nativeeditor_status"]
+         
+         @id = params["gr_id"]
+         case @mode
+             when "inserted"
+                 addcapcost = Addcapcost.new
+                 addcapcost.timestep_id = timestep_id
+                 addcapcost.addcapcostvalue = addcapcostvalue
+                 addcapcost.save!
+                 
+                 @tid = addcapcost.id
+             when "deleted"
+                 addcapcost=Addcapcost.find(@id)
+                 addcapcost.destroy
 
-    def index
-      @addcapcosts = Addcapcost.new
-      render 'new'
-    end
-
-    def create
-
-      @addcapcost = Addcapcost.new(params[:addcapcost])
-
-      respond_to do |format|
-        if @addcapcost.save
-
-          format.html {redirect_to(@addcapcost, :notice => 'Kosten für Zusatzkapazität wurden gespeichert.')}
-          format.xml {render :xml => @addcapcost, :status => created, :location => @addcapcost}
-        else
-          format.html {render :action => "new"}
-          format.xml {render :xml => @addcapcost.errors, :status => unprocessable_entity}
-        end
-      end
-
-    end
-
-    def show
-      @addcapcost = Addcapcost.find(params[:id])
-
-      respond_to do |format|
-          format.html
-          format.xml {render :xml => @addcapcost}
-      end
-    end
-
-  end
+                 @tid = @id
+             when "updated"
+                 addcapcost=Addcapcost.find(@id)
+                 addcapcost.timestep_id = timestep_id
+                 addcapcost.addcapcostvalue = addcapcostvalue
+                 addcapcost.save!
+                 
+                 @tid = @id
+         end 
+     end
+end

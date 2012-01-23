@@ -1,38 +1,40 @@
-# coding: utf-8                                               # erlaubt Sonderzeichen
 class MaxaddcapsController < ApplicationController
-  def new
+     def view
+     end
+     def data
+         @maxaddcaps = Maxaddcap.all()
+     end
+     def dbaction
+         #called for all db actions
+         segment_id = params["c0"]
+         timestep_id = params["c1"]
+         maxaddcapvalue = params["c2"]
 
-    end
+         @mode = params["!nativeeditor_status"]
+         
+         @id = params["gr_id"]
+         case @mode
+             when "inserted"
+                 maxaddcap = Maxaddcap.new
+                 maxaddcap.segment_id = segment_id
+                 maxaddcap.timestep_id = timestep_id
+                 maxaddcap.maxaddcapvalue = maxaddcapvalue
+                 maxaddcap.save!
+                 
+                 @tid = maxaddcap.id
+             when "deleted"
+                 maxaddcap=Maxaddcap.find(@id)
+                 maxaddcap.destroy
 
-    def index
-      @maxaddcaps = Maxaddcap.new
-      render 'new'
-    end
-
-    def create
-
-      @maxaddcap = Maxaddcap.new(params[:maxaddcap])
-
-      respond_to do |format|
-        if @maxaddcap.save
-
-          format.html {redirect_to(@maxaddcap, :notice => 'Maximale Zusatzkapazität wurde gespeichert.')}
-          format.xml {render :xml => @maxaddcap, :status => created, :location => @maxaddcap}
-        else
-          format.html {render :action => "new"}
-          format.xml {render :xml => @maxaddcap.errors, :status => unprocessable_entity}
-        end
-      end
-
-    end
-
-    def show
-      @maxaddcap = Maxaddcap.find(params[:id])
-
-      respond_to do |format|
-          format.html
-          format.xml {render :xml => @maxaddcap}
-      end
-    end
-
-  end
+                 @tid = @id
+             when "updated"
+                 maxaddcap=Maxaddcap.find(@id)
+                 maxaddcap.segment_id = segment_id
+                 maxaddcap.timestep_id = timestep_id
+                 maxaddcap.maxaddcapvalue = maxaddcapvalue
+                 maxaddcap.save!
+                 
+                 @tid = @id
+         end 
+     end
+end

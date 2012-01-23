@@ -1,38 +1,43 @@
-# coding: utf-8                                               # erlaubt Sonderzeichen
 class CapusagesController < ApplicationController
-  def new
+     def view
+     end
+     def data
+         @capusages = Capusage.all()
+     end
+     def dbaction
+         #called for all db actions
+         product_id = params["c0"]
+         segment_id = params["c1"]
+         preperiod_id = params["c2"]
+         capusagevalue = params["c3"]
 
-    end
+         @mode = params["!nativeeditor_status"]
+         
+         @id = params["gr_id"]
+         case @mode
+             when "inserted"
+                 capusage = Capusage.new
+                 capusage.product_id = product_id
+                 capusage.segment_id = segment_id
+                 capusage.preperiod_id = preperiod_id
+                 capusage.capusagevalue = capusagevalue
+                 capusage.save!
+                 
+                 @tid = capusage.id
+             when "deleted"
+                 capusage=Capusage.find(@id)
+                 capusage.destroy
 
-    def index
-      @capusages = Capusage.new
-      render 'new'
-    end
-
-    def create
-
-      @capusage = Capusage.new(params[:capusage])
-
-      respond_to do |format|
-        if @capusage.save
-
-          format.html {redirect_to(@capusage, :notice => 'Kapazitätsbelastung wurde gespeichert.')}
-          format.xml {render :xml => @capusage, :status => created, :location => @capusage}
-        else
-          format.html {render :action => "new"}
-          format.xml {render :xml => @capusage.errors, :status => unprocessable_entity}
-        end
-      end
-
-    end
-
-    def show
-      @capusage = Capusage.find(params[:id])
-
-      respond_to do |format|
-          format.html
-          format.xml {render :xml => @capusage}
-      end
-    end
-
-  end
+                 @tid = @id
+             when "updated"
+                 capusage=Capusage.find(@id)
+                 capusage.product_id = product_id
+                 capusage.segment_id = segment_id
+                 capusage.preperiod_id = preperiod_id
+                 capusage.capusagevalue = capusagevalue
+                 capusage.save!
+                 
+                 @tid = @id
+         end 
+     end
+end

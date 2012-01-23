@@ -1,0 +1,9 @@
+ # Funktioniert nicht
+
+ 1Auto:
+    id: 1
+    productname: Auto
+
+ 2Kaugummi:
+    id: 2
+    productname: Kaugummi

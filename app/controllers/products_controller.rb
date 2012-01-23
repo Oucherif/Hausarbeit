@@ -1,36 +1,33 @@
 class ProductsController < ApplicationController
-  def new
+     def view
+     end
+     def data
+         @products = Product.all()
+     end
+     def dbaction
+         #called for all db actions
+         productname = params["c0"]
+         @mode = params["!nativeeditor_status"]
+         
+         @id = params["gr_id"]
+         case @mode
+             when "inserted"
+                 product = Product.new
+                 product.productname = productname
+                 product.save!
+                 
+                 @tid = product.id
+             when "deleted"
+                 product=Product.find(@id)
+                 product.destroy
 
-  end
-
-  def index
-    @products = Product.new
-    render 'new'
-  end
-
-  def create
-
-    @product = Product.new(params[:product])
-
-    respond_to do |format|
-      if @product.save
-        format.html {redirect_to(@product, :notice => 'Produkt wurde gespeichert.')}
-        format.xml {render :xml => @product, :status => created, :location => @product}
-      else
-        format.html {render :action => "new"}
-        format.xml {render :xml => @product.errors, :status => unprocessable_entity}
-      end
-    end
-
-  end
-
-  def show
-    @product = Product.find(params[:id])
-
-    respond_to do |format|
-        format.html
-        format.xml {render :xml => @product}
-    end
-  end
-
+                 @tid = @id
+             when "updated"
+                 product=Product.find(@id)
+                 product.productname = productname
+                 product.save!
+                 
+                 @tid = @id
+         end 
+     end
 end

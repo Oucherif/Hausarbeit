@@ -1,38 +1,37 @@
-# coding: utf-8                                               # erlaubt Sonderzeichen
 class PreperiodsController < ApplicationController
-  def new
+     def view
+     end
+     def data
+         @preperiods = Preperiod.all()
+     end
+     def dbaction
+         #called for all db actions
+         product_id = params["c0"]
+         preperiodnumber = params["c1"]
 
-    end
+         @mode = params["!nativeeditor_status"]
+         
+         @id = params["gr_id"]
+         case @mode
+             when "inserted"
+                 preperiod = Preperiod.new
+                 preperiod.product_id = product_id
+                 preperiod.preperiodnumber = preperiodnumber
+                 preperiod.save!
+                 
+                 @tid = preperiod.id
+             when "deleted"
+                 preperiod=Preperiod.find(@id)
+                 preperiod.destroy
 
-    def index
-      @preperiods = Preperiod.new
-      render 'new'
-    end
-
-    def create
-
-      @preperiod = Preperiod.new(params[:preperiod])
-
-      respond_to do |format|
-        if @preperiod.save
-
-          format.html {redirect_to(@preperiod, :notice => 'Vorlaufperioden wurden gespeichert.')}
-          format.xml {render :xml => @preperiod, :status => created, :location => @preperiod}
-        else
-          format.html {render :action => "new"}
-          format.xml {render :xml => @preperiod.errors, :status => unprocessable_entity}
-        end
-      end
-
-    end
-
-    def show
-      @preperiod = Preperiod.find(params[:id])
-
-      respond_to do |format|
-          format.html
-          format.xml {render :xml => @preperiod}
-      end
-    end
-
-  end
+                 @tid = @id
+             when "updated"
+                 preperiod=Preperiod.find(@id)
+                 preperiod.product_id = product_id
+                 preperiod.preperiodnumber = preperiodnumber
+                 preperiod.save!
+                 
+                 @tid = @id
+         end 
+     end
+end

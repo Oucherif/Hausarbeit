@@ -1,0 +1,33 @@
+<%#Übernommen aus http://www.dhtmlx.com/blog/?p=426%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+     <head>
+         <script src="/javascripts/codebase/dhtmlxcommon.js" type="text/javascript" charset="utf-8"></script>
+         <script src="/javascripts/codebase/dhtmlxgrid.js" type="text/javascript" charset="utf-8"></script>
+         <script src="/javascripts/codebase/dhtmlxgridcell.js" type="text/javascript" charset="utf-8"></script>
+         <script src="/javascripts/codebase/dhtmlxdataprocessor.js" type="text/javascript" charset="utf-8"></script>
+         <link rel="stylesheet" href="/javascripts/codebase/dhtmlxgrid.css" type="text/css" media="screen" charset="utf-8">
+         <link rel="stylesheet" href="/javascripts/codebase/skins/dhtmlxgrid_dhx_skyblue.css" type="text/css" media="screen" charset="utf-8">
+     </head>
+     <body>
+         <div id="grid_here" style="width:600px; height:400px;">
+         </div>
+          <script type="text/javascript" charset="utf-8">
+             var grid = new dhtmlXGridObject("grid_here");
+             grid.setImagePath("/javascripts/codebase/imgs/");
+             grid.setHeader("Segment");
+             grid.setColSorting("str,str,str");
+             grid.setInitWidths("100,100,*");
+             grid.setSkin("dhx_skyblue");
+             grid.init();
+             grid.load("/segments/data.xml");
+
+
+             dp = new dataProcessor("/segments/dbaction.xml");
+             dp.init(grid);
+         </script>
+         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'')">
+         <input type="button" value="Delete" onclick="grid.deleteSelectedRows()">
+     </body>
+</html>

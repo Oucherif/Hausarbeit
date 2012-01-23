@@ -1,38 +1,34 @@
-# coding: utf-8                                               # erlaubt Sonderzeichen
 class TimestepsController < ApplicationController
-  def new
+     def view
+     end
+     def data
+         @timesteps = Timestep.all()
+     end
+     def dbaction
+         #called for all db actions
+         stepnumber = params["c0"]
 
-    end
-
-    def index
-      @timesteps = Timestep.new
-      render 'new'
-    end
-
-    def create
-
-      @timestep = Timestep.new(params[:timestep])
-
-      respond_to do |format|
-        if @timestep.save
-
-          format.html {redirect_to(@timestep, :notice => 'Zeitintervall wurde gespeichert.')}
-          format.xml {render :xml => @timestep, :status => created, :location => @timestep}
-        else
-          format.html {render :action => "new"}
-          format.xml {render :xml => @timestep.errors, :status => unprocessable_entity}
-        end
-      end
-
-    end
-
-    def show
-      @timestep = Timestep.find(params[:id])
-
-      respond_to do |format|
-          format.html
-          format.xml {render :xml => @timestep}
-      end
-    end
-
-  end
+         @mode = params["!nativeeditor_status"]
+         
+         @id = params["gr_id"]
+         case @mode
+             when "inserted"
+                 timestep = Timestep.new
+                 timestep.stepnumber = stepnumber
+                 timestep.save!
+                 
+                 @tid = timestep.id
+             when "deleted"
+                 timestep=Timestep.find(@id)
+                 timestep.destroy
+                 
+                 @tid = @id
+             when "updated"
+                 timestep=Timestep.find(@id)
+                 timestep.stepnumber = stepnumber
+                 timestep.save!
+                 
+                 @tid = @id
+         end 
+     end
+end

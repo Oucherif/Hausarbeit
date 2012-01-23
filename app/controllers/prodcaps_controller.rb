@@ -1,38 +1,39 @@
-# coding: utf-8                                               # erlaubt Sonderzeichen
 class ProdcapsController < ApplicationController
-  def new
+     def view
+     end
+     def data
+         @prodcaps = Prodcap.all()
+     end
+     def dbaction
+         #called for all db actions
+         segment_id = params["c0"]
+         timestep_id = params["c1"]
+         prodcapvalue = params["c2"]
+         @mode = params["!nativeeditor_status"]
+         
+         @id = params["gr_id"]
+         case @mode
+             when "inserted"
+                 prodcap = Prodcap.new
+                 prodcap.segment_id = segment_id
+                 prodcap.timestep_id = timestep_id
+                 prodcap.prodcapvalue = prodcapvalue
+                 prodcap.save!
+                 
+                 @tid = prodcap.id
+             when "deleted"
+                 prodcap=Prodcap.find(@id)
+                 prodcap.destroy
 
-    end
-
-    def index
-      @prodcaps = Prodcap.new
-      render 'new'
-    end
-
-    def create
-
-      @prodcap = Prodcap.new(params[:prodcap])
-
-      respond_to do |format|
-        if @prodcap.save
-
-          format.html {redirect_to(@prodcap, :notice => 'Produktionskapazität wurde gespeichert.')}
-          format.xml {render :xml => @prodcap, :status => created, :location => @prodcap}
-        else
-          format.html {render :action => "new"}
-          format.xml {render :xml => @prodcap.errors, :status => unprocessable_entity}
-        end
-      end
-
-    end
-
-    def show
-      @prodcap = Prodcap.find(params[:id])
-
-      respond_to do |format|
-          format.html
-          format.xml {render :xml => @prodcap}
-      end
-    end
-
-  end
+                 @tid = @id
+             when "updated"
+                 prodcap=Prodcap.find(@id)
+                 prodcap.segment_id = segment_id
+                 prodcap.timestep_id = timestep_id
+                 prodcap.prodcapvalue = prodcapvalue
+                 prodcap.save!
+                 
+                 @tid = @id
+         end 
+     end
+end

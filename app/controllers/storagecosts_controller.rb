@@ -1,38 +1,37 @@
-# coding: utf-8                                               # erlaubt Sonderzeichen
 class StoragecostsController < ApplicationController
-  def new
+     def view
+     end
+     def data
+         @storagecosts = Storagecost.all()
+     end
+     def dbaction
+         #called for all db actions
+         product_id = params["c0"]
+         storagecostvalue = params["c1"]
 
-    end
-
-    def index
-      @storagecosts = Storagecost.new
-      render 'new'
-    end
-
-    def create
-
-      @storagecost = Storagecost.new(params[:storagecost])
-
-      respond_to do |format|
-        if @storagecost.save
-
-          format.html {redirect_to(@storagecost, :notice => 'Lagerhaltungskosten wurden gespeichert.')}
-          format.xml {render :xml => @storagecost, :status => created, :location => @storagecost}
-        else
-          format.html {render :action => "new"}
-          format.xml {render :xml => @storagecost.errors, :status => unprocessable_entity}
-        end
-      end
-
-    end
-
-    def show
-      @storagecost = Storagecost.find(params[:id])
-
-      respond_to do |format|
-          format.html
-          format.xml {render :xml => @storagecost}
-      end
-    end
-
-  end
+         @mode = params["!nativeeditor_status"]
+         
+         @id = params["gr_id"]
+         case @mode
+             when "inserted"
+                 storagecost = Storagecost.new
+                 storagecost.product_id = product_id
+                 storagecost.storagecostvalue = storagecostvalue
+                 storagecost.save!
+                 
+                 @tid = storagecost.id
+             when "deleted"
+                 storagecost=Storagecost.find(@id)
+                 storagecost.destroy
+                 
+                 @tid = @id
+             when "updated"
+                 storagecost=Storagecost.find(@id)
+                 storagecost.product_id = product_id
+                 storagecost.storagecostvalue = storagecostvalue
+                 storagecost.save!
+                 
+                 @tid = @id
+         end 
+     end
+end

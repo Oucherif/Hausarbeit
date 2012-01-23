@@ -1,39 +1,88 @@
 # Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl
 SampleApp::Application.routes.draw do
-  get "problems/new"
 
-  get "addcapcosts/new"
+  resource :addcapcosts do
+     collection do
+       get 'view'
+       get 'data'
+       get 'dbaction'
+     end
+   end
 
-  get "maxaddcaps/new"
+  resource :capusages do
+     collection do
+       get 'view'
+       get 'data'
+       get 'dbaction'
+     end
+  end
 
-  get "storagecosts/new"
+  resource :demands do
+     collection do
+       get 'view'
+       get 'data'
+       get 'dbaction'
+     end
+  end
 
-  get "capusages/new"
+  resource :maxaddcaps do
+     collection do
+       get 'view'
+       get 'data'
+       get 'dbaction'
+     end
+  end
 
-  get "demands/new"
+  resource :preperiods do
+     collection do
+       get 'view'
+       get 'data'
+       get 'dbaction'
+     end
+  end
 
-  get "prodcaps/new"
+  resource :prodcaps do
+     collection do
+       get 'view'
+       get 'data'
+       get 'dbaction'
+     end
+  end
 
-  get "segments/new"
+  resource :products do
+     collection do
+       get 'view'
+       get 'data'
+       get 'dbaction'
+     end
+  end
 
-  get "timesteps/new"
+  resource :segments do
+     collection do
+       get 'view'
+       get 'data'
+       get 'dbaction'
+     end
+  end
 
-  get "preperiods/new"
+  resource :storagecosts do
+     collection do
+       get 'view'
+       get 'data'
+       get 'dbaction'
+     end
+  end
 
-  get "products/new"
+  resource :timesteps do
+     collection do
+       get 'view'
+       get 'data'
+       get 'dbaction'
+     end
+  end
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
-  resources :products
-  resources :addcapcosts
-  resources :maxaddcaps
-  resources :storagecosts
-  resources :capusages
-  resources :demands
-  resources :prodcaps
-  resources :segments
-  resources :timesteps
-  resources :preperiods
   resources :problems
 
   match '/signup',  :to => 'users#new'
