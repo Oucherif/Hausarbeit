@@ -14,5 +14,7 @@ class Timestep < ActiveRecord::Base
   has_many :demands, :dependent => :destroy
   has_many :maxaddcaps, :dependent => :destroy
   has_many :addcapcosts, :dependent => :destroy
+  validates :stepnumber,     :presence   => true
+  attr_accessible :stepnumber
 
 end

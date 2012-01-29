@@ -17,7 +17,8 @@
              var grid = new dhtmlXGridObject("grid_here");
              grid.setImagePath("/javascripts/codebase/imgs/");
              grid.setHeader("Zeitpunkt");
-             grid.setInitWidths("100,100,*");
+             grid.setColSorting("str");
+             grid.setInitWidths("*");
              grid.setSkin("dhx_skyblue");
              grid.init();
              grid.load("/timesteps/data.xml");
@@ -25,7 +26,7 @@
              dp = new dataProcessor("/timesteps/dbaction.xml");
              dp.init(grid);
          </script>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'')">
+         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Timestep.first.stepnumber%>')"> <%#Gib erste verfügbare Daten als Eingabebeispiel an%>
          <input type="button" value="Delete" onclick="grid.deleteSelectedRows()">
      </body>
 </html>

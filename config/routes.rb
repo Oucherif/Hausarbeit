@@ -1,6 +1,7 @@
 # Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl
 SampleApp::Application.routes.draw do
 
+
   resource :addcapcosts do
      collection do
        get 'view'
@@ -73,6 +74,14 @@ SampleApp::Application.routes.draw do
      end
   end
 
+  resource :storagestarts do
+     collection do
+       get 'view'
+       get 'data'
+       get 'dbaction'
+     end
+  end
+
   resource :timesteps do
      collection do
        get 'view'
@@ -91,6 +100,7 @@ SampleApp::Application.routes.draw do
   match '/kontakt', :to => 'pages#kontakt'
   match '/about',   :to => 'pages#about'
   match '/faq',    :to => 'pages#faq'
+  match 'problems/optimize', :to => 'problems#optimize'
 
   root :to => 'pages#startseite'
 

@@ -5,6 +5,7 @@ xml.instruct! :xml, :version=>"1.0"
      @storagecosts.each do |storagecost|
          xml.tag!("row",{ "id" => storagecost.id }) do
              xml.tag!("cell", Product.find_by_id(storagecost.product_id).productname)
+             #zeige zu Produktid zugehörigen Produktnamen
              xml.tag!("cell", storagecost.storagecostvalue)
          end
      end

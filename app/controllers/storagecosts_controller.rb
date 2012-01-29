@@ -15,7 +15,8 @@ class StoragecostsController < ApplicationController
          case @mode
              when "inserted"
                  storagecost = Storagecost.new
-                 storagecost.product_id = product_id
+                 storagecost.product_id = Product.find_by_productname(product_id).id
+                 #finde zu Produktnamen zugehörige ID
                  storagecost.storagecostvalue = storagecostvalue
                  storagecost.save!
                  
@@ -28,6 +29,7 @@ class StoragecostsController < ApplicationController
              when "updated"
                  storagecost=Storagecost.find(@id)
                  storagecost.product_id = Product.find_by_productname(product_id).id
+                 #finde zu Produktnamen zugehörige ID
                  storagecost.storagecostvalue = storagecostvalue
                  storagecost.save!
                  
@@ -35,5 +37,3 @@ class StoragecostsController < ApplicationController
          end 
      end
 end
-
-                                                           #{name}

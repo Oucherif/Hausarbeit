@@ -17,7 +17,8 @@
              var grid = new dhtmlXGridObject("grid_here");
              grid.setImagePath("/javascripts/codebase/imgs/");
              grid.setHeader("Produkt, Vorlaufperiode");
-             grid.setInitWidths("100,100,*");
+             grid.setColSorting("str,str");
+             grid.setInitWidths("100,*");
              grid.setSkin("dhx_skyblue");
              grid.init();
              grid.load("/preperiods/data.xml");
@@ -25,7 +26,7 @@
              dp = new dataProcessor("/preperiods/dbaction.xml");
              dp.init(grid);
          </script>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'')">
+         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Product.first.productname%>,0')"> <%#Gib erste verfügbare Daten als Eingabebeispiel an%>
          <input type="button" value="Delete" onclick="grid.deleteSelectedRows()">
      </body>
 </html>

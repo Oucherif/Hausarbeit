@@ -1,0 +1,697 @@
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         01/27/12 21:39:50 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  * HPPLAN
+   2  * Autor: Farid Oucherif
+   3  * Stand: 20.12.2011
+   4   
+   5   
+   6  set      j            Produktionssegmente
+   7           k            Produkte
+   8           t            Länge des Planungszeitraums in Perioden
+   9           z            Anzahl der Vorlaufperioden für betrachtetes Produkt;
+  10   
+  11  parameter
+  12           b(j,t)       Produktionskapazität von Produktionssegment j in Periode t
+  13           d(k,t)       Nachfrage für Produkt k in Periode t
+  14           f(j,k,z)     durch Produkt k verursachte Kapazitätsbelastung von Produktionssegment j in der Vorlaufperiode z
+  15           h(k)         Lagerkostensatz für Produkt k pro Mengeneinheit und Periode
+  16           Umax(j,t)    maximale Zusatzkapazität in Produktionssegment j in Periode t
+  17           u(t)         Kosten für eine Einheit der Zusatzkapazität in Periode t
+  18           Zmax(k)      Anzahl der Vorlaufperioden für Produkt k
+  19           y0(k)        Lageranfangsbestand von Produkt k
+  20           i(z)         Zahl der Vorlaufperiode;
+  21   
+INCLUDE    C:\Sites\Hausarbeit\HPPLAN_v1_Input_Instanz1.inc
+  23  set j /
+  24  j3
+  25  j4
+  26  j5
+  27  /
+  28   
+  29  k /
+  30  k9
+  31  k25
+  32  /
+  33   
+  34  t /
+  35  t7
+  36  t6
+  37  t9
+  38  t10
+  39  t11
+  40  t12
+  41  t13
+  42  t14
+  43  /
+  44   
+  45  z /
+  46  z7
+  47  z8
+  48  z10
+  49  z11
+  50  z12
+  51  z13
+  52  /
+  53   
+  54  Parameter i(z)
+  55   /z7 0,
+  56  z8 1,
+  57  z10 2,
+  58  z11 0,
+  59  z12 1,
+  60  z13 2
+  61   /
+  62  Parameter h(k)
+  63   /k9 40.0
+  64  ,k25 40.0
+  65  /
+  66   
+  67  Parameter y0(k)
+  68   /k9 0.0
+  69  ,k25 0.0
+  70  /
+  71   
+  72  Parameter u(t)
+  73   /t6 5.0
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         01/27/12 21:39:50 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+  74  ,t7 5.0
+  75  ,t9 5.0
+  76  ,t10 5.0
+  77  ,t12 5.0
+  78  ,t11 5.0
+  79  ,t13 5.0
+  80  ,t14 5.0
+  81  /
+  82   
+  83  Parameter f(j,k,z)
+  84   /j3.k9.z10 1.0,
+  85  j3.k9.z7 0.0,
+  86  j3.k9.z8 0.0,
+  87  j3.k25.z10 2.0,
+  88  j3.k25.z7 0.0,
+  89  j3.k25.z8 0.0,
+  90  j4.k9.z10 0.0,
+  91  j4.k9.z7 4.0,
+  92  j4.k9.z8 0.0,
+  93  j4.k25.z10 0.0,
+  94  j4.k25.z7 3.0,
+  95  j4.k25.z8 0.0,
+  96  j5.k9.z10 0.0,
+  97  j5.k9.z7 0.0,
+  98  j5.k9.z8 0.0,
+  99  j5.k25.z10 0.0,
+ 100  j5.k25.z7 4.0,
+ 101  j5.k25.z8 3.0
+ 102   /
+ 103   
+ 104  Parameter b(j,t)
+ 105   /j3.t6 100.0,
+ 106  j3.t7 100.0,
+ 107  j3.t9 100.0,
+ 108  j3.t10 100.0,
+ 109  j3.t11 100.0,
+ 110  j3.t12 100.0,
+ 111  j3.t13 100.0,
+ 112  j3.t14 100.0,
+ 113  j4.t6 100.0,
+ 114  j4.t7 100.0,
+ 115  j4.t9 100.0,
+ 116  j4.t10 100.0,
+ 117  j4.t11 100.0,
+ 118  j4.t12 100.0,
+ 119  j4.t13 100.0,
+ 120  j4.t14 100.0,
+ 121  j5.t6 100.0,
+ 122  j5.t7 100.0,
+ 123  j5.t9 100.0,
+ 124  j5.t10 100.0,
+ 125  j5.t11 100.0,
+ 126  j5.t12 100.0,
+ 127  j5.t13 100.0,
+ 128  j5.t14 100.0
+ 129   /
+ 130   
+ 131  Parameter d(k,t)
+ 132   /k9.t7 0.0,
+ 133  k9.t6 45.0,
+ 134  k9.t9 30.0,
+ 135  k9.t10 10.0,
+ 136  k9.t11 30.0,
+ 137  k9.t12 50.0,
+ 138  k9.t13 10.0,
+ 139  k9.t14 20.0,
+ 140  k25.t7 0.0,
+ 141  k25.t6 0.0,
+ 142  k25.t9 25.0,
+ 143  k25.t10 30.0,
+ 144  k25.t11 25.0,
+ 145  k25.t12 30.0,
+ 146  k25.t13 20.0,
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         01/27/12 21:39:50 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 147  k25.t14 10.0
+ 148   /
+ 149   
+ 150  Parameter Umax(j,t)
+ 151   /j3.t6 100.0,
+ 152  j3.t7 100.0,
+ 153  j3.t9 100.0,
+ 154  j3.t10 100.0,
+ 155  j3.t11 100.0,
+ 156  j3.t12 100.0,
+ 157  j3.t13 100.0,
+ 158  j3.t14 100.0,
+ 159  j4.t6 100.0,
+ 160  j4.t7 100.0,
+ 161  j4.t9 100.0,
+ 162  j4.t10 100.0,
+ 163  j4.t11 100.0,
+ 164  j4.t12 100.0,
+ 165  j4.t13 100.0,
+ 166  j4.t14 100.0,
+ 167  j5.t6 100.0,
+ 168  j5.t7 100.0,
+ 169  j5.t9 100.0,
+ 170  j5.t10 100.0,
+ 171  j5.t11 100.0,
+ 172  j5.t12 100.0,
+ 173  j5.t13 100.0,
+ 174  j5.t14 100.0
+ 175   /
+ 176   
+ 177   
+ 178  variables ZF Zielfunktionswert;
+ 179  positive variables       UV(j,t) genutzte Zusatzkapazität in Produktionssegment j in Periode t
+ 180                           x(k,t) Produktionsmenge von Produkt k in Periode t
+ 181                           y(k,t) Lagerbestand für Produkt k am Ende von Periode t;
+ 182   
+ 183  Equations
+ 184  Zielfunktion Minimierung der Lagerkosten und Kosten für Zusatzkapazitäten
+ 185  Lagerbedingung(k,t) Produktionsmenge und Lagerbestand müssen gleich dem neuen Lagerbestand und der Nachfrage sein
+ 186  Kapazitaetsbelastung(j,t) Die genutzte Kapazität darf die maximale nur um Zusatzkapazität überschreiten
+ 187  maximale_Zusatzkapazitaet(j,t) Die Zusatzkapazität darf die maximale Zusatzkapazität nicht überschreiten;
+ 188   
+ 189  Zielfunktion..
+ 190           ZF =e=  sum((k,t),h(k)*y(k,t))+sum((t,j),u(t)*UV(j,t));
+ 191   
+ 192  Lagerbedingung(k,t)..
+ 193           y0(k)$(ord(t)=1)+x(k,t)+y(k,t-1)$(ord(t)>1)-y(k,t) =e= d(k,t);
+ 194   
+ 195  Kapazitaetsbelastung(j,t)..
+ 196           sum((k,z),f(j,k,z)*x(k,t+i(z)))-UV(j,t) =l= b(j,t);
+ 197   
+ 198  maximale_Zusatzkapazitaet(j,t)..
+ 199           UV(j,t) =l= Umax(j,t);
+ 200   
+ 201  model HPPLANv1 /
+ 202                   Zielfunktion
+ 203                   , Lagerbedingung
+ 204                   , Kapazitaetsbelastung
+ 205                   , maximale_Zusatzkapazitaet
+ 206                   /;
+ 207   
+ 208   
+ 209   
+ 210  display b, d, f, h, u, Umax;
+ 211   
+ 212  solve HPPLANv1 minimizing ZF using lp;
+ 213   
+ 214  display x.l;
+ 215   
+ 216  file outputfile / 'HPPLAN_v1_Solution.txt'/;
+ 217  put outputfile;
+ 218   
+ 219  put 'Objective Function Value: ', ZF.l/
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         01/27/12 21:39:50 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 220   
+ 221  put /
+ 222   
+ 223  loop(k,
+ 224      loop(t,
+ 225          put k.tl:0, ' ; ' t.tl:0 ' ; ' x.l(k,t) /
+ 226          );
+ 227      );
+ 228   
+ 229  put /
+ 230   
+ 231  loop(k,
+ 232      loop(t,
+ 233          put k.tl:0, ' ; ' t.tl:0 ' ; ' y.l(k,t) /
+ 234          );
+ 235      );
+ 236   
+ 237  put /
+ 238   
+ 239  loop(j,
+ 240      loop(t,
+ 241          put j.tl:0, ' ; ' t.tl:0 ' ; ' UV.l(j,t) /
+ 242          );
+ 243      );
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         01/27/12 21:39:50 Page 5
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Include File Summary
+
+
+   SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
+
+     1        1 INPUT          0       0  C:\Sites\Hausarbeit\HPPLAN_v1.gms
+     2       22 INCLUDE        1      22  .C:\Sites\Hausarbeit\HPPLAN_v1_Input_Instanz1.inc
+
+
+COMPILATION TIME     =        0.000 SECONDS      3 Mb  WEX237-237 Jul 21, 2011
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         01/27/12 21:39:50 Page 6
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+----    210 PARAMETER b  Produktionskapazität von Produktionssegment j in Periode t
+
+            t7          t6          t9         t10         t11         t12         t13         t14
+
+j3     100.000     100.000     100.000     100.000     100.000     100.000     100.000     100.000
+j4     100.000     100.000     100.000     100.000     100.000     100.000     100.000     100.000
+j5     100.000     100.000     100.000     100.000     100.000     100.000     100.000     100.000
+
+
+----    210 PARAMETER d  Nachfrage für Produkt k in Periode t
+
+             t6          t9         t10         t11         t12         t13         t14
+
+k9       45.000      30.000      10.000      30.000      50.000      10.000      20.000
+k25                  25.000      30.000      25.000      30.000      20.000      10.000
+
+
+----    210 PARAMETER f  durch Produkt k verursachte Kapazitätsbelastung von Produktionssegment j in der Vorlaufperiode z
+
+                z7          z8         z10
+
+j3.k9                                1.000
+j3.k25                               2.000
+j4.k9        4.000
+j4.k25       3.000
+j5.k25       4.000       3.000
+
+
+----    210 PARAMETER h  Lagerkostensatz für Produkt k pro Mengeneinheit und Periode
+
+k9  40.000,    k25 40.000
+
+
+----    210 PARAMETER u  Kosten für eine Einheit der Zusatzkapazität in Periode t
+
+t7  5.000,    t6  5.000,    t9  5.000,    t10 5.000,    t11 5.000,    t12 5.000,    t13 5.000,    t14 5.000
+
+
+----    210 PARAMETER Umax  maximale Zusatzkapazität in Produktionssegment j in Periode t
+
+            t7          t6          t9         t10         t11         t12         t13         t14
+
+j3     100.000     100.000     100.000     100.000     100.000     100.000     100.000     100.000
+j4     100.000     100.000     100.000     100.000     100.000     100.000     100.000     100.000
+j5     100.000     100.000     100.000     100.000     100.000     100.000     100.000     100.000
+
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         01/27/12 21:39:50 Page 7
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Equation Listing    SOLVE HPPLANv1 Using LP From line 212
+
+
+---- Zielfunktion  =E=  Minimierung der Lagerkosten und Kosten für Zusatzkapazitäten
+
+Zielfunktion..  ZF - 5*UV(j3,t7) - 5*UV(j3,t6) - 5*UV(j3,t9) - 5*UV(j3,t10) - 5*UV(j3,t11) - 5*UV(j3,t12) - 5*UV(j3,t13) - 5*UV(j3,t14) - 5*UV(j4,t7) - 5*UV(j4,t6) - 5*UV(j4,t9) - 5*UV(j4,t10) - 5*UV(j4,t11) - 5*UV(j4,t12) - 5*UV(j4,t13) - 5*UV(j4,t14)
+     
+      - 5*UV(j5,t7) - 5*UV(j5,t6) - 5*UV(j5,t9) - 5*UV(j5,t10) - 5*UV(j5,t11) - 5*UV(j5,t12) - 5*UV(j5,t13) - 5*UV(j5,t14) - 40*y(k9,t7) - 40*y(k9,t6) - 40*y(k9,t9) - 40*y(k9,t10) - 40*y(k9,t11) - 40*y(k9,t12) - 40*y(k9,t13) - 40*y(k9,t14) - 40*y(k25,t7)
+     
+      - 40*y(k25,t6) - 40*y(k25,t9) - 40*y(k25,t10) - 40*y(k25,t11) - 40*y(k25,t12) - 40*y(k25,t13) - 40*y(k25,t14) =E= 0 ; (LHS = 0)
+     
+
+---- Lagerbedingung  =E=  Produktionsmenge und Lagerbestand müssen gleich dem neuen Lagerbestand und der Nachfrage sein
+
+Lagerbedingung(k9,t7)..  x(k9,t7) - y(k9,t7) =E= 0 ; (LHS = 0)
+     
+Lagerbedingung(k9,t6)..  x(k9,t6) + y(k9,t7) - y(k9,t6) =E= 45 ; (LHS = 0, INFES = 45 ****)
+     
+Lagerbedingung(k9,t9)..  x(k9,t9) + y(k9,t6) - y(k9,t9) =E= 30 ; (LHS = 0, INFES = 30 ****)
+     
+REMAINING 13 ENTRIES SKIPPED
+
+
+---- Kapazitaetsbelastung  =L=  Die genutzte Kapazität darf die maximale nur um Zusatzkapazität überschreiten
+
+Kapazitaetsbelastung(j3,t7)..  - UV(j3,t7) + x(k9,t9) + 2*x(k25,t9) =L= 100 ; (LHS = 0)
+     
+Kapazitaetsbelastung(j3,t6)..  - UV(j3,t6) + x(k9,t10) + 2*x(k25,t10) =L= 100 ; (LHS = 0)
+     
+Kapazitaetsbelastung(j3,t9)..  - UV(j3,t9) + x(k9,t11) + 2*x(k25,t11) =L= 100 ; (LHS = 0)
+     
+REMAINING 21 ENTRIES SKIPPED
+
+
+---- maximale_Zusatzkapazitaet  =L=  Die Zusatzkapazität darf die maximale Zusatzkapazität nicht überschreiten
+
+maximale_Zusatzkapazitaet(j3,t7)..  UV(j3,t7) =L= 100 ; (LHS = 0)
+     
+maximale_Zusatzkapazitaet(j3,t6)..  UV(j3,t6) =L= 100 ; (LHS = 0)
+     
+maximale_Zusatzkapazitaet(j3,t9)..  UV(j3,t9) =L= 100 ; (LHS = 0)
+     
+REMAINING 21 ENTRIES SKIPPED
+
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         01/27/12 21:39:50 Page 8
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE HPPLANv1 Using LP From line 212
+
+
+---- ZF  Zielfunktionswert
+
+ZF
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       Zielfunktion
+
+
+---- UV  genutzte Zusatzkapazität in Produktionssegment j in Periode t
+
+UV(j3,t7)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -5       Zielfunktion
+       -1       Kapazitaetsbelastung(j3,t7)
+        1       maximale_Zusatzkapazitaet(j3,t7)
+
+UV(j3,t6)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -5       Zielfunktion
+       -1       Kapazitaetsbelastung(j3,t6)
+        1       maximale_Zusatzkapazitaet(j3,t6)
+
+UV(j3,t9)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -5       Zielfunktion
+       -1       Kapazitaetsbelastung(j3,t9)
+        1       maximale_Zusatzkapazitaet(j3,t9)
+
+REMAINING 21 ENTRIES SKIPPED
+
+---- x  Produktionsmenge von Produkt k in Periode t
+
+x(k9,t7)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       Lagerbedingung(k9,t7)
+        4       Kapazitaetsbelastung(j4,t7)
+
+x(k9,t6)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       Lagerbedingung(k9,t6)
+        4       Kapazitaetsbelastung(j4,t6)
+
+x(k9,t9)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       Lagerbedingung(k9,t9)
+        1       Kapazitaetsbelastung(j3,t7)
+        4       Kapazitaetsbelastung(j4,t9)
+
+REMAINING 13 ENTRIES SKIPPED
+
+---- y  Lagerbestand für Produkt k am Ende von Periode t
+
+y(k9,t7)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      -40       Zielfunktion
+       -1       Lagerbedingung(k9,t7)
+        1       Lagerbedingung(k9,t6)
+
+y(k9,t6)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      -40       Zielfunktion
+       -1       Lagerbedingung(k9,t6)
+        1       Lagerbedingung(k9,t9)
+
+y(k9,t9)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      -40       Zielfunktion
+       -1       Lagerbedingung(k9,t9)
+        1       Lagerbedingung(k9,t10)
+
+REMAINING 13 ENTRIES SKIPPED
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         01/27/12 21:39:50 Page 9
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE HPPLANv1 Using LP From line 212
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS           4     SINGLE EQUATIONS           65
+BLOCKS OF VARIABLES           4     SINGLE VARIABLES           57
+NON ZERO ELEMENTS           178
+
+
+GENERATION TIME      =        0.000 SECONDS      4 Mb  WEX237-237 Jul 21, 2011
+
+
+EXECUTION TIME       =        0.016 SECONDS      4 Mb  WEX237-237 Jul 21, 2011
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                        01/27/12 21:39:50 Page 10
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE HPPLANv1 Using LP From line 212
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   HPPLANv1            OBJECTIVE  ZF
+     TYPE    LP                  DIRECTION  MINIMIZE
+     SOLVER  CPLEX               FROM LINE  212
+
+**** SOLVER STATUS     1 Normal Completion         
+**** MODEL STATUS      1 Optimal                   
+**** OBJECTIVE VALUE             6266.6667
+
+ RESOURCE USAGE, LIMIT          0.016      1000.000
+ ITERATION COUNT, LIMIT        12    2000000000
+
+IBM ILOG CPLEX   Jul 14, 2011 23.7.2 WEX 27052.27054 WEI x86_64/MS Windows
+Cplex 12.3.0.0
+
+LP status(1): optimal
+Optimal solution found.
+Objective :        6266.666667
+
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- EQU Zielfunkt~          .              .              .             1.0000      
+
+  Zielfunktion  Minimierung der Lagerkosten und Kosten für Zusatzkapazitäten
+
+---- EQU Lagerbedingung  Produktionsmenge und Lagerbestand müssen gleich dem neuen Lagerbestand und der Nachfrage sein
+
+               LOWER          LEVEL          UPPER         MARGINAL
+
+k9 .t7           .              .              .             EPS         
+k9 .t6         45.0000        45.0000        45.0000        20.0000      
+k9 .t9         30.0000        30.0000        30.0000        46.6667      
+k9 .t10        10.0000        10.0000        10.0000        80.0000      
+k9 .t11        30.0000        30.0000        30.0000       120.0000      
+k9 .t12        50.0000        50.0000        50.0000       160.0000      
+k9 .t13        10.0000        10.0000        10.0000         EPS         
+k9 .t14        20.0000        20.0000        20.0000        20.0000      
+k25.t7           .              .              .           -25.0000      
+k25.t6           .              .              .            15.0000      
+k25.t9         25.0000        25.0000        25.0000        55.0000      
+k25.t10        30.0000        30.0000        30.0000        95.0000      
+k25.t11        25.0000        25.0000        25.0000       125.0000      
+k25.t12        30.0000        30.0000        30.0000       155.0000      
+k25.t13        20.0000        20.0000        20.0000        35.0000      
+k25.t14        10.0000        10.0000        10.0000        30.0000      
+
+---- EQU Kapazitaetsbelastung  Die genutzte Kapazität darf die maximale nur um Zusatzkapazität überschreiten
+
+              LOWER          LEVEL          UPPER         MARGINAL
+
+j3.t7         -INF           83.3333       100.0000          .          
+j3.t6         -INF           81.2500       100.0000          .          
+j3.t9         -INF           81.2500       100.0000          .          
+j3.t10        -INF           87.5000       100.0000          .          
+j3.t11        -INF           50.0000       100.0000          .          
+j3.t12        -INF           40.0000       100.0000          .          
+j3.t13        -INF             .           100.0000          .          
+j3.t14        -INF             .           100.0000          .          
+j4.t7         -INF             .           100.0000          .          
+j4.t6         -INF          100.0000       100.0000        -5.0000      
+j4.t9         -INF          100.0000       100.0000       -11.6667      
+j4.t10        -INF          100.0000       100.0000       -20.0000      
+j4.t11        -INF          100.0000       100.0000       -30.0000      
+j4.t12        -INF          100.0000       100.0000       -40.0000      
+j4.t13        -INF          100.0000       100.0000          .          
+j4.t14        -INF          100.0000       100.0000        -5.0000      
+j5.t7         -INF           10.0000       100.0000          .          
+j5.t6         -INF           93.3333       100.0000          .          
+j5.t9         -INF          100.0000       100.0000        -5.0000      
+j5.t10        -INF          100.0000       100.0000        -5.0000      
+j5.t11        -INF          100.0000       100.0000        -5.0000      
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                        01/27/12 21:39:50 Page 11
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE HPPLANv1 Using LP From line 212
+
+
+     EQU Kapazitaetsbelastung  Die genutzte Kapazität darf die maximale nur um Zusatzkapazität überschreiten
+
+              LOWER          LEVEL          UPPER         MARGINAL
+
+j5.t12        -INF          100.0000       100.0000        -5.0000      
+j5.t13        -INF          100.0000       100.0000        -5.0000      
+j5.t14        -INF           40.0000       100.0000          .          
+
+---- EQU maximale_Zusatzkapazitaet  Die Zusatzkapazität darf die maximale Zusatzkapazität nicht überschreiten
+
+              LOWER          LEVEL          UPPER         MARGINAL
+
+j3.t7         -INF             .           100.0000          .          
+j3.t6         -INF             .           100.0000          .          
+j3.t9         -INF             .           100.0000          .          
+j3.t10        -INF             .           100.0000          .          
+j3.t11        -INF             .           100.0000          .          
+j3.t12        -INF             .           100.0000          .          
+j3.t13        -INF             .           100.0000          .          
+j3.t14        -INF             .           100.0000          .          
+j4.t7         -INF             .           100.0000          .          
+j4.t6         -INF           90.0000       100.0000          .          
+j4.t9         -INF          100.0000       100.0000        -6.6667      
+j4.t10        -INF          100.0000       100.0000       -15.0000      
+j4.t11        -INF          100.0000       100.0000       -25.0000      
+j4.t12        -INF          100.0000       100.0000       -35.0000      
+j4.t13        -INF             .           100.0000          .          
+j4.t14        -INF           10.0000       100.0000          .          
+j5.t7         -INF             .           100.0000          .          
+j5.t6         -INF             .           100.0000          .          
+j5.t9         -INF           81.6667       100.0000          .          
+j5.t10        -INF           75.0000       100.0000          .          
+j5.t11        -INF           90.0000       100.0000          .          
+j5.t12        -INF           80.0000       100.0000          .          
+j5.t13        -INF           10.0000       100.0000          .          
+j5.t14        -INF             .           100.0000          .          
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- VAR ZF                -INF         6266.6667        +INF             .          
+
+  ZF  Zielfunktionswert
+
+---- VAR UV  genutzte Zusatzkapazität in Produktionssegment j in Periode t
+
+              LOWER          LEVEL          UPPER         MARGINAL
+
+j3.t7           .              .            +INF            5.0000      
+j3.t6           .              .            +INF            5.0000      
+j3.t9           .              .            +INF            5.0000      
+j3.t10          .              .            +INF            5.0000      
+j3.t11          .              .            +INF            5.0000      
+j3.t12          .              .            +INF            5.0000      
+j3.t13          .              .            +INF            5.0000      
+j3.t14          .              .            +INF            5.0000      
+j4.t7           .              .            +INF            5.0000      
+j4.t6           .            90.0000        +INF             .          
+j4.t9           .           100.0000        +INF             .          
+j4.t10          .           100.0000        +INF             .          
+j4.t11          .           100.0000        +INF             .          
+j4.t12          .           100.0000        +INF             .          
+j4.t13          .              .            +INF            5.0000      
+j4.t14          .            10.0000        +INF             .          
+j5.t7           .              .            +INF            5.0000      
+j5.t6           .              .            +INF            5.0000      
+j5.t9           .            81.6667        +INF             .          
+j5.t10          .            75.0000        +INF             .          
+j5.t11          .            90.0000        +INF             .          
+j5.t12          .            80.0000        +INF             .          
+j5.t13          .            10.0000        +INF             .          
+j5.t14          .              .            +INF            5.0000      
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                        01/27/12 21:39:50 Page 12
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE HPPLANv1 Using LP From line 212
+
+
+---- VAR x  Produktionsmenge von Produkt k in Periode t
+
+               LOWER          LEVEL          UPPER         MARGINAL
+
+k9 .t7           .              .            +INF             .          
+k9 .t6           .            45.0000        +INF             .          
+k9 .t9           .            30.0000        +INF             .          
+k9 .t10          .            31.2500        +INF             .          
+k9 .t11          .            31.2500        +INF             .          
+k9 .t12          .            27.5000        +INF             .          
+k9 .t13          .            10.0000        +INF             .          
+k9 .t14          .            20.0000        +INF             .          
+k25.t7           .              .            +INF           25.0000      
+k25.t6           .             3.3333        +INF             .          
+k25.t9           .            26.6667        +INF             .          
+k25.t10          .            25.0000        +INF             .          
+k25.t11          .            25.0000        +INF             .          
+k25.t12          .            30.0000        +INF             .          
+k25.t13          .            20.0000        +INF             .          
+k25.t14          .            10.0000        +INF             .          
+
+---- VAR y  Lagerbestand für Produkt k am Ende von Periode t
+
+               LOWER          LEVEL          UPPER         MARGINAL
+
+k9 .t7           .              .            +INF           20.0000      
+k9 .t6           .              .            +INF           13.3333      
+k9 .t9           .              .            +INF            6.6667      
+k9 .t10          .            21.2500        +INF             .          
+k9 .t11          .            22.5000        +INF             .          
+k9 .t12          .              .            +INF          200.0000      
+k9 .t13          .              .            +INF           20.0000      
+k9 .t14          .              .            +INF           60.0000      
+k25.t7           .              .            +INF             .          
+k25.t6           .             3.3333        +INF             .          
+k25.t9           .             5.0000        +INF             .          
+k25.t10          .              .            +INF           10.0000      
+k25.t11          .              .            +INF           10.0000      
+k25.t12          .              .            +INF          160.0000      
+k25.t13          .              .            +INF           45.0000      
+k25.t14          .              .            +INF           70.0000      
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                        01/27/12 21:39:50 Page 13
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+----    214 VARIABLE x.L  Produktionsmenge von Produkt k in Periode t
+
+             t6          t9         t10         t11         t12         t13         t14
+
+k9       45.000      30.000      31.250      31.250      27.500      10.000      20.000
+k25       3.333      26.667      25.000      25.000      30.000      20.000      10.000
+
+
+**** REPORT FILE SUMMARY
+
+outputfile C:\Sites\Hausarbeit\HPPLAN_v1_Solution.txt
+
+
+EXECUTION TIME       =        0.000 SECONDS      3 Mb  WEX237-237 Jul 21, 2011
+
+
+USER: GAMS Development Corporation, Washington, DC   G871201/0000CA-ANY
+      Free Demo,  202-342-0180,  sales@gams.com,  www.gams.com   DC0000
+
+
+**** FILE SUMMARY
+
+Input      C:\Sites\Hausarbeit\HPPLAN_v1.gms
+Output     C:\Sites\Hausarbeit\HPPLAN_v1.lst

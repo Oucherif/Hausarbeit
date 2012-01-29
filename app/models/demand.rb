@@ -14,5 +14,9 @@ class Demand < ActiveRecord::Base
 
   belongs_to :product
   belongs_to :timestep
+  validates :product_id,     :presence   => true
+  validates :timestep_id,     :presence   => true
+  validates :demandvalue,     :presence   => true
+  attr_accessible :product_id, :timestep_id, :demandvalue
 
 end

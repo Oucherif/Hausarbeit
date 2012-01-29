@@ -17,8 +17,8 @@
              var grid = new dhtmlXGridObject("grid_here");
              grid.setImagePath("/javascripts/codebase/imgs/");
              grid.setHeader("Zeitpunkt, Kosten einer zusätzlichen Kapazitätseinheit");
-             grid.setColSorting("str,str,str");
-             grid.setInitWidths("100,100,*");
+             grid.setColSorting("str,str");
+             grid.setInitWidths("100,*");
              grid.setSkin("dhx_skyblue");
              grid.init();
              grid.load("/addcapcosts/data.xml");
@@ -27,7 +27,8 @@
              dp = new dataProcessor("/addcapcosts/dbaction.xml");
              dp.init(grid);
          </script>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'')">
+         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Timestep.first.stepnumber%>,0.0')">
+         <%#Gib erste verfügbare Daten als Eingabebeispiel an%>
          <input type="button" value="Delete" onclick="grid.deleteSelectedRows()">
      </body>
 </html>

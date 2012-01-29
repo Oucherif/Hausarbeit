@@ -14,5 +14,9 @@ class Prodcap < ActiveRecord::Base
 
   belongs_to :segment
   belongs_to :timestep
+  validates :segment_id,     :presence   => true
+  validates :timestep_id,     :presence   => true
+  validates :prodcapvalue,     :presence   => true
+  attr_accessible :segment_id, :timestep_id, :prodcapvalue
 
 end

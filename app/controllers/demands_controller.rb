@@ -16,8 +16,10 @@ class DemandsController < ApplicationController
          case @mode
              when "inserted"
                  demand = Demand.new
-                 demand.product_id = product_id
-                 demand.timestep_id = timestep_id
+                 demand.product_id = Product.find_by_productname(product_id).id
+                 #finde zu Produktnamen zugehörige ID
+                 demand.timestep_id = Timestep.find_by_stepnumber(timestep_id).id
+                 #finde zu Segmentnamen zugehörige ID
                  demand.demandvalue = demandvalue
                  demand.save!
                  
@@ -29,8 +31,10 @@ class DemandsController < ApplicationController
                  @tid = @id
              when "updated"
                  demand=Demand.find(@id)
-                 demand.product_id = product_id
-                 demand.timestep_id = timestep_id
+                 demand.product_id = Product.find_by_productname(product_id).id
+                 #finde zu Produktnamen zugehörige ID
+                 demand.timestep_id = Timestep.find_by_stepnumber(timestep_id).id
+                 #finde zu Segmentnamen zugehörige ID
                  demand.demandvalue = demandvalue
                  demand.save!
                  

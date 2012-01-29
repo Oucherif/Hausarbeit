@@ -1,0 +1,73 @@
+*Transportmodell_v1_Input_Instanz1.inc
+*Autor: Farid Oucherif
+*Stand: 20.12.2011
+
+set j    /j1*j3/
+    k    /k1*k2/
+    t    /t0*t8/
+    z    /z0*z2/
+
+Parameter i(z)  / z0  0,
+                  z1  1,
+                  z2  2/
+
+Parameter h(k)
+                / k1  40,
+                  k2  40/
+
+                u(t)
+                 /t0 999999999,
+                  t1 5,
+                  t2 5,
+                  t3 5,
+                  t4 5,
+                  t5 5,
+                  t6 5,
+                  t7 5,
+                  t8 5/
+
+
+Parameter f(j,k,z)
+
+        /j1.k1.z0        1,
+         j1.k1.z1        0 ,
+         j1.k1.z2        0  ,
+         j1.k2.z0        2   ,
+         j1.k2.z1        0    ,
+         j1.k2.z2        0     ,
+         j2.k1.z0        0      ,
+         j2.k1.z1        4       ,
+         j2.k1.z2        0        ,
+         j2.k2.z0        0         ,
+         j2.k2.z1        3          ,
+         j2.k2.z2        0           ,
+         j3.k1.z0        0            ,
+         j3.k1.z1        0             ,
+         j3.k1.z2        0              ,
+         j3.k2.z0        0               ,
+         j3.k2.z1        4                ,
+         j3.k2.z2        3                 
+         ;
+
+Table b(j,t)
+                 t0      t1      t2      t3      t4      t5      t6      t7      t8
+         j1      0       100     100     100     100     100     100     100     100
+         j2      0       100     100     100     100     100     100     100     100
+         j3      0       100     100     100     100     100     100     100     100
+         ;
+
+Table d(k,t)
+                 t0      t1      t2      t3      t4      t5      t6      t7      t8
+         k1      0       0       45      30      10      30      50      10      20
+         k2      0       0       0       25      30      25      30      20      10
+         ;
+
+Table Umax(j,t)
+                 t0      t1      t2      t3      t4      t5      t6      t7      t8
+         j1      0       100     100     100     100     100     100     100     100
+         j2      0       100     100     100     100     100     100     100     100
+         j3      0       100     100     100     100     100     100     100     100
+         ;
+
+
+

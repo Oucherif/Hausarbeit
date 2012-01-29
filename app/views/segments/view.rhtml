@@ -17,8 +17,8 @@
              var grid = new dhtmlXGridObject("grid_here");
              grid.setImagePath("/javascripts/codebase/imgs/");
              grid.setHeader("Segment");
-             grid.setColSorting("str,str,str");
-             grid.setInitWidths("100,100,*");
+             grid.setColSorting("str");
+             grid.setInitWidths("*");
              grid.setSkin("dhx_skyblue");
              grid.init();
              grid.load("/segments/data.xml");
@@ -27,7 +27,7 @@
              dp = new dataProcessor("/segments/dbaction.xml");
              dp.init(grid);
          </script>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'')">
+         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Segment.first.segmentname%>')"> <%#Gib erste verfügbare Daten als Eingabebeispiel an%>
          <input type="button" value="Delete" onclick="grid.deleteSelectedRows()">
      </body>
 </html>

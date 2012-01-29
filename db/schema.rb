@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120121133748) do
+ActiveRecord::Schema.define(:version => 20120126211949) do
 
   create_table "addcapcosts", :force => true do |t|
     t.integer  "timestep_id"
@@ -74,6 +74,13 @@ ActiveRecord::Schema.define(:version => 20120121133748) do
   create_table "storagecosts", :force => true do |t|
     t.integer  "product_id"
     t.float    "storagecostvalue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "storagestarts", :force => true do |t|
+    t.integer  "product_id"
+    t.float    "storagestartvalue"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

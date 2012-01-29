@@ -10,5 +10,8 @@
 <%= link_to 'Nachfrage', view_demands_path%>                   <br/>
 <%= link_to 'Kapazitätsbelastung', view_capusages_path%>         <br/>
 <%= link_to 'Lagerhaltungskosten', view_storagecosts_path%>       <br/>
+<%= link_to 'Lageranfangsbestände', view_storagestarts_path%>       <br/>
 <%= link_to 'Maximale Zusatzkapazität', view_maxaddcaps_path%>      <br/>
 <%= link_to 'Kosten für Zusatzkapazität', view_addcapcosts_path%>    <br/>
+
+<%= button_to "Optimiere", :controller => 'problems', :action => 'optimize' %>

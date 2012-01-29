@@ -16,5 +16,9 @@ class Capusage < ActiveRecord::Base
   belongs_to :product
   belongs_to :segment
   belongs_to :preperiod
-
+  validates :product_id,     :presence   => true
+  validates :segment_id,     :presence   => true
+  validates :preperiod_id,     :presence   => true
+  validates :capusagevalue,     :presence   => true
+  attr_accessible :product_id, :segment_id, :preperiod_id, :capusagevalue
 end

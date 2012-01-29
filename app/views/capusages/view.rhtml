@@ -17,8 +17,8 @@
              var grid = new dhtmlXGridObject("grid_here");
              grid.setImagePath("/javascripts/codebase/imgs/");
              grid.setHeader("Produktname, Segmentname, Vorlaufperiode, Kapazitätsbelastungswert");
-             grid.setColSorting("str,str,str");
-             grid.setInitWidths("100,100,*");
+             grid.setColSorting("str,str,str,str");
+             grid.setInitWidths("100,100,100,*");
              grid.setSkin("dhx_skyblue");
              grid.init();
              grid.load("/capusages/data.xml");
@@ -27,7 +27,8 @@
              dp = new dataProcessor("/capusages/dbaction.xml");
              dp.init(grid);
          </script>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'')">
+         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Product.first.productname%>, <%=Segment.first.segmentname%>, <%=Preperiod.first.preperiodnumber%>,0.0')">
+         <%#Gib erste verfügbare Daten als Eingabebeispiel an%>
          <input type="button" value="Delete" onclick="grid.deleteSelectedRows()">
      </body>
 </html>

@@ -7,6 +7,7 @@
          <script src="/javascripts/codebase/dhtmlxgrid.js" type="text/javascript" charset="utf-8"></script>
          <script src="/javascripts/codebase/dhtmlxgridcell.js" type="text/javascript" charset="utf-8"></script>
          <script src="/javascripts/codebase/dhtmlxdataprocessor.js" type="text/javascript" charset="utf-8"></script>
+
          <link rel="stylesheet" href="/javascripts/codebase/dhtmlxgrid.css" type="text/css" media="screen" charset="utf-8">
          <link rel="stylesheet" href="/javascripts/codebase/skins/dhtmlxgrid_dhx_skyblue.css" type="text/css" media="screen" charset="utf-8">
      </head>
@@ -17,7 +18,8 @@
              var grid = new dhtmlXGridObject("grid_here");
              grid.setImagePath("/javascripts/codebase/imgs/");
              grid.setHeader("Produkt");
-             grid.setInitWidths("100,100,*");
+             grid.setColSorting("str");
+             grid.setInitWidths("*");
              grid.setSkin("dhx_skyblue");
              grid.init();
              grid.load("/products/data.xml");
@@ -25,7 +27,7 @@
              dp = new dataProcessor("/products/dbaction.xml");
              dp.init(grid);
          </script>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'')">
+         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Product.first.productname%>')"> <%#Gib erste verfügbare Daten als Eingabebeispiel an%>
          <input type="button" value="Delete" onclick="grid.deleteSelectedRows()">
      </body>
 </html>

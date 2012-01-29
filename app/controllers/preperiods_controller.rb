@@ -15,7 +15,8 @@ class PreperiodsController < ApplicationController
          case @mode
              when "inserted"
                  preperiod = Preperiod.new
-                 preperiod.product_id = product_id
+                 preperiod.product_id = Product.find_by_productname(product_id).id
+                 #finde zu Produktnamen zugehörige ID
                  preperiod.preperiodnumber = preperiodnumber
                  preperiod.save!
                  
@@ -27,7 +28,7 @@ class PreperiodsController < ApplicationController
                  @tid = @id
              when "updated"
                  preperiod=Preperiod.find(@id)
-                 preperiod.product_id = product_id
+                 preperiod.product_id = Product.find_by_productname(product_id).id
                  preperiod.preperiodnumber = preperiodnumber
                  preperiod.save!
                  

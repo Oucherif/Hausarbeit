@@ -17,6 +17,7 @@
              var grid = new dhtmlXGridObject("grid_here");
              grid.setImagePath("/javascripts/codebase/imgs/");
              grid.setHeader("Segment, Zeitpunkt, Maximale Zusatzkapazität");
+             grid.setColSorting("str,str,str");
              grid.setInitWidths("100,100,*");
              grid.setSkin("dhx_skyblue");
              grid.init();
@@ -25,7 +26,8 @@
              dp = new dataProcessor("/maxaddcaps/dbaction.xml");
              dp.init(grid);
          </script>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'')">
+         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Segment.first.segmentname%>, <%=Timestep.first.stepnumber%>,0.0')">
+         <%#Gib erste verfügbare Daten als Eingabebeispiel an%>
          <input type="button" value="Delete" onclick="grid.deleteSelectedRows()">
      </body>
 </html>

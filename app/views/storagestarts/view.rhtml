@@ -16,14 +16,14 @@
           <script type="text/javascript" charset="utf-8">
              var grid = new dhtmlXGridObject("grid_here");
              grid.setImagePath("/javascripts/codebase/imgs/");
-             grid.setHeader("Produkt, Lagerkostensatz");
+             grid.setHeader("Produkt, Lageranfangsbestand");
              grid.setColSorting("str,str");
              grid.setInitWidths("100,*");
              grid.setSkin("dhx_skyblue");
              grid.init();
-             grid.load("/storagecosts/data.xml");
+             grid.load("/storagestarts/data.xml");
 
-             dp = new dataProcessor("/storagecosts/dbaction.xml");
+             dp = new dataProcessor("/storagestarts/dbaction.xml");
              dp.init(grid);
          </script>
          <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Product.first.productname%>,0.0')">

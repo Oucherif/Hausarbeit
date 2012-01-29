@@ -17,9 +17,12 @@ class CapusagesController < ApplicationController
          case @mode
              when "inserted"
                  capusage = Capusage.new
-                 capusage.product_id = product_id
-                 capusage.segment_id = segment_id
-                 capusage.preperiod_id = preperiod_id
+                 capusage.product_id = Product.find_by_productname(product_id).id
+                 #finde zu Produktnamen zugehörige ID
+                 capusage.segment_id = Segment.find_by_segmentname(segment_id).id
+                 #finde zu Segmentnamen zugehörige ID
+                 capusage.preperiod_id = Preperiod.find_by_preperiodnumber(preperiod_id).id
+                 #finde zu Vorlaufperiode zugehörige ID
                  capusage.capusagevalue = capusagevalue
                  capusage.save!
                  
@@ -31,9 +34,12 @@ class CapusagesController < ApplicationController
                  @tid = @id
              when "updated"
                  capusage=Capusage.find(@id)
-                 capusage.product_id = product_id
-                 capusage.segment_id = segment_id
-                 capusage.preperiod_id = preperiod_id
+                 capusage.product_id = Product.find_by_productname(product_id).id
+                 #finde zu Produktnamen zugehörige ID
+                 capusage.segment_id = Segment.find_by_segmentname(segment_id).id
+                 #finde zu Segmentnamen zugehörige ID
+                 capusage.preperiod_id = Preperiod.find_by_preperiodnumber(preperiod_id).id
+                 #finde zu Vorlaufperiode zugehörige ID
                  capusage.capusagevalue = capusagevalue
                  capusage.save!
                  

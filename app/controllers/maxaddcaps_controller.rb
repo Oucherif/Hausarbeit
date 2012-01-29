@@ -16,8 +16,10 @@ class MaxaddcapsController < ApplicationController
          case @mode
              when "inserted"
                  maxaddcap = Maxaddcap.new
-                 maxaddcap.segment_id = segment_id
-                 maxaddcap.timestep_id = timestep_id
+                 maxaddcap.segment_id = Segment.find_by_segmentname(segment_id).id
+                 #finde zu Segmentnamen zugehörige ID
+                 maxaddcap.timestep_id = Timestep.find_by_stepnumber(timestep_id).id
+                 #finde zu Segmentnamen zugehörige ID
                  maxaddcap.maxaddcapvalue = maxaddcapvalue
                  maxaddcap.save!
                  
@@ -29,8 +31,10 @@ class MaxaddcapsController < ApplicationController
                  @tid = @id
              when "updated"
                  maxaddcap=Maxaddcap.find(@id)
-                 maxaddcap.segment_id = segment_id
-                 maxaddcap.timestep_id = timestep_id
+                 maxaddcap.segment_id = Segment.find_by_segmentname(segment_id).id
+                 #finde zu Segmentnamen zugehörige ID
+                 maxaddcap.timestep_id = Timestep.find_by_stepnumber(timestep_id).id
+                 #finde zu Segmentnamen zugehörige ID
                  maxaddcap.maxaddcapvalue = maxaddcapvalue
                  maxaddcap.save!
                  
