@@ -6,7 +6,7 @@ class AddcapcostsController < ApplicationController
      end
      def dbaction
          #called for all db actions
-         timestep_id = params["c0"]
+         stepnumber = params["c0"]
          addcapcostvalue = params["c1"]
 
          @mode = params["!nativeeditor_status"]
@@ -15,7 +15,7 @@ class AddcapcostsController < ApplicationController
          case @mode
              when "inserted"
                  addcapcost = Addcapcost.new
-                 addcapcost.timestep_id = Timestep.find_by_stepnumber(timestep_id).id
+                 addcapcost.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
                  #finde zu Segmentnamen zugehörige ID
                  addcapcost.addcapcostvalue = addcapcostvalue
                  addcapcost.save!
@@ -28,7 +28,7 @@ class AddcapcostsController < ApplicationController
                  @tid = @id
              when "updated"
                  addcapcost=Addcapcost.find(@id)
-                 addcapcost.timestep_id = Timestep.find_by_stepnumber(timestep_id).id
+                 addcapcost.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
                  #finde zu Segmentnamen zugehörige ID
                  addcapcost.addcapcostvalue = addcapcostvalue
                  addcapcost.save!

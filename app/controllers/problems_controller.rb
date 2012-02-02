@@ -42,24 +42,21 @@ class ProblemsController < ApplicationController
     printf(f, "/ \n\n")
 
     #Parameter i(z)
-    printf(f, "Parameter i(z) \n /")
-    l=0
-    d=0                                                                                             #Weiterzähldummy
-    while l<@products.count
     i=0
-      while i<Preperiod.find_all_by_product_id(@products[l].id).count                               #Solange nicht alle Vorlaufperioden des Produkts abgelaufen
-        printf(f, "z"+@preperiods[i+d].id.to_s+" "+i.to_s)                                          #Gib id des Eintrags von i+d und deren Wert an
-         if i==Preperiod.find_all_by_product_id(@products[l].id).count-1 and l==@products.count-1   #wenn letzter Eintrag
-           printf(f, "\n /")                                                                        #beende Parameter
-         else                                                                                       #sonst
-           printf(f, ", \n")                                                                        #schreibe Komma und Umbruch
-         end
+    printf(f, "Parameter i(z) \n /")
+    @preperiods.each {|preperiods|
+        printf(f, "z"+preperiods.id.to_s)
+        printf(f, " "+preperiods.preperiodnumber.to_s+"\n")
+
         i=i+1
-      end
-      d=d+Preperiod.find_all_by_product_id(@products[l].id).count                                   #Wenn ein Produkt abgelaufen, zähle Dummy um Anzahl Vorlaufperioden des Produkts weiter
-      l=l+1
-    end
-    printf(f, "\n")
+        #Wenn letzter Eintrag, dann setze kein Komma
+        if i==@preperiods.each.count
+        #Sonst setze Komma
+        else
+          printf(f, ",")
+        end
+    }
+    printf(f, "/ \n\n")
 
     #Parameter h(k)
     @storagecosts=Storagecost.all
@@ -95,98 +92,124 @@ class ProblemsController < ApplicationController
     }
     printf(f, "/ \n\n")
 
-    #Parameter f(j,k,z)
-    printf(f, "Parameter f(j,k,z) \n /")
-      #Eintragsbezeichnung: Jeder Laufindex geht bis Anzahl Einträge-1, da bei 0 der erste Eintrag steht.
-    i=0
-    while i<@segments.count
-      l=0
-      while l<@products.count
-        y=0
-        while y<Preperiod.find_all_by_product_id(@products[l].id).count
-         printf(f, "j"+@segments[i].id.to_s+".k"+@products[l].id.to_s+".z"+Preperiod.find_by_preperiodnumber_and_product_id(y, @products[l].id).id.to_s+" "+
-          #Finde zugehörigen Wert und gib ihn aus
-         Capusage.find_by_segment_id_and_preperiod_id(@segments[i].id, Preperiod.find_by_preperiodnumber_and_product_id(y, @products[l].id).id).capusagevalue.to_s)
 
-         if i==@segments.count-1 and l==@products.count-1 and y==Preperiod.find_all_by_product_id(@products[l].id).count-1 #wenn letzter Eintrag
-           printf(f, "\n /")                                                         #beende Parameter
-         else                                                                        #sonst
-           printf(f, ", \n")                                                         #schreibe Komma und Umbruch
-         end
-        y=y+1
+
+
+
+
+
+
+
+    #Parameter f(j,k,z)
+    i=0
+    printf(f, "Parameter f(j,k,z) \n /")
+    @segments.each {|segments|
+      @products.each{ |products|
+        @preperiods.each{ |preperiods|
+        printf(f, "j"+segments.id.to_s+"."+"k"+products.id.to_s+"."+"z"+preperiods.id.to_s)
+
+        #Wenn kein Eintrag, dann setze 0 ein
+        if Capusage.find_by_segment_id_and_product_id_and_preperiod_id(segments.id, products.id, preperiods.id)==nil
+          printf(f, " 0 \n")
+        #Sonst gib zugehörigen Wert aus
+        else
+          printf(f, " "+Capusage.find_by_segment_id_and_product_id_and_preperiod_id(segments.id, products.id, preperiods.id).capusagevalue.to_s)
+          printf(f, "\n")
         end
-      l=l+1
-      end
-    i=i+1
-    end
-    printf(f, "\n\n")
+
+        i=i+1
+        #Wenn letzter Eintrag, dann setze kein Komma
+        if i==@segments.each.count*@products.each.count*@preperiods.each.count
+        #Sonst setze Komma
+        else
+          printf(f, ",")
+        end
+
+        }
+      }
+    }
+    printf(f, "/ \n\n")
 
     #Parameter b(j,t)
+    i=0
     printf(f, "Parameter b(j,t) \n /")
-      #Eintragsbezeichnung: Jeder Laufindex geht bis "Anzahl Einträge-1", da bei 0 der erste Eintrag steht.
-      i=0
-      while i<@segments.count
-        s=0
-        while s<@timesteps.count
-         printf(f, "j"+@segments[i].id.to_s+".t"+@timesteps[s].id.to_s+" "+
-          #Finde zugehörigen Wert und gib ihn aus
-         Prodcap.find_by_segment_id_and_timestep_id(@segments[i].id, @timesteps[s].id).prodcapvalue.to_s)
-         if i==@segments.count-1 and s==@timesteps.count-1                           #wenn letzter Eintrag
-           printf(f, "\n /")                                                         #beende Parameter
-         else                                                                        #sonst
-           printf(f, ", \n")                                                         #schreibe Komma und Umbruch
-         end
-        s=s+1
-        end
-      i=i+1
-      end
-    printf(f, "\n\n")
+    @segments.each {|segments|
+      @timesteps.each{ |timesteps|
+        printf(f, "j"+segments.id.to_s+"."+"t"+timesteps.id.to_s)
 
-     #Parameter d(k,t)
+        #Wenn kein Eintrag, dann setze 0 ein
+        if Prodcap.find_by_segment_id_and_timestep_id(segments.id.to_s, timesteps.id.to_s)==nil
+          printf(f, " 0 \n")
+        #Sonst gib zugehörigen Wert aus
+        else
+          printf(f, " "+Prodcap.find_by_segment_id_and_timestep_id(segments.id.to_s, timesteps.id.to_s).prodcapvalue.to_s)
+          printf(f, "\n")
+        end
+
+        i=i+1
+        #Wenn letzter Eintrag, dann setze kein Komma
+        if i==@segments.each.count*@timesteps.each.count
+        #Sonst setze Komma
+        else
+          printf(f, ",")
+        end
+      }
+    }
+    printf(f, "/ \n\n")
+
+    #Parameter d(k,t)
+    i=0
     printf(f, "Parameter d(k,t) \n /")
+    @products.each {|products|
+      @timesteps.each{ |timesteps|
+        printf(f, "k"+products.id.to_s+"."+"t"+timesteps.id.to_s)
 
-      #Eintragsbezeichnung: Jeder Laufindex geht bis "Anzahl Einträge-1", da bei 0 der erste Eintrag steht.
-      l=0
-      while l<@products.count
-        s=1
-        while s<@timesteps.count+1
-         printf(f, "k"+@products[l].id.to_s+".t"+Timestep.find_by_stepnumber([s]).id.to_s+" "+
-          #Finde erste Produktid, Finde Zeitschritt Nummer 1
-         Demand.find_by_product_id_and_timestep_id(@products[l].id, Timestep.find_by_stepnumber([s]).id).demandvalue.to_s)
-         #finde zugehörigen Wert und gib ihn aus
-         if l==@products.count-1 and s==@timesteps.count                             #wenn letzter Eintrag
-           printf(f, "\n /")                                                         #beende Parameter
-         else                                                                        #sonst
-           printf(f, ", \n")                                                         #schreibe Komma und Umbruch
-         end
-        s=s+1
+        #Wenn kein Eintrag, dann setze 0 ein
+        if Demand.find_by_product_id_and_timestep_id(products.id.to_s, timesteps.id.to_s)==nil
+          printf(f, " 0 \n")
+        #Sonst gib zugehörigen Wert aus
+        else
+          printf(f, " "+Demand.find_by_product_id_and_timestep_id(products.id.to_s, timesteps.id.to_s).demandvalue.to_s)
+          printf(f, "\n")
         end
-      l=l+1
-      end
-    printf(f, "\n\n")
+
+        i=i+1
+        #Wenn letzter Eintrag, dann setze kein Komma
+        if i==@products.each.count*@timesteps.each.count
+        #Sonst setze Komma
+        else
+          printf(f, ",")
+        end
+      }
+    }
+    printf(f, "/ \n\n")
 
     #Parameter Umax(j,t)
+    i=0
     printf(f, "Parameter Umax(j,t) \n /")
-   # @segments.each{|dummyperiode|                                                    #Dummyperiode für Lageranfangsbestand
-   #   printf(f, "j"+dummyperiode.id.to_s+".t0 0, \n")}
-      #Eintragsbezeichnung: Jeder Laufindex geht bis "Anzahl Einträge-1", da bei 0 der erste Eintrag steht.
-      i=0
-      while i<@segments.count
-        s=0
-        while s<@timesteps.count
-         printf(f, "j"+@segments[i].id.to_s+".t"+@timesteps[s].id.to_s+" "+
-          #Finde zugehörigen Wert und gib ihn aus
-         Maxaddcap.find_by_segment_id_and_timestep_id(@segments[i].id, @timesteps[s].id).maxaddcapvalue.to_s)
-         if i==@segments.count-1 and s==@timesteps.count-1                           #wenn letzter Eintrag
-           printf(f, "\n /")                                                         #beende Parameter
-         else                                                                        #sonst
-           printf(f, ", \n")                                                         #schreibe Komma und Umbruch
-         end
-        s=s+1
+    @segments.each {|segments|
+      @timesteps.each{ |timesteps|
+        printf(f, "j"+segments.id.to_s+"."+"t"+timesteps.id.to_s)
+
+        #Wenn kein Eintrag, dann setze 0 ein
+        if Maxaddcap.find_by_segment_id_and_timestep_id(segments.id.to_s, timesteps.id.to_s)==nil
+          printf(f, " 0 \n")
+        #Sonst gib zugehörigen Wert aus
+        else
+          printf(f, " "+Maxaddcap.find_by_segment_id_and_timestep_id(segments.id.to_s, timesteps.id.to_s).maxaddcapvalue.to_s)
+          printf(f, "\n")
         end
-      i=i+1
-      end
-    printf(f, "\n\n")
+
+        i=i+1
+        #Wenn letzter Eintrag, dann setze kein Komma
+        if i==@segments.each.count*@timesteps.each.count
+        #Sonst setze Komma
+        else
+          printf(f, ",")
+        end
+      }
+    }
+    printf(f, "/ \n\n")
 
     f.close
 

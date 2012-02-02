@@ -6,8 +6,8 @@ class DemandsController < ApplicationController
      end
      def dbaction
          #called for all db actions
-         product_id = params["c0"]
-         timestep_id = params["c1"]
+         productname = params["c0"]
+         stepnumber = params["c1"]
          demandvalue = params["c2"]
 
          @mode = params["!nativeeditor_status"]
@@ -16,9 +16,9 @@ class DemandsController < ApplicationController
          case @mode
              when "inserted"
                  demand = Demand.new
-                 demand.product_id = Product.find_by_productname(product_id).id
+                 demand.product_id = Product.find_by_productname(productname).id
                  #finde zu Produktnamen zugehörige ID
-                 demand.timestep_id = Timestep.find_by_stepnumber(timestep_id).id
+                 demand.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
                  #finde zu Segmentnamen zugehörige ID
                  demand.demandvalue = demandvalue
                  demand.save!
@@ -31,9 +31,9 @@ class DemandsController < ApplicationController
                  @tid = @id
              when "updated"
                  demand=Demand.find(@id)
-                 demand.product_id = Product.find_by_productname(product_id).id
+                 demand.product_id = Product.find_by_productname(productname).id
                  #finde zu Produktnamen zugehörige ID
-                 demand.timestep_id = Timestep.find_by_stepnumber(timestep_id).id
+                 demand.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
                  #finde zu Segmentnamen zugehörige ID
                  demand.demandvalue = demandvalue
                  demand.save!

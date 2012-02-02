@@ -6,7 +6,7 @@ class StoragecostsController < ApplicationController
      end
      def dbaction
          #called for all db actions
-         product_id = params["c0"]
+         productname = params["c0"]
          storagecostvalue = params["c1"]
 
          @mode = params["!nativeeditor_status"]
@@ -15,7 +15,7 @@ class StoragecostsController < ApplicationController
          case @mode
              when "inserted"
                  storagecost = Storagecost.new
-                 storagecost.product_id = Product.find_by_productname(product_id).id
+                 storagecost.product_id = Product.find_by_productname(productname).id
                  #finde zu Produktnamen zugehörige ID
                  storagecost.storagecostvalue = storagecostvalue
                  storagecost.save!
@@ -28,7 +28,7 @@ class StoragecostsController < ApplicationController
                  @tid = @id
              when "updated"
                  storagecost=Storagecost.find(@id)
-                 storagecost.product_id = Product.find_by_productname(product_id).id
+                 storagecost.product_id = Product.find_by_productname(productname).id
                  #finde zu Produktnamen zugehörige ID
                  storagecost.storagecostvalue = storagecostvalue
                  storagecost.save!

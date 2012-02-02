@@ -6,7 +6,7 @@ class PreperiodsController < ApplicationController
      end
      def dbaction
          #called for all db actions
-         product_id = params["c0"]
+         productname = params["c0"]
          preperiodnumber = params["c1"]
 
          @mode = params["!nativeeditor_status"]
@@ -15,7 +15,7 @@ class PreperiodsController < ApplicationController
          case @mode
              when "inserted"
                  preperiod = Preperiod.new
-                 preperiod.product_id = Product.find_by_productname(product_id).id
+                 preperiod.product_id = Product.find_by_productname(productname).id
                  #finde zu Produktnamen zugehörige ID
                  preperiod.preperiodnumber = preperiodnumber
                  preperiod.save!
@@ -28,7 +28,7 @@ class PreperiodsController < ApplicationController
                  @tid = @id
              when "updated"
                  preperiod=Preperiod.find(@id)
-                 preperiod.product_id = Product.find_by_productname(product_id).id
+                 preperiod.product_id = Product.find_by_productname(productname).id
                  preperiod.preperiodnumber = preperiodnumber
                  preperiod.save!
                  

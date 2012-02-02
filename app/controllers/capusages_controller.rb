@@ -6,9 +6,9 @@ class CapusagesController < ApplicationController
      end
      def dbaction
          #called for all db actions
-         product_id = params["c0"]
-         segment_id = params["c1"]
-         preperiod_id = params["c2"]
+         productname = params["c0"]
+         segmentname = params["c1"]
+         preperiodnumber = params["c2"]
          capusagevalue = params["c3"]
 
          @mode = params["!nativeeditor_status"]
@@ -17,11 +17,11 @@ class CapusagesController < ApplicationController
          case @mode
              when "inserted"
                  capusage = Capusage.new
-                 capusage.product_id = Product.find_by_productname(product_id).id
+                 capusage.product_id = Product.find_by_productname(productname).id
                  #finde zu Produktnamen zugehörige ID
-                 capusage.segment_id = Segment.find_by_segmentname(segment_id).id
+                 capusage.segment_id = Segment.find_by_segmentname(segmentname).id
                  #finde zu Segmentnamen zugehörige ID
-                 capusage.preperiod_id = Preperiod.find_by_preperiodnumber(preperiod_id).id
+                 capusage.preperiod_id = Preperiod.find_by_product_id_and_preperiodnumber(Product.find_by_productname(productname).id, preperiodnumber).id
                  #finde zu Vorlaufperiode zugehörige ID
                  capusage.capusagevalue = capusagevalue
                  capusage.save!
@@ -34,11 +34,11 @@ class CapusagesController < ApplicationController
                  @tid = @id
              when "updated"
                  capusage=Capusage.find(@id)
-                 capusage.product_id = Product.find_by_productname(product_id).id
+                 capusage.product_id = Product.find_by_productname(productname).id
                  #finde zu Produktnamen zugehörige ID
-                 capusage.segment_id = Segment.find_by_segmentname(segment_id).id
+                 capusage.segment_id = Segment.find_by_segmentname(segmentname).id
                  #finde zu Segmentnamen zugehörige ID
-                 capusage.preperiod_id = Preperiod.find_by_preperiodnumber(preperiod_id).id
+                 capusage.preperiod_id = Preperiod.find_by_product_id_and_preperiodnumber(Product.find_by_productname(productname).id, preperiodnumber).id
                  #finde zu Vorlaufperiode zugehörige ID
                  capusage.capusagevalue = capusagevalue
                  capusage.save!

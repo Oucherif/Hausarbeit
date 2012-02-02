@@ -1,31 +1,31 @@
 B 2 C o m p i l a t i o n
-B 263 Include File Summary
-B 276 E x e c u t i o n
-I 277 b
-I 294 d
-I 307 f
-I 319 h
-I 325 u
-I 332 Umax
-B 350 Equation Listing    SOLVE HPPLANv1 Using LP From line 212
-D 351 Zielfunktion
-D 374 Lagerbedingung
-D 390 Kapazitaetsbelastung
-D 408 maximale_Zusatzkapazitaet
-B 422 Column Listing      SOLVE HPPLANv1 Using LP From line 212
-E 423 ZF
-E 431 UV
-E 453 x
-E 473 y
-B 497 Model Statistics    SOLVE HPPLANv1 Using LP From line 212
-B 513 Solution Report     SOLVE HPPLANv1 Using LP From line 212
-F 539 Zielfunktion
-F 548 Lagerbedingung
-F 570 Kapazitaetsbelastung
-F 600 maximale_Zusatzkapazitaet
-G 624 ZF
-G 630 UV
-G 659 x
-G 680 y
-B 708 E x e c u t i o n
-I 709 x
+B 282 Include File Summary
+B 295 E x e c u t i o n
+I 296 b
+I 313 d
+I 326 f
+I 338 h
+I 344 u
+I 351 Umax
+B 369 Equation Listing    SOLVE HPPLANv1 Using LP From line 231
+D 370 Zielfunktion
+D 393 Lagerbedingung
+D 409 Kapazitaetsbelastung
+D 424 maximale_Zusatzkapazitaet
+B 438 Column Listing      SOLVE HPPLANv1 Using LP From line 231
+E 439 ZF
+E 447 UV
+E 469 x
+E 490 y
+B 514 Model Statistics    SOLVE HPPLANv1 Using LP From line 231
+B 530 Solution Report     SOLVE HPPLANv1 Using LP From line 231
+F 556 Zielfunktion
+F 565 Lagerbedingung
+F 587 Kapazitaetsbelastung
+F 617 maximale_Zusatzkapazitaet
+G 641 ZF
+G 647 UV
+G 676 x
+G 697 y
+B 725 E x e c u t i o n
+I 726 x

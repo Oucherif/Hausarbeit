@@ -6,8 +6,8 @@ class MaxaddcapsController < ApplicationController
      end
      def dbaction
          #called for all db actions
-         segment_id = params["c0"]
-         timestep_id = params["c1"]
+         segmentname = params["c0"]
+         stepnumber = params["c1"]
          maxaddcapvalue = params["c2"]
 
          @mode = params["!nativeeditor_status"]
@@ -16,9 +16,9 @@ class MaxaddcapsController < ApplicationController
          case @mode
              when "inserted"
                  maxaddcap = Maxaddcap.new
-                 maxaddcap.segment_id = Segment.find_by_segmentname(segment_id).id
+                 maxaddcap.segment_id = Segment.find_by_segmentname(segmentname).id
                  #finde zu Segmentnamen zugehörige ID
-                 maxaddcap.timestep_id = Timestep.find_by_stepnumber(timestep_id).id
+                 maxaddcap.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
                  #finde zu Segmentnamen zugehörige ID
                  maxaddcap.maxaddcapvalue = maxaddcapvalue
                  maxaddcap.save!
@@ -31,9 +31,9 @@ class MaxaddcapsController < ApplicationController
                  @tid = @id
              when "updated"
                  maxaddcap=Maxaddcap.find(@id)
-                 maxaddcap.segment_id = Segment.find_by_segmentname(segment_id).id
+                 maxaddcap.segment_id = Segment.find_by_segmentname(segmentname).id
                  #finde zu Segmentnamen zugehörige ID
-                 maxaddcap.timestep_id = Timestep.find_by_stepnumber(timestep_id).id
+                 maxaddcap.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
                  #finde zu Segmentnamen zugehörige ID
                  maxaddcap.maxaddcapvalue = maxaddcapvalue
                  maxaddcap.save!
