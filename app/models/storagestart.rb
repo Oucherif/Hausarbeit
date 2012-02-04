@@ -10,4 +10,9 @@
 #
 
 class Storagestart < ActiveRecord::Base
+
+  belongs_to :product
+  validates :product_id,            :presence   => true
+  validates :storagestartvalue,     :presence   => true
+  attr_accessible :product_id, :storagestartvalue
 end

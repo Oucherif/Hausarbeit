@@ -1,20 +1,16 @@
 <%#Übernommen aus http://www.dhtmlx.com/blog/?p=426%>
+<% if signed_in? %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
      <head>
-         <script src="/javascripts/codebase/dhtmlxcommon.js" type="text/javascript" charset="utf-8"></script>
-         <script src="/javascripts/codebase/dhtmlxgrid.js" type="text/javascript" charset="utf-8"></script>
-         <script src="/javascripts/codebase/dhtmlxgridcell.js" type="text/javascript" charset="utf-8"></script>
-         <script src="/javascripts/codebase/dhtmlxdataprocessor.js" type="text/javascript" charset="utf-8"></script>
-         <link rel="stylesheet" href="/javascripts/codebase/dhtmlxgrid.css" type="text/css" media="screen" charset="utf-8">
-         <link rel="stylesheet" href="/javascripts/codebase/skins/dhtmlxgrid_dhx_skyblue.css" type="text/css" media="screen" charset="utf-8">
+        <%= render 'shared/grid_head' %>
      </head>
      <body>
-         <div id="grid_here" style="width:600px; height:400px;">
+         <div id="timestep_grid" style="width:600px; height:400px;">
          </div>
           <script type="text/javascript" charset="utf-8">
-             var grid = new dhtmlXGridObject("grid_here");
+             var grid = new dhtmlXGridObject("timestep_grid");
              grid.setImagePath("/javascripts/codebase/imgs/");
              grid.setHeader("Zeitpunkt");
              grid.setColSorting("str");
@@ -26,7 +22,16 @@
              dp = new dataProcessor("/timesteps/dbaction.xml");
              dp.init(grid);
          </script>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Timestep.all.count+1%>')"> <%#Gib erste verfügbare Daten als Eingabebeispiel an%>
-         <input type="button" value="Delete" onclick="grid.deleteSelectedRows()">
+         <%if Timestep.last==nil%> <%#wenn noch kein Eintrag vorhanden, dann setze 1 ein%>
+         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'1'); javascript:timedRefresh(1000)">
+         <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(1000)">
+         <%else%>  <%#Sonst setze letzten Wert+1 ein%>
+         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Timestep.last.stepnumber+1%>'); javascript:timedRefresh(1000)">
+         <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(1000)">
+         <%end%>
      </body>
 </html>
+
+<% else %>
+<%= render 'shared/redirect_to_signin' %>
+<% end %>

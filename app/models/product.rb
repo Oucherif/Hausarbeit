@@ -14,6 +14,7 @@ class Product < ActiveRecord::Base
   has_many :demands, :dependent => :destroy
   has_many :capusages, :dependent => :destroy
   has_many :storagecosts, :dependent => :destroy
+  has_many :storagestarts, :dependent => :destroy
   validates :productname,     :presence   => true
   attr_accessible :productname
 

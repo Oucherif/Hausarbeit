@@ -1,6 +1,6 @@
-* HPPLAN
+* HPPLAN_v1
 * Autor: Farid Oucherif
-* Stand: 20.12.2011
+* Stand: 03.02.2011
 
 
 set      j            Produktionssegmente
@@ -15,7 +15,6 @@ parameter
          h(k)         Lagerkostensatz für Produkt k pro Mengeneinheit und Periode
          Umax(j,t)    maximale Zusatzkapazität in Produktionssegment j in Periode t
          u(t)         Kosten für eine Einheit der Zusatzkapazität in Periode t
-         Zmax(k)      Anzahl der Vorlaufperioden für Produkt k
          y0(k)        Lageranfangsbestand von Produkt k
          i(z)         Zahl der Vorlaufperiode;
 
@@ -36,7 +35,7 @@ Zielfunktion..
          ZF =e=  sum((k,t),h(k)*y(k,t))+sum((t,j),u(t)*UV(j,t));
 
 Lagerbedingung(k,t)..
-         y0(k)$(ord(t)=1)+x(k,t)+y(k,t-1)$(ord(t)>1)-y(k,t) =e= d(k,t);
+         x(k,t)+y0(k)$(ord(t)=1)+y(k,t-1)$(ord(t)>1)-y(k,t) =e= d(k,t);
 
 Kapazitaetsbelastung(j,t)..
          sum((k,z),f(j,k,z)*x(k,t+i(z)))-UV(j,t) =l= b(j,t);
@@ -53,7 +52,7 @@ model HPPLANv1 /
 
 
 
-display b, d, f, h, u, Umax;
+display b, d, f, h, u, Umax, y0, i;
 
 solve HPPLANv1 minimizing ZF using lp;
 

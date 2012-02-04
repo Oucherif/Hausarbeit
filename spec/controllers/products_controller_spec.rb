@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe ProductsController do
 
-  describe "GET 'new'" do
+  describe "GET 'view'" do
     it "should be successful" do
-      get 'new'
+      get 'view'
       response.should be_success
     end
   end

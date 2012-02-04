@@ -1,14 +1,21 @@
-<%# Struktur übernommen aus "Ruby on Rails Tutorial" von Michael Hartl%>
+<% if signed_in? %>
+     <h1>Neues Problem benennen</h1>
+     <% form_for(@problem) do |f| %>
+        <div class="field">
+          <%= f.label "Problemname"%><br/>
+          <%= f.text_field :problemname%>
+        </div>
+        <div class="field">
+          <%= f.label "Benutzer"%><br/>
+          <%= f.collection_select(:user_id, User.all, :id, :name)%>
+        </div>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+     <%end%>
 
-<h1>Optimierungsproblem konfigurieren</h1>
 
-<%= link_to 'Planungsintervall', timesteps_path%> <br/>
-<%= link_to 'Produkte', products_path%>           <br/>
-<%= link_to 'Vorlaufperioden', preperiods_path%>   <br/>
-<%= link_to 'Segmente', segments_path%>                 <br/>
-<%= link_to 'Produktionskapazitäten', prodcaps_path%>    <br/>
-<%= link_to 'Nachfrage', demands_path%>                   <br/>
-<%= link_to 'Kapazitätsbelastung', capusages_path%>         <br/>
-<%= link_to 'Lagerhaltungskosten', storagecosts_path%>       <br/>
-<%= link_to 'Maximale Zusatzkapazität', maxaddcaps_path%>      <br/>
-<%= link_to 'Kosten für Zusatzkapazität', addcapcosts_path%>    <br/>
+
+<% else %>
+<%= render 'shared/redirect_to_signin' %>
+<% end %>

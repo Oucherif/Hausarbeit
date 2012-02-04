@@ -101,6 +101,8 @@ SampleApp::Application.routes.draw do
   match '/about',   :to => 'pages#about'
   match '/faq',    :to => 'pages#faq'
   match 'problems/optimize', :to => 'problems#optimize'
+  match 'problems/new', :to => 'problems#new'
+  match 'problems/show', :to => 'problems#show'
 
   root :to => 'pages#startseite'
 

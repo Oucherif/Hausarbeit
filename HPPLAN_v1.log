@@ -1,18 +1,18 @@
 
---- Job HPPLAN_v1.gms Start 02/02/12 15:16:42 WEX-WEI 23.7.2 x86_64/MS Windows     
+--- Job HPPLAN_v1.gms Start 02/03/12 17:15:45 WEX-WEI 23.7.2 x86_64/MS Windows     
 GAMS Rev 237  Copyright (C) 1987-2011 GAMS Development. All rights reserved
 Licensee: GAMS Development Corporation, Washington, DC   G871201/0000CA-ANY
           Free Demo,  202-342-0180,  sales@gams.com,  www.gams.com   DC0000
 --- Starting compilation
---- HPPLAN_v1.gms(22) 2 Mb
+--- HPPLAN_v1.gms(21) 2 Mb
 --- .HPPLAN_v1_Input_Instanz1.inc(173) 3 Mb
---- HPPLAN_v1.gms(89) 3 Mb
---- Starting execution: elapsed 0:00:00.006
---- HPPLAN_v1.gms(229) 4 Mb
+--- HPPLAN_v1.gms(88) 3 Mb
+--- Starting execution: elapsed 0:00:00.004
+--- HPPLAN_v1.gms(228) 4 Mb
 --- Generating LP model HPPLANv1
---- HPPLAN_v1.gms(231) 4 Mb
+--- HPPLAN_v1.gms(230) 4 Mb
 ---   65 rows  57 columns  178 non-zeroes
---- Executing CPLEX: elapsed 0:00:00.015
+--- Executing CPLEX: elapsed 0:00:00.055
 
 IBM ILOG CPLEX   Jul 14, 2011 23.7.2 WEX 27052.27054 WEI x86_64/MS Windows
 Cplex 12.3.0.0
@@ -34,10 +34,10 @@ Optimal solution found.
 Objective :        6266.666667
 
 --- Restarting execution
---- HPPLAN_v1.gms(231) 2 Mb
+--- HPPLAN_v1.gms(230) 2 Mb
 --- Reading solution for model HPPLANv1
---- Executing after solve: elapsed 0:00:00.114
---- HPPLAN_v1.gms(258) 3 Mb
+--- Executing after solve: elapsed 0:00:00.125
+--- HPPLAN_v1.gms(257) 3 Mb
 --- Putfile outputfile C:\Sites\Hausarbeit\HPPLAN_v1_Solution.txt
 *** Status: Normal completion
---- Job HPPLAN_v1.gms Stop 02/02/12 15:16:42 elapsed 0:00:00.116
+--- Job HPPLAN_v1.gms Stop 02/03/12 17:15:45 elapsed 0:00:00.127

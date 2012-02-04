@@ -1,6 +1,7 @@
 class CreateSegments < ActiveRecord::Migration
   def self.up
     create_table :segments do |t|
+      t.integer :problem_id
       t.string :segmentname
 
       t.timestamps

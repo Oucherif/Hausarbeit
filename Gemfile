@@ -11,6 +11,8 @@ gem 'heroku'
 gem 'rack'
 gem 'i18n'
 
+
+
 group :production, :staging do
   gem "pg"
 end

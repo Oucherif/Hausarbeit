@@ -2,7 +2,7 @@
 xml.instruct! :xml, :version=>"1.0"
 
  xml.tag!("rows") do
-     @segments.each do |segment|
+     Segment.all.each do |segment|
          xml.tag!("row",{ "id" => segment.id }) do
              xml.tag!("cell", segment.segmentname)
          end

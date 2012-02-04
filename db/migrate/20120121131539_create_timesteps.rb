@@ -1,6 +1,7 @@
 class CreateTimesteps < ActiveRecord::Migration
   def self.up
     create_table :timesteps do |t|
+      t.integer :problem_id
       t.integer :stepnumber
 
       t.timestamps

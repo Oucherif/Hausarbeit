@@ -2,7 +2,7 @@
 xml.instruct! :xml, :version=>"1.0"
 
  xml.tag!("rows") do
-     @prodcaps.each do |prodcap|
+     Prodcap.all.each do |prodcap|
          xml.tag!("row",{ "id" => prodcap.id }) do
              xml.tag!("cell", Segment.find_by_id(prodcap.segment_id).segmentname)
            #zeige zu Segmentid zugehöriges Segment

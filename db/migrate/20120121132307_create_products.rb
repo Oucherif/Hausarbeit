@@ -1,6 +1,7 @@
 class CreateProducts < ActiveRecord::Migration
   def self.up
     create_table :products do |t|
+      t.integer :problem_id
       t.string :productname
 
       t.timestamps

@@ -7,11 +7,11 @@ module SessionsHelper
   end
 
   def current_user=(user)
-    @current_user = user
+    $current_user = user                         #Variable globalisiert, um Zugriff aus "Problems" zu erlauben
   end
 
   def current_user
-    @current_user ||= user_from_remember_token
+    $current_user ||= user_from_remember_token   #Variable globalisiert, um Zugriff aus "Problems" zu erlauben
   end
 
   def signed_in?

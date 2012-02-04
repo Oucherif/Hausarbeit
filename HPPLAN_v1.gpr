@@ -12,26 +12,32 @@
 [RP:HPPLAN]
 1=
 
-[OPENWINDOW_1]
-MAXIM=0
-TOP=0
-LEFT=0
-HEIGHT=606
-WIDTH=1001
-
 [RP:ABEL]
+1=
+
+[RP:UNTITLED_1]
 1=
 
 [RP:HPPLAN_V1]
 1=
 
 [MRUFILES]
-1=C:\Sites\Hausarbeit\HPPLAN_v1_Input_Instanz1.inc
-2=C:\Sites\Hausarbeit\HPPLAN_v1.gms
-3=C:\Sites\Hausarbeit\HPPLAN_v1.lst
+1=C:\Sites\Hausarbeit\Untitled_1.lst
+2=C:\Sites\Hausarbeit\Untitled_1.gms
+3=C:\Sites\Hausarbeit\HPPLAN_v1.log
 4=C:\Sites\Hausarbeit\abel.gms
 5=C:\Sites\Hausarbeit\Transportmodell_v2_Input_Instanz1.inc
 6=C:\Sites\Hausarbeit\Transportmodell_v2.lst
 7=C:\Sites\Hausarbeit\Transportmodell_v2.gms
 8=C:\Sites\Hausarbeit\absmip.gms
-9=C:\Sites\Hausarbeit\nemhaus.gms
+
+[OPENWINDOW_1]
+FILE0=C:\Sites\Hausarbeit\HPPLAN_v1.gms
+FILE1=C:\Sites\Hausarbeit\HPPLAN_v1.lst
+FILE2=C:\Sites\Hausarbeit\HPPLAN_v1_Input_Instanz1.inc
+FILE3=C:\Sites\Hausarbeit\HPPLAN_v1.lst
+MAXIM=0
+TOP=0
+LEFT=0
+HEIGHT=606
+WIDTH=1001

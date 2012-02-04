@@ -1,4 +1,4 @@
-# Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl
+# Struktur Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl
 require 'spec_helper'
 
 describe PagesController do
@@ -30,6 +30,7 @@ describe PagesController do
       response.should have_selector("title", :content => @base_title + " Startseite")       #Test an Übersetzung angepasst
     end
   end
+
  describe "GET 'kontakt'" do
     it "should be successful" do
       get 'kontakt'
@@ -53,4 +54,5 @@ describe PagesController do
       response.should have_selector("title", :content => @base_title + " About")
     end
   end
+
 end

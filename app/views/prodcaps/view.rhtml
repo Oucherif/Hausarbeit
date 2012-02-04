@@ -1,14 +1,10 @@
 <%#Übernommen aus http://www.dhtmlx.com/blog/?p=426%>
+<% if signed_in? %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
      <head>
-         <script src="/javascripts/codebase/dhtmlxcommon.js" type="text/javascript" charset="utf-8"></script>
-         <script src="/javascripts/codebase/dhtmlxgrid.js" type="text/javascript" charset="utf-8"></script>
-         <script src="/javascripts/codebase/dhtmlxgridcell.js" type="text/javascript" charset="utf-8"></script>
-         <script src="/javascripts/codebase/dhtmlxdataprocessor.js" type="text/javascript" charset="utf-8"></script>
-         <link rel="stylesheet" href="/javascripts/codebase/dhtmlxgrid.css" type="text/css" media="screen" charset="utf-8">
-         <link rel="stylesheet" href="/javascripts/codebase/skins/dhtmlxgrid_dhx_skyblue.css" type="text/css" media="screen" charset="utf-8">
+         <%= render 'shared/grid_head' %>
      </head>
      <body>
          <div id="grid_here" style="width:600px; height:400px;">
@@ -26,7 +22,16 @@
              dp = new dataProcessor("/prodcaps/dbaction.xml");
              dp.init(grid);
          </script>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Segment.first.segmentname%>, <%=Timestep.first.stepnumber%>,0')">
-         <input type="button" value="Delete" onclick="grid.deleteSelectedRows()">
+         <%if Segment.first==nil or Timestep.first==nil%> <%#wenn noch kein Eintrag vorhanden, dann setze 1 ein%>
+         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'Zunächst Segmente definieren!, Zunächst Zeitintervall definieren!,0.0'); javascript:timedRefresh(1000)">
+         <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(1000)">
+         <%else%>  <%#Sonst setze letzten Wert+1 ein%>
+         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Segment.first.segmentname%>, <%=Timestep.first.stepnumber%>,0.0'); javascript:timedRefresh(500)">
+         <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+         <%end%>
      </body>
 </html>
+
+<% else %>
+<%= render 'shared/redirect_to_signin' %>
+<% end %>
