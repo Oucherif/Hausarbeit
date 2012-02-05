@@ -15,10 +15,10 @@ class ProdcapsController < ApplicationController
          case @mode
              when "inserted"
                  prodcap = Prodcap.new
-                 prodcap.segment_id = Segment.find_by_segmentname(segmentname).id
                  #finde zu Segmentnamen zugehörige ID
-                 prodcap.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
+                 prodcap.segment_id = Segment.find_by_segmentname(segmentname).id
                  #finde zu Zeitpunkt zugehörige ID
+                 prodcap.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
                  prodcap.prodcapvalue = prodcapvalue
                  prodcap.save!
                  
@@ -30,10 +30,10 @@ class ProdcapsController < ApplicationController
                  @tid = @id
              when "updated"
                  prodcap=Prodcap.find(@id)
-                 prodcap.segment_id = Segment.find_by_segmentname(segmentname).id
                  #finde zu Segmentnamen zugehörige ID
-                 prodcap.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
+                 prodcap.segment_id = Segment.find_by_segmentname(segmentname).id
                  #finde zu Zeitpunkt zugehörige ID
+                 prodcap.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
                  prodcap.prodcapvalue = prodcapvalue
                  prodcap.save!
                  

@@ -1,5 +1,6 @@
 class TimestepsController < ApplicationController
      def view
+         @timesteps = Timestep.new
      end
      def data
          @timesteps = Timestep.all()
@@ -15,7 +16,15 @@ class TimestepsController < ApplicationController
              when "inserted"
                  timestep = Timestep.new
                  timestep.stepnumber = stepnumber
-                 timestep.save!
+                 b = !timestep.save
+                 logger.info timestep.to_s
+                 if b
+                    flash.now[:error] = "Blubdiwub."
+                    redirect_to :action => "view"
+                    logger.info "Blubdiwub "+b.to_s
+                 else
+                    logger.info "Kein Blubdiwub "+b.to_s
+                 end
 
                  @tid = timestep.id
 
@@ -28,7 +37,15 @@ class TimestepsController < ApplicationController
              when "updated"
                  timestep=Timestep.find(@id)
                  timestep.stepnumber = stepnumber
-                 timestep.save!
+                 b = !timestep.save
+                 logger.info timestep.stepnumber.to_s
+                 if b
+                    flash.now[:error] = "Blubdiwub."
+                    redirect_to :action => "view"
+                    logger.info "Blubdiwub "+b.to_s
+                 else
+                    logger.info "Kein Blubdiwub "+b.to_s
+                 end
 
                  @tid = @id
 

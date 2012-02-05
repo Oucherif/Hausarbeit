@@ -17,6 +17,7 @@ class Demand < ActiveRecord::Base
   validates :product_id,     :presence   => true
   validates :timestep_id,     :presence   => true
   validates :demandvalue,     :presence   => true
+  validates_numericality_of :demandvalue
   attr_accessible :product_id, :timestep_id, :demandvalue
 
 end

@@ -14,6 +14,7 @@ class Storagecost < ActiveRecord::Base
   belongs_to :product
   validates :product_id,     :presence   => true
   validates :storagecostvalue,     :presence   => true
+  validates_numericality_of :storagecostvalue
   attr_accessible :product_id, :storagecostvalue
 
 end

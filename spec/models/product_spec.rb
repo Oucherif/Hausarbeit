@@ -11,5 +11,26 @@
 require 'spec_helper'
 
 describe Product do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  before(:each) do
+    @attr = {
+      :productname => "Auto",
+    }
+  end
+
+  it "should create a new instance given valid attributes" do
+    Product.create!(@attr)
+  end
+
+  it "should require a productname" do
+    no_productname = Product.new(@attr.merge(:productname => ""))
+    no_productname.should_not be_valid
+  end
+
+  it "should reject duplicate productnames" do
+    Product.create!(@attr)
+    duplicate_product = Product.new(@attr)
+    duplicate_product.should_not be_valid
+  end
+
 end

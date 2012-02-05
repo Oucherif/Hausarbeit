@@ -14,5 +14,6 @@ class Storagestart < ActiveRecord::Base
   belongs_to :product
   validates :product_id,            :presence   => true
   validates :storagestartvalue,     :presence   => true
+  validates_numericality_of :storagestartvalue
   attr_accessible :product_id, :storagestartvalue
 end

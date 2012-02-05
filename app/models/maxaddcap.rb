@@ -17,6 +17,7 @@ class Maxaddcap < ActiveRecord::Base
   validates :segment_id,     :presence   => true
   validates :timestep_id,     :presence   => true
   validates :maxaddcapvalue,     :presence   => true
+  validates_numericality_of :maxaddcapvalue
   attr_accessible :segment_id, :timestep_id, :maxaddcapvalue
 
 end

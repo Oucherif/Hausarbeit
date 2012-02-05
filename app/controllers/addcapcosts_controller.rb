@@ -15,8 +15,12 @@ class AddcapcostsController < ApplicationController
          case @mode
              when "inserted"
                  addcapcost = Addcapcost.new
-                 addcapcost.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
-                 #finde zu Segmentnamen zugehörige ID
+                 if Timestep.find_by_stepnumber(stepnumber)==nil
+                   addcapcost.timestep_id=nil
+                 else  #finde zu Segmentnamen zugehörige ID
+                   addcapcost.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
+                 end
+
                  addcapcost.addcapcostvalue = addcapcostvalue
                  addcapcost.save!
                  
@@ -28,8 +32,12 @@ class AddcapcostsController < ApplicationController
                  @tid = @id
              when "updated"
                  addcapcost=Addcapcost.find(@id)
-                 addcapcost.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
-                 #finde zu Segmentnamen zugehörige ID
+                 if Timestep.find_by_stepnumber(stepnumber)==nil
+                   addcapcost.timestep_id=nil
+                 else  #finde zu Segmentnamen zugehörige ID
+                   addcapcost.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
+                 end
+
                  addcapcost.addcapcostvalue = addcapcostvalue
                  addcapcost.save!
                  

@@ -30,9 +30,9 @@ z6
 /;
 
 Parameter i(z) 
- /z1 1
-,z2 2
-,z3 0
+ /z1 0
+,z2 1
+,z3 2
 ,z4 0
 ,z5 1
 ,z6 2
@@ -60,9 +60,9 @@ Parameter u(t)
 / ;
 
 Parameter f(j,k,z) 
- /j1.k1.z1 0 
+ /j1.k1.z1 1.0
 ,j1.k1.z2 0 
-,j1.k1.z3 1.0
+,j1.k1.z3 0 
 ,j1.k1.z4 0 
 ,j1.k1.z5 0 
 ,j1.k1.z6 0 
@@ -72,8 +72,8 @@ Parameter f(j,k,z)
 ,j1.k2.z4 2.0
 ,j1.k2.z5 0 
 ,j1.k2.z6 0 
-,j2.k1.z1 4.0
-,j2.k1.z2 0 
+,j2.k1.z1 0 
+,j2.k1.z2 4.0
 ,j2.k1.z3 0 
 ,j2.k1.z4 0 
 ,j2.k1.z5 0 
