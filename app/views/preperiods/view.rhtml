@@ -22,11 +22,11 @@
              dp = new dataProcessor("/preperiods/dbaction.xml");
              dp.init(grid);
          </script>
-         <%if Product.first==nil %> <%#wenn noch kein Eintrag vorhanden, dann setze 1 ein%>
+         <%if Product.last==nil or Preperiod.last==nil%> <%#wenn noch kein Eintrag vorhanden, dann setze 1 ein%>
          <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'Zunächst Produktnamen eingeben!, 0.0'); javascript:timedRefresh(1000)">
          <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(1000)">
          <%else%>  <%#Sonst setze letzten Wert+1 ein%>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Product.first.productname%>,0'); javascript:timedRefresh(500)"> <%#Gib erste verfügbare Daten als Eingabebeispiel an%>
+         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Product.last.productname%>,<%=Preperiod.last.preperiodnumber+1%>'); javascript:timedRefresh(500)"> <%#Gib erste verfügbare Daten als Eingabebeispiel an%>
          <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
          <%end%>
      </body>
