@@ -22,12 +22,12 @@
              dp = new dataProcessor("/storagestarts/dbaction.xml");
              dp.init(grid);
          </script>
-         <%if Product.first==nil%> <%#wenn noch kein Eintrag vorhanden, dann setze 1 ein%>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'Zunächst Produktnamen eingeben!,0.0'); javascript:timedRefresh(1000)">
-         <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(1000)">
-         <%else%>  <%#Sonst setze letzten Wert+1 ein%>
+         <%if Product.first==nil%>
+         <%#wenn noch kein Eintrag vorhanden, dann setze Warnung ein%>
+         Bitte definieren Sie zuvor Produkte.
+         <%else%>
+         <%#Gib alten Datenvorschlag und lade Seite nach 500ms neu%>
          <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Product.first.productname%>,0.0'); javascript:timedRefresh(500)">
-         <%#Gib erste verfügbare Daten als Eingabebeispiel an%>
          <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
          <%end%>
      </body>

@@ -22,12 +22,24 @@
              dp = new dataProcessor("/preperiods/dbaction.xml");
              dp.init(grid);
          </script>
-         <%if Product.last==nil or Preperiod.last==nil%> <%#wenn noch kein Eintrag vorhanden, dann setze 1 ein%>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'Zunächst Produktnamen eingeben!, 0.0'); javascript:timedRefresh(1000)">
-         <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(1000)">
-         <%else%>  <%#Sonst setze letzten Wert+1 ein%>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Product.find_by_id(Preperiod.last.product_id).productname%>,<%=Preperiod.last.preperiodnumber+1%>'); javascript:timedRefresh(500)"> <%#Gib erste verfügbare Daten als Eingabebeispiel an%>
-         <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+         <%if Product.last==nil or Preperiod.last==nil%>
+         Bitte definieren Sie zunächst die Produkte und Vorlaufperioden!
+         <%else%>
+            <%if Preperiod.last==nil %>
+            <%#Gib alten Datenvorschlag und lade Seite nach 500ms neu%>
+            <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Product.first.productname%>,<%=Preperiod.first.preperiodnumber%>'); javascript:timedRefresh(500)"> <%#Gib erste verfügbare Daten als Eingabebeispiel an%>
+            <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+            <%else%>
+                <%if Timestep.find_by_id(Maxaddcap.last.timestep_id).stepnumber+1>Timestep.all.count%>
+                <%#Gib alten Datenvorschlag und lade Seite nach 500ms neu%>
+                <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Product.find_by_id(Preperiod.last.product_id).productname%>,<%=Preperiod.last.preperiodnumber%>'); javascript:timedRefresh(500)"> <%#Gib erste verfügbare Daten als Eingabebeispiel an%>
+                <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+                <%else%>
+                <%#Gib neuen Datenvorschlag und lade Seite nach 500ms neu%>
+                <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Product.find_by_id(Preperiod.last.product_id).productname%>,<%=Preperiod.last.preperiodnumber+1%>'); javascript:timedRefresh(500)"> <%#Gib erste verfügbare Daten als Eingabebeispiel an%>
+                <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+                <%end%>
+            <%end%>
          <%end%>
      </body>
 </html>

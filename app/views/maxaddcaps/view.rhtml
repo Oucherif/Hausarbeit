@@ -22,13 +22,24 @@
              dp = new dataProcessor("/maxaddcaps/dbaction.xml");
              dp.init(grid);
          </script>
-         <%if Segment.first==nil or Timestep.first==nil%> <%#wenn noch kein Eintrag vorhanden, dann setze 1 ein%>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'Zunächst Segmente definieren!, Zunächst Zeitintervall definieren!, 0.0'); javascript:timedRefresh(1000)">
-         <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(1000)">
-         <%else%>  <%#Sonst setze letzten Wert+1 ein%>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Segment.first.segmentname%>, <%=Timestep.first.stepnumber%>,0.0'); javascript:timedRefresh(500)">
-         <%#Gib erste verfügbare Daten als Eingabebeispiel an%>
-         <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+         <%if Segment.first==nil or Timestep.first==nil%>
+         Bitte definieren Sie zunächst die Segmente und Zeitpunkte!
+         <%else%>
+            <%if Maxaddcap.last==nil%>
+                <%#Gib alten Datenvorschlag und lade Seite nach 500ms neu%>
+                <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Segment.first.segmentname%>, <%=Timestep.first.stepnumber%>,0.0'); javascript:timedRefresh(500)">
+                <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+            <%else%>
+                <%if Timestep.find_by_id(Maxaddcap.last.timestep_id).stepnumber+1>Timestep.all.count%>
+                <%#Gib alten Datenvorschlag und lade Seite nach 500ms neu%>
+                <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Segment.find_by_id(Maxaddcap.last.segment_id).segmentname%>, <%=Timestep.find_by_id(Maxaddcap.last.timestep_id).stepnumber%>,0.0'); javascript:timedRefresh(500)">
+                <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+                <%else%>
+                <%#Gib neuen Datenvorschlag und lade Seite nach 500ms neu%>
+                <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Segment.find_by_id(Maxaddcap.last.segment_id).segmentname%>, <%=Timestep.find_by_id(Maxaddcap.last.timestep_id).stepnumber+1%>,0.0'); javascript:timedRefresh(500)">
+                <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+                <%end%>
+            <%end%>
          <%end%>
      </body>
 </html>
