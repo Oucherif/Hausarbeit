@@ -7,17 +7,10 @@
         <%= render 'shared/grid_head' %>
      </head>
      <body>
-         <%if @timesteps.errors.any?%>
-             <% @timesteps.errors.full_messages.each do |msg| %>
-               <li><%= msg%></li>
-             <%end%>
-         <%end%>
-
-
-         <div id="timestep_grid" style="width:600px; height:400px;">
-         </div>
+         <div id="timestep_grid" style="width:600px; height:400px;"></div>
           <script type="text/javascript" charset="utf-8">
              var grid = new dhtmlXGridObject("timestep_grid");
+             grid.attachEvent("onValidationError", "");
              grid.setImagePath("/javascripts/codebase/imgs/");
              grid.setHeader("Zeitpunkt");
              grid.setColSorting("str");
@@ -30,11 +23,11 @@
              dp.init(grid);
          </script>
          <%if Timestep.last==nil%> <%#wenn noch kein Eintrag vorhanden, dann setze 1 ein%>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'1')">
-         <input type="button" value="Delete" onclick="grid.deleteSelectedRows()">
+         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'1'); javascript:timedRefresh(500)">
+         <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
          <%else%>  <%#Sonst setze letzten Wert+1 ein%>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Timestep.last.stepnumber+1%>')">
-         <input type="button" value="Delete" onclick="grid.deleteSelectedRows()">
+         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Timestep.last.stepnumber+1%>'); javascript:timedRefresh(500)">
+         <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
          <%end%>
      </body>
 </html>

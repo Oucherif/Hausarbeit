@@ -15,8 +15,12 @@ class StoragestartsController < ApplicationController
          case @mode
              when "inserted"
                  storagestart = Storagestart.new
-                 storagestart.product_id = Product.find_by_productname(productname).id
-                 #finde zu Produktnamen zugehörige ID
+                 if Product.find_by_productname(productname)==nil
+                   storagestart.product_id=nil
+                 else #finde zu Produktnamen zugehörige ID
+                  storagestart.product_id = Product.find_by_productname(productname).id
+                 end
+
                  storagestart.storagestartvalue = storagestartvalue
                  storagestart.save!
                  
@@ -28,8 +32,12 @@ class StoragestartsController < ApplicationController
                  @tid = @id
              when "updated"
                  storagestart=Storagestart.find(@id)
-                 storagestart.product_id = Product.find_by_productname(productname).id
-                 #finde zu Produktnamen zugehörige ID
+                 if Product.find_by_productname(productname)==nil
+                   storagestart.product_id=nil
+                 else #finde zu Produktnamen zugehörige ID
+                  storagestart.product_id = Product.find_by_productname(productname).id
+                 end
+
                  storagestart.storagestartvalue = storagestartvalue
                  storagestart.save!
                  

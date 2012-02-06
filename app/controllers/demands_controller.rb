@@ -16,10 +16,18 @@ class DemandsController < ApplicationController
          case @mode
              when "inserted"
                  demand = Demand.new
-                 demand.product_id = Product.find_by_productname(productname).id
-                 #finde zu Produktnamen zugehörige ID
-                 demand.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
-                 #finde zu Segmentnamen zugehörige ID
+                 if Product.find_by_productname(productname)==nil
+                   demand.product_id = nil
+                 else  #finde zu Produktnamen zugehörige ID
+                   demand.product_id = Product.find_by_productname(productname).id
+                 end
+
+                 if Timestep.find_by_stepnumber(stepnumber)
+                  demand.timestep_id =nil
+                 else   #finde zu Segmentnamen zugehörige ID
+                  demand.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
+                 end
+
                  demand.demandvalue = demandvalue
                  demand.save!
                  
@@ -31,10 +39,18 @@ class DemandsController < ApplicationController
                  @tid = @id
              when "updated"
                  demand=Demand.find(@id)
-                 demand.product_id = Product.find_by_productname(productname).id
-                 #finde zu Produktnamen zugehörige ID
-                 demand.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
-                 #finde zu Segmentnamen zugehörige ID
+                 if Product.find_by_productname(productname)==nil
+                   demand.product_id = nil
+                 else  #finde zu Produktnamen zugehörige ID
+                   demand.product_id = Product.find_by_productname(productname).id
+                 end
+
+                 if Timestep.find_by_stepnumber(stepnumber)
+                  demand.timestep_id =nil
+                 else   #finde zu Segmentnamen zugehörige ID
+                  demand.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
+                 end
+
                  demand.demandvalue = demandvalue
                  demand.save!
                  

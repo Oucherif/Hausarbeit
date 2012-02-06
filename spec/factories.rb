@@ -1,10 +1,8 @@
-# Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl
-# By using the symbol ':user', we get Factory Girl to simulate the User model.
 Factory.define :user do |user|
-  user.name                  "Michael Hartl"
-  user.email                 "mhartl@example.com"
-  user.password              "foobar"
-  user.password_confirmation "foobar"
+  user.name                  "Farid"
+  user.email                 "f@o.de"
+  user.password              "123456"
+  user.password_confirmation "123456"
 end
 
 Factory.define :timestep do |timestep|
@@ -14,7 +12,7 @@ end
 
 Factory.define :product do |product|
   product.id                           "1"
-  product.productname                  "Auto"
+  product.productname                  "A"
 end
 
 Factory.define :segment do |segment|

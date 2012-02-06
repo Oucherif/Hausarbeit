@@ -17,4 +17,8 @@ class PagesController < ApplicationController
     @title = "About"
   end
 
+  def optimierungsproblem
+    @title = "Optimierungproblem"
+  end
+
 end

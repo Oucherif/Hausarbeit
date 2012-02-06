@@ -19,7 +19,7 @@ describe Demand do
       :product_id => "1",
       :timestep_id => "1",
       :demandvalue => "0"}
-    @product=Factory(:segment)                                #Product mit ID 1 erzeugen
+    @product=Factory(:product)                                #Product mit ID 1 erzeugen
     @timestep=Factory(:timestep)                              #Timestep mit ID 1 erzeugen
   end
 

@@ -19,11 +19,4 @@ class Timestep < ActiveRecord::Base
   validates :stepnumber, :uniqueness => true
   attr_accessible :stepnumber
 
-  before_save :pruefe
-
-  def pruefe
-    logger.info "Hier pruefen"
-    false
-  end
-
 end

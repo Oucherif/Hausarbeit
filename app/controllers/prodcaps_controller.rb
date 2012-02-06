@@ -15,10 +15,17 @@ class ProdcapsController < ApplicationController
          case @mode
              when "inserted"
                  prodcap = Prodcap.new
-                 #finde zu Segmentnamen zugehörige ID
-                 prodcap.segment_id = Segment.find_by_segmentname(segmentname).id
-                 #finde zu Zeitpunkt zugehörige ID
-                 prodcap.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
+                 if Segment.find_by_segmentname(segmentname)==nil
+                   prodcap.segment_id=nil
+                 else  #finde zu Segmentnamen zugehörige ID
+                   prodcap.segment_id = Segment.find_by_segmentname(segmentname).id
+                 end
+
+                 if Timestep.find_by_stepnumber(stepnumber)==nil
+                   prodcap.timestep_id=nil
+                 else #finde zu Zeitpunkt zugehörige ID
+                   prodcap.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
+                 end
                  prodcap.prodcapvalue = prodcapvalue
                  prodcap.save!
                  
@@ -30,10 +37,17 @@ class ProdcapsController < ApplicationController
                  @tid = @id
              when "updated"
                  prodcap=Prodcap.find(@id)
-                 #finde zu Segmentnamen zugehörige ID
-                 prodcap.segment_id = Segment.find_by_segmentname(segmentname).id
-                 #finde zu Zeitpunkt zugehörige ID
-                 prodcap.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
+                 if Segment.find_by_segmentname(segmentname)==nil
+                   prodcap.segment_id=nil
+                 else  #finde zu Segmentnamen zugehörige ID
+                   prodcap.segment_id = Segment.find_by_segmentname(segmentname).id
+                 end
+
+                 if Timestep.find_by_stepnumber(stepnumber)==nil
+                   prodcap.timestep_id=nil
+                 else #finde zu Zeitpunkt zugehörige ID
+                   prodcap.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
+                 end
                  prodcap.prodcapvalue = prodcapvalue
                  prodcap.save!
                  

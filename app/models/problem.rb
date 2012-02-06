@@ -23,5 +23,11 @@ class Problem < ActiveRecord::Base
   has_many :timesteps, :dependent => :destroy
 
   validates :user_id,     :presence   => true
+    validate :user_id_exists
+    def user_id_exists
+     if User.find_by_id(user_id)==nil
+       errors.add(:base, "User muss definiert sein")
+     end
+    end
   attr_accessible :user_id
 end

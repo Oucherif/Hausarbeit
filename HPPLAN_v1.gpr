@@ -35,8 +35,8 @@
 FILE0=C:\Sites\Hausarbeit\HPPLAN_v1.gms
 FILE1=C:\Sites\Hausarbeit\HPPLAN_v1.lst
 FILE2=C:\Sites\Hausarbeit\HPPLAN_v1_Input_Instanz1.inc
-FILE3=C:\Sites\Hausarbeit\HPPLAN_v1.lst
-MAXIM=0
+FILE3=C:\Sites\Hausarbeit\HPPLAN_v1.gms
+MAXIM=1
 TOP=0
 LEFT=0
 HEIGHT=606

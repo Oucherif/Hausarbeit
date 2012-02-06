@@ -16,10 +16,18 @@ class MaxaddcapsController < ApplicationController
          case @mode
              when "inserted"
                  maxaddcap = Maxaddcap.new
-                 maxaddcap.segment_id = Segment.find_by_segmentname(segmentname).id
-                 #finde zu Segmentnamen zugehörige ID
-                 maxaddcap.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
-                 #finde zu Segmentnamen zugehörige ID
+                 if Segment.find_by_segmentname(segmentname)==nil
+                   maxaddcap.segment_id=nil
+                 else  #finde zu Segmentnamen zugehörige ID
+                   maxaddcap.segment_id = Segment.find_by_segmentname(segmentname).id
+                 end
+
+                 if Timestep.find_by_stepnumber(stepnumber)==nil
+                   maxaddcap.timestep_id=nil
+                 else  #finde zu Segmentnamen zugehörige ID
+                   maxaddcap.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
+                 end
+
                  maxaddcap.maxaddcapvalue = maxaddcapvalue
                  maxaddcap.save!
                  
@@ -31,10 +39,18 @@ class MaxaddcapsController < ApplicationController
                  @tid = @id
              when "updated"
                  maxaddcap=Maxaddcap.find(@id)
-                 maxaddcap.segment_id = Segment.find_by_segmentname(segmentname).id
-                 #finde zu Segmentnamen zugehörige ID
-                 maxaddcap.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
-                 #finde zu Segmentnamen zugehörige ID
+                 if Segment.find_by_segmentname(segmentname)==nil
+                   maxaddcap.segment_id=nil
+                 else  #finde zu Segmentnamen zugehörige ID
+                   maxaddcap.segment_id = Segment.find_by_segmentname(segmentname).id
+                 end
+
+                 if Timestep.find_by_stepnumber(stepnumber)==nil
+                   maxaddcap.timestep_id=nil
+                 else  #finde zu Segmentnamen zugehörige ID
+                   maxaddcap.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
+                 end
+
                  maxaddcap.maxaddcapvalue = maxaddcapvalue
                  maxaddcap.save!
                  
