@@ -1,3 +1,5 @@
+# encoding: utf-8
+#Magic Comment für deutsche Sonderzeichen
 # Struktur Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl
 require 'spec_helper'
 
@@ -51,7 +53,7 @@ describe PagesController do
 
     it "should have the right title" do
       get 'about'
-      response.should have_selector("title", :content => @base_title + " About")
+      response.should have_selector("title", :content => @base_title + " Über")
     end
   end
 

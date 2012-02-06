@@ -1,3 +1,5 @@
+# encoding: utf-8
+#Magic Comment für deutsche Sonderzeichen
 # Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl
 require 'spec_helper'
 
@@ -21,7 +23,7 @@ describe "LayoutLinks" do
 
     it "should have an About page at '/about'" do
       get '/about'
-      response.should have_selector('title', :content => "About")
+      response.should have_selector('title', :content => "Über")
     end
 
     it "should have a FAQ page at '/faq'" do
@@ -41,8 +43,8 @@ describe "LayoutLinks" do
 
     it "should have the right links on the layout" do
       visit root_path
-      click_link "About"
-      response.should have_selector('title', :content => "About")
+      click_link "Über"
+      response.should have_selector('title', :content => "Über")
       click_link "FAQ"                                                              #Linkbeschreibung verändert
       response.should have_selector('title', :content => "FAQ")                     #Linkbeschreibung verändert
       click_link "Kontakt"                                                          #Linkbeschreibung übersetzt
@@ -82,7 +84,7 @@ describe "LayoutLinks" do
 
     it "should have an About page at '/about'" do
       get '/about'
-      response.should have_selector('title', :content => "About")
+      response.should have_selector('title', :content => "Über")
     end
 
     it "should have a FAQ page at '/faq'" do
@@ -102,8 +104,8 @@ describe "LayoutLinks" do
 
     it "should have the right links on the layout" do
       visit root_path
-      click_link "About"
-      response.should have_selector('title', :content => "About")
+      click_link "Über"
+      response.should have_selector('title', :content => "Über")
       click_link "FAQ"                                                              #Linkbeschreibung verändert
       response.should have_selector('title', :content => "FAQ")                     #Linkbeschreibung verändert
       click_link "Kontakt"                                                          #Linkbeschreibung übersetzt

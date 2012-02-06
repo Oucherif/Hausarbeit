@@ -1,3 +1,5 @@
+# encoding: utf-8
+#Magic Comment für deutsche Sonderzeichen
 # Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl
 class PagesController < ApplicationController
 
@@ -14,7 +16,7 @@ class PagesController < ApplicationController
   end
 
   def about
-    @title = "About"
+    @title = "Über"
   end
 
   def optimierungsproblem
