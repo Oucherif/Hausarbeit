@@ -26,7 +26,7 @@
          Bitte definieren Sie zuvor Segmente und Zeitpunkte.
          <%else%>  <%#Sonst setze letzten Wert+1 ein%>
             <%if Timestep.find_by_id(Prodcap.last.timestep_id).stepnumber+1>Timestep.all.count%> <%# Wenn letzter Zeitschritt erreicht, gib diesen an%>
-            <input type="button" value="Add" onclick="grid.addRow(grid.uid(), '<%=Segment.last.segmentname%>, <%=Timestep.last.stepnumber%>,0.0'); javascript:timedRefresh(500)">
+            <input type="button" value="Add" onclick="grid.addRow(grid.uid(), '<%=Segment.find_by_id(Prodcap.last.segment_id).segmentname%>, <%=Timestep.find_by_id(Prodcap.last.timestep_id).stepnumber%>,0.0'); javascript:timedRefresh(500)">
             <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
             <%else%>                                 <%# Sonst zähle Zeitschritt hoch%>
             <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Segment.find_by_id(Prodcap.last.segment_id).segmentname%>, <%=Timestep.find_by_id(Prodcap.last.timestep_id).stepnumber+1%>,0.0'); javascript:timedRefresh(500)">
