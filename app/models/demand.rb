@@ -24,7 +24,7 @@ class Demand < ActiveRecord::Base
     end
 
   validates :timestep_id,     :presence   => true
-    validate :timestep_id_exists
+  validate :timestep_id_exists
     def timestep_id_exists
      if Timestep.find_by_id(timestep_id)==nil
        errors.add(:base, "Zeitpunkt muss definiert sein")

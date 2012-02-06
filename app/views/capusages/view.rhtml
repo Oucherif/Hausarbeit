@@ -28,7 +28,7 @@
          <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'Zunächst Produktnamen eingeben!, Zunächst Segmente definieren!, Zunächst Vorlaufperioden definieren!'); javascript:timedRefresh(1000)">
          <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(1000)">
          <%else%>  <%#Sonst setze letzten Wert+1 ein%>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Product.first.productname%>, <%=Segment.first.segmentname%>, <%=Preperiod.first.preperiodnumber%>,0.0'); javascript:timedRefresh(500)">
+         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Product.find_by_id(Capusage.last.product_id).productname%>, <%=Segment.find_by_id(Capusage.last.segment_id).segmentname%>, <%=Preperiod.find_by_id(Capusage.last.preperiod_id).preperiodnumber%>,0.0'); javascript:timedRefresh(500)">
          <%#Gib erste verfügbare Daten als Eingabebeispiel an%>
          <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
          <%end%>

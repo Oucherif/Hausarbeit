@@ -22,7 +22,7 @@ class DemandsController < ApplicationController
                    demand.product_id = Product.find_by_productname(productname).id
                  end
 
-                 if Timestep.find_by_stepnumber(stepnumber)
+                 if Timestep.find_by_stepnumber(stepnumber)==nil
                   demand.timestep_id =nil
                  else   #finde zu Segmentnamen zugehörige ID
                   demand.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
@@ -45,7 +45,7 @@ class DemandsController < ApplicationController
                    demand.product_id = Product.find_by_productname(productname).id
                  end
 
-                 if Timestep.find_by_stepnumber(stepnumber)
+                 if Timestep.find_by_stepnumber(stepnumber)==nil
                   demand.timestep_id =nil
                  else   #finde zu Segmentnamen zugehörige ID
                   demand.timestep_id = Timestep.find_by_stepnumber(stepnumber).id
