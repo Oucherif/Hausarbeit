@@ -278,7 +278,7 @@ class ProblemsController < ApplicationController
 
     system "c:\\programme\\GAMS23.7\\gams HPPLAN_v1" #Zielpfad muss Rechnergebunden angepasst werden
 
-    render :template => "problems/index"
+    redirect_to "/solutions/view"
   end
 
 end

@@ -1,5 +1,3 @@
-Objective Function Value:      6266.67
-
 k1 ; t1 ;         0.00
 k1 ; t2 ;        45.00
 k1 ; t3 ;        30.00

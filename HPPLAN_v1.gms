@@ -58,31 +58,28 @@ solve HPPLANv1 minimizing ZF using lp;
 
 display x.l;
 
-file outputfile / 'HPPLAN_v1_Solution.txt'/;
-put outputfile;
+file outputfile1 / 'HPPLAN_v1_Solution_Prod.txt'/;
+put outputfile1;
 
-put 'Objective Function Value: ', ZF.l/
-
-put /
 
 loop(k,
     loop(t,
-        put k.tl:0, ' ; ' t.tl:0 ' ; ' x.l(k,t) /
+        put k.tl:0, ' ; ' t.tl:0 ' ; ' x.l(k,t) ' ; ' y.l(k,t) /
         );
     );
 
-put /
-
-loop(k,
-    loop(t,
-        put k.tl:0, ' ; ' t.tl:0 ' ; ' y.l(k,t) /
-        );
-    );
-
-put /
+file outputfile2 / 'HPPLAN_v1_Solution_Segm.txt'/;
+put outputfile2;
 
 loop(j,
     loop(t,
         put j.tl:0, ' ; ' t.tl:0 ' ; ' UV.l(j,t) /
         );
     );
+
+file outputfile3 / 'HPPLAN_v1_OFV.txt'/;
+put outputfile3;
+
+put 'Zielfunktionswert: ', ZF.l/
+
+put /

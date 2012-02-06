@@ -3,6 +3,7 @@
 # Table name: products
 #
 #  id          :integer         not null, primary key
+#  problem_id  :integer
 #  productname :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime

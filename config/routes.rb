@@ -82,6 +82,13 @@ SampleApp::Application.routes.draw do
      end
   end
 
+  resource :solutions do
+     collection do
+       get 'view'
+       get 'data'
+     end
+  end
+
   resource :timesteps do
      collection do
        get 'view'
@@ -93,6 +100,7 @@ SampleApp::Application.routes.draw do
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
   resources :problems
+
 
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'

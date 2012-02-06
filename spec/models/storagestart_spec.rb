@@ -3,6 +3,7 @@
 # Table name: storagestarts
 #
 #  id                :integer         not null, primary key
+#  problem_id        :integer
 #  product_id        :integer
 #  storagestartvalue :float
 #  created_at        :datetime

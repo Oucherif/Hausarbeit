@@ -3,6 +3,7 @@
 # Table name: timesteps
 #
 #  id         :integer         not null, primary key
+#  problem_id :integer
 #  stepnumber :integer
 #  created_at :datetime
 #  updated_at :datetime

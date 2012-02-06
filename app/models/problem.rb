@@ -2,10 +2,11 @@
 #
 # Table name: problems
 #
-#  id         :integer         not null, primary key
-#  user_id    :integer
-#  created_at :datetime
-#  updated_at :datetime
+#  id          :integer         not null, primary key
+#  user_id     :integer
+#  problemname :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 
 class Problem < ActiveRecord::Base

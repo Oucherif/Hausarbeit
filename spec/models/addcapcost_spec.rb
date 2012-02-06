@@ -3,6 +3,7 @@
 # Table name: addcapcosts
 #
 #  id              :integer         not null, primary key
+#  problem_id      :integer
 #  timestep_id     :integer
 #  addcapcostvalue :float
 #  created_at      :datetime

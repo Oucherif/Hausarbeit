@@ -89,7 +89,7 @@ a.signup_button {
   text-align: center;
   width: 190px;
   color: #ffffff;                   /*Schriftfarbe auf weiß geändert*/
-  background: #247a24;              /*Hintergrundfarbe der Farbhelligkeit des Blautons angepasst*/
+  background: #247a24;              /*Hintergrundfarbe angepasst*/
   font-size: 150%;
   font-weight: bold;
   padding: 20px;
@@ -194,4 +194,9 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+#span.test{
+ color: #ffffff;
+ background-color: #247a24;
+ }
 

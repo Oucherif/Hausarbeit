@@ -3,6 +3,17 @@
 # Table name: timesteps
 #
 #  id         :integer         not null, primary key
+#  problem_id :integer
+#  stepnumber :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# == Schema Information
+#
+# Table name: timesteps
+#
+#  id         :integer         not null, primary key
 #  stepnumber :integer
 #  created_at :datetime
 #  updated_at :datetime

@@ -3,6 +3,7 @@
 # Table name: preperiods
 #
 #  id              :integer         not null, primary key
+#  problem_id      :integer
 #  product_id      :integer
 #  preperiodnumber :integer
 #  created_at      :datetime

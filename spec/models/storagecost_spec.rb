@@ -3,6 +3,7 @@
 # Table name: storagecosts
 #
 #  id               :integer         not null, primary key
+#  problem_id       :integer
 #  product_id       :integer
 #  storagecostvalue :float
 #  created_at       :datetime

@@ -3,6 +3,7 @@
 # Table name: prodcaps
 #
 #  id           :integer         not null, primary key
+#  problem_id   :integer
 #  segment_id   :integer
 #  timestep_id  :integer
 #  prodcapvalue :float

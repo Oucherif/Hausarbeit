@@ -3,6 +3,7 @@
 # Table name: demands
 #
 #  id          :integer         not null, primary key
+#  problem_id  :integer
 #  product_id  :integer
 #  timestep_id :integer
 #  demandvalue :float

@@ -3,6 +3,7 @@
 # Table name: maxaddcaps
 #
 #  id             :integer         not null, primary key
+#  problem_id     :integer
 #  segment_id     :integer
 #  timestep_id    :integer
 #  maxaddcapvalue :float
