@@ -32,11 +32,11 @@
             <%else%>
                 <%if Timestep.find_by_id(Maxaddcap.last.timestep_id).stepnumber+1>Timestep.all.count%>
                 <%#Gib alten Datenvorschlag und lade Seite nach 500ms neu%>
-                <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Segment.find_by_id(Maxaddcap.last.segment_id).segmentname%>, <%=Timestep.find_by_id(Maxaddcap.last.timestep_id).stepnumber%>,0.0'); javascript:timedRefresh(500)">
+                <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Segment.find_by_id(Maxaddcap.last.segment_id).segmentname%>, <%=Timestep.find_by_id(Maxaddcap.last.timestep_id).stepnumber%>, <%=Maxaddcap.last.maxaddcapvalue%>'); javascript:timedRefresh(500)">
                 <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
                 <%else%>
                 <%#Gib neuen Datenvorschlag und lade Seite nach 500ms neu%>
-                <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Segment.find_by_id(Maxaddcap.last.segment_id).segmentname%>, <%=Timestep.find_by_id(Maxaddcap.last.timestep_id).stepnumber+1%>,0.0'); javascript:timedRefresh(500)">
+                <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Segment.find_by_id(Maxaddcap.last.segment_id).segmentname%>, <%=Timestep.find_by_id(Maxaddcap.last.timestep_id).stepnumber+1%>, <%=Maxaddcap.last.maxaddcapvalue%>'); javascript:timedRefresh(500)">
                 <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
                 <%end%>
             <%end%>
