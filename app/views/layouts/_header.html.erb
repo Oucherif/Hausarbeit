@@ -9,10 +9,10 @@
     <ul>
       <% if signed_in? %>
       <li><%= link_to "Optimierungsproblem", problems_path %> </li>
-      <li><%= link_to "Profil", current_user %></li>                         <%# Linkbeschreibung übersetzt%>
+      <li><%= link_to 'Lösungsübersicht', solutions_path%>   </li>
       <li><%= link_to "Abmelden", signout_path, :method => :delete %></li>
       <% else %>
-      <li><%= link_to "Startseite", root_path %></li>                        <%# Linkbeschreibung übersetzt%>
+      <li><%= link_to "Startseite", root_path %></li>
       <li><%= link_to "Anmelden", signin_path %></li>
       <% end %>
 

@@ -1,5 +1,5 @@
 /* Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl*/
-/* Im Folgenden wo angemerkt die Farben auf ein schlichtes blau und reines weiß geändert*/
+/* Im Folgenden wo angemerkt die Farben geändert*/
 .container {
   width: 710px;
 }
@@ -194,9 +194,4 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
-
-#span.test{
- color: #ffffff;
- background-color: #247a24;
- }
 

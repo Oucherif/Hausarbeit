@@ -1,0 +1,18 @@
+<%# Struktur übernommen aus "Ruby on Rails Tutorial" von Michael Hartl%>
+
+<% if signed_in? %>
+
+
+
+<h1>Lösungen</h1>
+
+<h4>Der Zielfunktionswert ist <%=@objective_function_value%></h4>
+
+<%= link_to 'Produktion und Lagerung', view_solprodstors_path%>              <br/>
+<%= link_to 'Genutzte Zusatzkapazitäten', view_solsegs_path%>               <br/>
+
+
+
+<% else %>
+<%= render 'shared/redirect_to_signin' %>
+<% end %>

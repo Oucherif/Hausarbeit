@@ -272,13 +272,40 @@ class ProblemsController < ApplicationController
 
     f.close
 
+
+    # Die Zusatzbedingungen gewährleisten, dass kein Produkt in der Vergangenheit Belastungen auslöst
+    if File.exist?("HPPLAN_v1_Input_Zusatzbedingung.inc")
+       File.delete("HPPLAN_v1_Input_Zusatzbedingung.inc")
+    end
+    f=File.new("HPPLAN_v1_Input_Zusatzbedingung", "w")
+
+    @capusage=Capusage.all
+    @products=Product.all
+    k=1                                                                                                       #k Laufindex für Produkte
+    @products.each {|product|                                                                                 #Für jedes Produkt
+      @capusage.each {|capusage|                                                                              #und jeden Kapazitätsbelastungswert
+      if product.id==capusage.product_id                                                                      #prüfe, ob Kapazitätsbelastungswert zum Produkt gehört
+        if capusage.capusagevalue!=0 and Preperiod.find_by_id(capusage.preperiod_id).preperiodnumber!=0       #wenn Kapazitätsbelastungswert und Vorlaufperiode nicht 0
+          t=1                                                                                                 #setze t=1
+          while t<Preperiod.find_by_id(capusage.preperiod_id).preperiodnumber+1                               #solange t kleiner/gleich Vorlaufperiode
+            printf(f, "x.fx('k"+k.to_s+"', 't"+t.to_s+"') = 0 ;\n")                                           #erstelle entsprechende Zusatzbedingung
+            t=t+1                                                                                             #zähle t hoch
+          end
+        end
+      end
+      }
+      k=k+1                                                                                                   #zähle k hoch
+    }
+
+    f.close
+
     if File.exist?("HPPLAN_v1_Solution")
       File.delete("HPPLAN_v1_Solution")
     end
 
     system "c:\\programme\\GAMS23.7\\gams HPPLAN_v1" #Zielpfad muss Rechnergebunden angepasst werden
 
-    redirect_to "/solutions/view"
+    redirect_to solutions_path
   end
 
 end

@@ -66,6 +66,20 @@ SampleApp::Application.routes.draw do
      end
   end
 
+  resource :solprodstors do
+     collection do
+       get 'view'
+       get 'data'
+     end
+  end
+
+  resource :solsegs do
+     collection do
+       get 'view'
+       get 'data'
+     end
+  end
+
   resource :storagecosts do
      collection do
        get 'view'
@@ -82,13 +96,6 @@ SampleApp::Application.routes.draw do
      end
   end
 
-  resource :solutions do
-     collection do
-       get 'view'
-       get 'data'
-     end
-  end
-
   resource :timesteps do
      collection do
        get 'view'
@@ -100,6 +107,7 @@ SampleApp::Application.routes.draw do
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
   resources :problems
+  resources :solutions
 
 
   match '/signup',  :to => 'users#new'
@@ -110,7 +118,7 @@ SampleApp::Application.routes.draw do
   match '/faq',    :to => 'pages#faq'
   match 'problems/optimize', :to => 'problems#optimize'
   match 'problems/new', :to => 'problems#new'
-  match 'problems/show', :to => 'problems#show'
+  match 'problems/index', :to => 'problems#index'
 
   root :to => 'pages#startseite'
 

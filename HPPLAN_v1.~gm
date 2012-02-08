@@ -35,13 +35,15 @@ Zielfunktion..
          ZF =e=  sum((k,t),h(k)*y(k,t))+sum((t,j),u(t)*UV(j,t));
 
 Lagerbedingung(k,t)..
-         x(k,t)+y0(k)$(ord(t)=0)+y(k,t-1)$(ord(t)>0)-y(k,t) =e= d(k,t);
+         x(k,t)+y0(k)$(ord(t)=1)+y(k,t-1)$(ord(t)>1)-y(k,t) =e= d(k,t);
 
 Kapazitaetsbelastung(j,t)..
          sum((k,z),f(j,k,z)*x(k,t+i(z)))-UV(j,t) =l= b(j,t);
 
 maximale_Zusatzkapazitaet(j,t)..
          UV(j,t) =l= Umax(j,t);
+
+$include HPPLAN_v1_Input_Zusatzbedingung.inc * Zusatzbedingung dass die Produkte anfangs noch nicht gefertigt werden koennen 
 
 model HPPLANv1 /
                  Zielfunktion
@@ -58,31 +60,28 @@ solve HPPLANv1 minimizing ZF using lp;
 
 display x.l;
 
-file outputfile / 'HPPLAN_v1_Solution.txt'/;
-put outputfile;
+file outputfile1 / 'HPPLAN_v1_Solution_Prod.txt'/;
+put outputfile1;
 
-put 'Objective Function Value: ', ZF.l/
-
-put /
 
 loop(k,
     loop(t,
-        put k.tl:0, ' ; ' t.tl:0 ' ; ' x.l(k,t) /
+        put k.tl:0, ' ; ' t.tl:0 ' ; ' x.l(k,t) ' ; ' y.l(k,t) /
         );
     );
 
-put /
-
-loop(k,
-    loop(t,
-        put k.tl:0, ' ; ' t.tl:0 ' ; ' y.l(k,t) /
-        );
-    );
-
-put /
+file outputfile2 / 'HPPLAN_v1_Solution_Segm.txt'/;
+put outputfile2;
 
 loop(j,
     loop(t,
         put j.tl:0, ' ; ' t.tl:0 ' ; ' UV.l(j,t) /
         );
     );
+
+file outputfile3 / 'HPPLAN_v1_OFV.txt'/;
+put outputfile3;
+
+put 'Zielfunktionswert: ', ZF.l/
+
+put /

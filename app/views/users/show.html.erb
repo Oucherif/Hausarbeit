@@ -3,10 +3,11 @@
   <tr>
     <td class="main">
       <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-        <%= link_to "Optimierungsproblem", problems_path %>
+        Sie sind angemeldet als: <%= @user.name %>
       </h1>
     </td>
   </tr>
 </table>
+
+<%= link_to "Optimierungsproblem", problems_path %>  <br/>
+<%= link_to 'Lösungsübersicht', solutions_path%>

@@ -43,6 +43,9 @@ Kapazitaetsbelastung(j,t)..
 maximale_Zusatzkapazitaet(j,t)..
          UV(j,t) =l= Umax(j,t);
 
+* Zusatzbedingung dass die Produkte anfangs je nach Vorperiodenanzahl noch nicht gefertigt werden koennen
+$include HPPLAN_v1_Input_Zusatzbedingung.inc
+
 model HPPLANv1 /
                  Zielfunktion
                  , Lagerbedingung
