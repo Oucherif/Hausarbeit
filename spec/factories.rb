@@ -26,3 +26,11 @@ Factory.define :preperiod do |preperiod|
   preperiod.product_id                "1"
   preperiod.preperiodnumber           "0"
 end
+
+Factory.define :solprodstor do |solprodstor|
+  solprodstor.id                        "1"
+  solprodstor.product_id                "1"
+  solprodstor.timestep_id               "1"
+  solprodstor.productionvalue           "0"
+  solprodstor.storageamountvalue        "0"
+end

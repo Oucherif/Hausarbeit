@@ -72,6 +72,9 @@ class CapusagesController < ApplicationController
                      capusage.preperiod_id = Preperiod.find_by_product_id_and_preperiodnumber(Product.find_by_productname(productname).id, preperiodnumber).id
                    end
                  end
+
+                 capusage.capusagevalue = capusagevalue
+                 capusage.save!
                  @tid = @id
          end 
      end

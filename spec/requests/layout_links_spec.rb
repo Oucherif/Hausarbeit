@@ -1,5 +1,5 @@
 # encoding: utf-8
-#Magic Comment für deutsche Sonderzeichen
+# Magic Comment für deutsche Sonderzeichen
 # Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl
 require 'spec_helper'
 
@@ -58,7 +58,7 @@ describe "LayoutLinks" do
     it "should have a signin link" do
       visit root_path
       response.should have_selector("a", :href => signin_path,
-                                         :content => "Anmelden")                  #Übersetzt
+                                         :content => "Anmelden")
     end
   end
 
@@ -106,22 +106,22 @@ describe "LayoutLinks" do
       visit root_path
       click_link "Über"
       response.should have_selector('title', :content => "Über")
-      click_link "FAQ"                                                              #Linkbeschreibung verändert
-      response.should have_selector('title', :content => "FAQ")                     #Linkbeschreibung verändert
-      click_link "Kontakt"                                                          #Linkbeschreibung übersetzt
-      response.should have_selector('title', :content => "Kontakt")                 #Linkbeschreibung übersetzt
+      click_link "FAQ"
+      response.should have_selector('title', :content => "FAQ")
+      click_link "Kontakt"
+      response.should have_selector('title', :content => "Kontakt")
     end
 
     it "should have a signout link" do
       visit root_path
       response.should have_selector("a", :href => signout_path,
-                                         :content => "Abmelden")                  #Übersetzt
+                                         :content => "Abmelden")
     end
 
-    it "should have a profile link" do
+    it "should have a lösungsübersicht link" do
       visit root_path
-      response.should have_selector("a", :href => user_path(@user),
-                                         :content => "Profil")                   #Übersetzt
+      response.should have_selector("a", :href => solutions_path,
+                                         :content => "Lösungsübersicht")
     end
 
     it "should have a optimierungsproblem link" do
