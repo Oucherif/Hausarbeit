@@ -1,4 +1,4 @@
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/13/12 22:58:39 Page 1
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/14/12 00:19:41 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -76,7 +76,7 @@ INCLUDE    C:\Sites\Hausarbeit\HPPLAN_v1_Input_Instanz1.inc
   71   
   72  Parameter u(t)
   73   /t1 5.0
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/13/12 22:58:39 Page 2
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/14/12 00:19:41 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -154,7 +154,7 @@ C o m p i l a t i o n
  144  ,j3.t6 100.0
  145  ,j3.t7 100.0
  146  ,j3.t8 100.0
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/13/12 22:58:39 Page 3
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/14/12 00:19:41 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -232,7 +232,7 @@ C o m p i l a t i o n
  217           UV(j,t) =l= Umax(j,t);
  218   
  219  * Zusatzbedingung dass die Produkte anfangs je nach Vorperiodenanzahl noch nicht gefertigt werden koennen
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/13/12 22:58:39 Page 4
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/14/12 00:19:41 Page 4
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -284,7 +284,7 @@ INCLUDE    C:\Sites\Hausarbeit\HPPLAN_v1_Input_Zusatzbedingung.inc
  264  put 'Zielfunktionswert: ', ZF.l/
  265   
  266  put /
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/13/12 22:58:39 Page 5
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/14/12 00:19:41 Page 5
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Include File Summary
 
@@ -297,7 +297,7 @@ Include File Summary
 
 
 COMPILATION TIME     =        0.000 SECONDS      3 Mb  WEX237-237 Jul 21, 2011
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/13/12 22:58:39 Page 6
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/14/12 00:19:41 Page 6
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 E x e c u t i o n
 
@@ -358,7 +358,7 @@ j3     100.000     100.000     100.000     100.000     100.000     100.000     1
 
 z2 1.000,    z3 2.000,    z5 1.000,    z6 2.000
 
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/13/12 22:58:39 Page 7
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/14/12 00:19:41 Page 7
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE HPPLANv1 Using LP From line 238
 
@@ -404,7 +404,7 @@ maximale_Zusatzkapazitaet(j1,t3)..  UV(j1,t3) =L= 100 ; (LHS = 0)
      
 REMAINING 21 ENTRIES SKIPPED
 
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/13/12 22:58:39 Page 8
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/14/12 00:19:41 Page 8
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE HPPLANv1 Using LP From line 238
 
@@ -480,7 +480,7 @@ y(k1,t3)
         1       Lagerbedingung(k1,t4)
 
 REMAINING 13 ENTRIES SKIPPED
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/13/12 22:58:39 Page 9
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/14/12 00:19:41 Page 9
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Model Statistics    SOLVE HPPLANv1 Using LP From line 238
 
@@ -496,7 +496,7 @@ GENERATION TIME      =        0.016 SECONDS      4 Mb  WEX237-237 Jul 21, 2011
 
 
 EXECUTION TIME       =        0.016 SECONDS      4 Mb  WEX237-237 Jul 21, 2011
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                        02/13/12 22:58:39 Page 10
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                        02/14/12 00:19:41 Page 10
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE HPPLANv1 Using LP From line 238
 
@@ -511,7 +511,7 @@ Solution Report     SOLVE HPPLANv1 Using LP From line 238
 **** MODEL STATUS      1 Optimal                   
 **** OBJECTIVE VALUE             6300.0000
 
- RESOURCE USAGE, LIMIT          0.016      1000.000
+ RESOURCE USAGE, LIMIT          0.015      1000.000
  ITERATION COUNT, LIMIT        13    2000000000
 
 IBM ILOG CPLEX   Jul 14, 2011 23.7.2 WEX 27052.27054 WEI x86_64/MS Windows
@@ -574,7 +574,7 @@ j3.t2        -INF          100.0000       100.0000        -5.0000
 j3.t3        -INF          100.0000       100.0000        -5.0000      
 j3.t4        -INF          100.0000       100.0000        -5.0000      
 j3.t5        -INF          100.0000       100.0000        -5.0000      
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                        02/13/12 22:58:39 Page 11
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                        02/14/12 00:19:41 Page 11
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE HPPLANv1 Using LP From line 238
 
@@ -650,7 +650,7 @@ j3.t5          .            80.0000        +INF             .
 j3.t6          .            10.0000        +INF             .          
 j3.t7          .              .            +INF            5.0000      
 j3.t8          .              .            +INF            5.0000      
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                        02/13/12 22:58:39 Page 12
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                        02/14/12 00:19:41 Page 12
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE HPPLANv1 Using LP From line 238
 
@@ -701,7 +701,7 @@ k2.t8          .              .            +INF           70.0000
 **** REPORT SUMMARY :        0     NONOPT
                              0 INFEASIBLE
                              0  UNBOUNDED
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                        02/13/12 22:58:39 Page 13
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                        02/14/12 00:19:41 Page 13
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 E x e c u t i o n
 
