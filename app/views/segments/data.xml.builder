@@ -2,7 +2,7 @@
 xml.instruct! :xml, :version=>"1.0"
 
  xml.tag!("rows") do
-     Segment.all.each do |segment|
+     Segment.find_all_by_problem_id($current_problem).each do |segment|
          xml.tag!("row",{ "id" => segment.id }) do
              xml.tag!("cell", segment.segmentname)
          end

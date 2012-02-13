@@ -2,7 +2,7 @@
 xml.instruct! :xml, :version=>"1.0"
 
  xml.tag!("rows") do
-     Product.all.each do |product|
+     Product.find_all_by_problem_id($current_problem).each do |product|
          xml.tag!("row",{ "id" => product.id }) do
              xml.tag!("cell", product.productname)
          end

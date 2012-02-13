@@ -1,4 +1,17 @@
 <% if signed_in? %>
+    <%if @problem.errors.any?%>
+        <div id="error_explanation">
+          <h2><%= @problem.errors.count %>
+            Fehler verhindert die Erstellung des Optimierungsproblems!</h2>
+           <p>Bitte ändern Sie die Eingabe entsprechend der Fehlermeldungen:</p>
+        <ul>
+        <% @problem.errors.full_messages.each do |msg| %>
+          <li><%= msg%></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
      <h1>Neues Problem benennen</h1>
      <% form_for(@problem) do |f| %>
         <div class="field">

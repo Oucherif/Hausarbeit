@@ -2,7 +2,7 @@
 xml.instruct! :xml, :version=>"1.0"
 
  xml.tag!("rows") do
-     Maxaddcap.all.each do |maxaddcap|
+    Maxaddcap.find_all_by_problem_id($current_problem).each do |maxaddcap|
          xml.tag!("row",{ "id" => maxaddcap.id }) do
            xml.tag!("cell", Segment.find_by_id(maxaddcap.segment_id).segmentname)
            #zeige zu Segmentid zugehöriges Segment

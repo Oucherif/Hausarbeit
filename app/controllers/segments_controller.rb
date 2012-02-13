@@ -14,6 +14,7 @@ class SegmentsController < ApplicationController
          case @mode
              when "inserted"
                  segment = Segment.new
+                 segment.problem_id = $current_problem.id
                  segment.segmentname = segmentname
                  segment.save!
                  
@@ -25,6 +26,7 @@ class SegmentsController < ApplicationController
                  @tid = @id
              when "updated"
                  segment=Segment.find(@id)
+                 segment.problem_id = $current_problem.id
                  segment.segmentname = segmentname
                  segment.save!
                  

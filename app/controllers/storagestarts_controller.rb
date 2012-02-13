@@ -15,6 +15,7 @@ class StoragestartsController < ApplicationController
          case @mode
              when "inserted"
                  storagestart = Storagestart.new
+                 storagestart.problem_id = $current_problem.id
                  if Product.find_by_productname(productname)==nil
                    storagestart.product_id=nil
                  else #finde zu Produktnamen zugehörige ID
@@ -32,6 +33,7 @@ class StoragestartsController < ApplicationController
                  @tid = @id
              when "updated"
                  storagestart=Storagestart.find(@id)
+                 storagestart.problem_id = $current_problem.id
                  if Product.find_by_productname(productname)==nil
                    storagestart.product_id=nil
                  else #finde zu Produktnamen zugehörige ID

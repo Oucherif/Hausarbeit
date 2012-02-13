@@ -1,5 +1,5 @@
 
---- Job HPPLAN_v1.gms Start 02/08/12 13:24:52 WEX-WEI 23.7.2 x86_64/MS Windows     
+--- Job HPPLAN_v1.gms Start 02/13/12 22:54:53 WEX-WEI 23.7.2 x86_64/MS Windows     
 GAMS Rev 237  Copyright (C) 1987-2011 GAMS Development. All rights reserved
 Licensee: GAMS Development Corporation, Washington, DC   G871201/0000CA-ANY
           Free Demo,  202-342-0180,  sales@gams.com,  www.gams.com   DC0000
@@ -9,12 +9,12 @@ Licensee: GAMS Development Corporation, Washington, DC   G871201/0000CA-ANY
 --- HPPLAN_v1.gms(47) 3 Mb
 --- .HPPLAN_v1_Input_Zusatzbedingung.inc(5) 3 Mb
 --- HPPLAN_v1.gms(88) 3 Mb
---- Starting execution: elapsed 0:00:00.057
+--- Starting execution: elapsed 0:00:00.035
 --- HPPLAN_v1.gms(236) 4 Mb
 --- Generating LP model HPPLANv1
 --- HPPLAN_v1.gms(238) 4 Mb
 ---   65 rows  57 columns  178 non-zeroes
---- Executing CPLEX: elapsed 0:00:00.261
+--- Executing CPLEX: elapsed 0:00:00.332
 
 IBM ILOG CPLEX   Jul 14, 2011 23.7.2 WEX 27052.27054 WEI x86_64/MS Windows
 Cplex 12.3.0.0
@@ -25,7 +25,7 @@ Tried aggregator 1 time.
 LP Presolve eliminated 32 rows and 11 columns.
 Aggregator did 2 substitutions.
 Reduced LP has 31 rows, 44 columns, and 90 nonzeros.
-Presolve time =    0.00 sec.
+Presolve time =    0.03 sec.
 Initializing dual steep norms . . .
 
 Iteration log . . .
@@ -39,10 +39,10 @@ Objective :        6300.000000
 --- Restarting execution
 --- HPPLAN_v1.gms(238) 2 Mb
 --- Reading solution for model HPPLANv1
---- Executing after solve: elapsed 0:00:00.704
+--- Executing after solve: elapsed 0:00:01.334
 --- HPPLAN_v1.gms(266) 3 Mb
 --- Putfile outputfile1 C:\Sites\Hausarbeit\HPPLAN_v1_Solution_Prod.txt
 --- Putfile outputfile2 C:\Sites\Hausarbeit\HPPLAN_v1_Solution_Segm.txt
 --- Putfile outputfile3 C:\Sites\Hausarbeit\HPPLAN_v1_OFV.txt
 *** Status: Normal completion
---- Job HPPLAN_v1.gms Stop 02/08/12 13:24:53 elapsed 0:00:00.717
+--- Job HPPLAN_v1.gms Stop 02/13/12 22:54:54 elapsed 0:00:01.382

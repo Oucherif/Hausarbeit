@@ -15,7 +15,7 @@ class Segment < ActiveRecord::Base
   has_many :capusages, :dependent => :destroy
   has_many :maxaddcaps, :dependent => :destroy
   validates :segmentname,     :presence   => true
-  validates :segmentname,     :uniqueness   => true
+  validates_uniqueness_of :segmentname, :scope => :problem_id
   attr_accessible :segmentname
 
 end

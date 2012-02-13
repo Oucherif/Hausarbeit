@@ -15,6 +15,7 @@ class PreperiodsController < ApplicationController
          case @mode
              when "inserted"
                  preperiod = Preperiod.new
+                 preperiod.problem_id = $current_problem.id
                  if Product.find_by_productname(productname)==nil
                    preperiod.product_id=nil
                  else  #finde zu Produktnamen zugehörige ID
@@ -33,6 +34,7 @@ class PreperiodsController < ApplicationController
                  @tid = @id
              when "updated"
                  preperiod=Preperiod.find(@id)
+                 preperiod.problem_id = $current_problem.id
                  if Product.find_by_productname(productname)==nil
                    preperiod.product_id=nil
                  else  #finde zu Produktnamen zugehörige ID

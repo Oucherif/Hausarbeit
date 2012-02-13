@@ -17,7 +17,7 @@ class Product < ActiveRecord::Base
   has_many :storagecosts, :dependent => :destroy
   has_many :storagestarts, :dependent => :destroy
   validates :productname,     :presence   => true
-  validates :productname, :uniqueness => true
+  validates_uniqueness_of :productname, :scope => :problem_id
   attr_accessible :productname
 
 end

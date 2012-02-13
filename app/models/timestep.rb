@@ -17,7 +17,7 @@ class Timestep < ActiveRecord::Base
   has_many :addcapcosts, :dependent => :destroy
   validates :stepnumber,     :presence   => true
   validates_numericality_of :stepnumber, :only_integer => true
-  validates :stepnumber, :uniqueness => true
+  validates_uniqueness_of :stepnumber, :scope => :problem_id
   attr_accessible :stepnumber
 
 end

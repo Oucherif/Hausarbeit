@@ -16,6 +16,7 @@ class DemandsController < ApplicationController
          case @mode
              when "inserted"
                  demand = Demand.new
+                 demand.problem_id = $current_problem.id
                  if Product.find_by_productname(productname)==nil
                    demand.product_id = nil
                  else  #finde zu Produktnamen zugehörige ID
@@ -39,6 +40,7 @@ class DemandsController < ApplicationController
                  @tid = @id
              when "updated"
                  demand=Demand.find(@id)
+                 demand.problem_id = $current_problem.id
                  if Product.find_by_productname(productname)==nil
                    demand.product_id = nil
                  else  #finde zu Produktnamen zugehörige ID

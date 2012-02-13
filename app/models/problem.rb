@@ -30,5 +30,8 @@ class Problem < ActiveRecord::Base
        errors.add(:base, "User muss definiert sein")
      end
     end
-  attr_accessible :user_id
+
+  validates :problemname, :uniqueness => true
+
+  attr_accessible :user_id, :problemname
 end

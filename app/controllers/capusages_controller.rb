@@ -17,6 +17,7 @@ class CapusagesController < ApplicationController
          case @mode
              when "inserted"
                  capusage = Capusage.new
+                 capusage.problem_id = $current_problem.id
                  if Product.find_by_productname(productname)==nil             #verhindere nil.id Fehler
                    capusage.product_id=nil
                  else       #finde zu Produktnamen zugehörige ID
@@ -51,6 +52,7 @@ class CapusagesController < ApplicationController
                  @tid = @id
              when "updated"
                  capusage=Capusage.find(@id)
+                 capusage.problem_id = $current_problem.id
                  if Product.find_by_productname(productname)==nil             #verhindere nil.id Fehler
                    capusage.product_id=nil
                  else       #finde zu Produktnamen zugehörige ID

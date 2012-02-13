@@ -14,8 +14,9 @@ class SolsegsController < ApplicationController
     addcapusagevalue=vector[2].delete " "                                #entferne Leerzeichen
 
     @solseg=Solseg.new
-    @solseg.segment_id=Segment.all[segment.to_i-1].id
-    @solseg.timestep_id=Timestep.all[timestep.to_i-1].id
+    @solseg.problem_id=$current_problem.id
+    @solseg.segment_id=Segment.find_all_by_problem_id($current_problem.id)[segment.to_i-1].id
+    @solseg.timestep_id=Timestep.find_all_by_problem_id($current_problem.id)[timestep.to_i-1].id
     @solseg.addcapusagevalue=addcapusagevalue
     @solseg.save!}
 

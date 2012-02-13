@@ -1,48 +1,40 @@
-<%# Struktur übernommen aus "Ruby on Rails Tutorial" von Michael Hartl%>
-
 <% if signed_in? %>
-   <%#  <h1>Optimierungsproblem Übersicht</h1>
-   <%#  <%= link_to 'Neues Optimierungsproblem anlegen', new_problem_path%><br/><br/>
-   <%#  Existierendes Optimierungsproblem laden: <br/>
-   <%#  <% if @problem!=nil%>
+    <h1>Problemübersicht</h1>
+    <%= stylesheet_link_tag :all %>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
 
-   <%#  <% @problem.each {|problems| %>
-   <%#      <tr>
-   <%#        <td>
-   <%#          <% %>
-   <%#          <%= link_to problems.problemname, problems_path(problems)%>
-   <%#
-   <%#          <br/>
-   <%#        </td>
-   <%#      </tr>
-   <%#  <%}%>
-   <%#  <%else %>
-   <%#  <%end%>
+    <%if $current_problem==nil%>
+    <%else%>
+    Aktuell geladenes Optimierungsproblem:
+    <%= $current_problem.problemname %>
+        <br/>
+     <%= link_to 'Geladenes Optimierungsproblem konfigurieren', "configurations/view" %><br/>
+    <%end%>
+    <br/>
+
+    <%= link_to 'Neues Optimierungsproblem anlegen', new_problem_path %>
 
 
+    <br/> <br/>
+    Existierende Optimierungsprobleme:
+    <br/>
+    <% if @problems!=nil %>
 
-
-<h1>Optimierungsproblem konfigurieren</h1>
-
-<%= link_to 'Planungsintervall', view_timesteps_path%>              <br/>
-<%= link_to 'Produkte', view_products_path%>                        <br/>
-<%= link_to 'Vorlaufperioden', view_preperiods_path%>               <br/>
-<%= link_to 'Segmente', view_segments_path%>                        <br/>
-<%= link_to 'Produktionskapazitäten', view_prodcaps_path%>          <br/>
-<%= link_to 'Nachfrage', view_demands_path%>                        <br/>
-<%= link_to 'Kapazitätsbelastung', view_capusages_path%>            <br/>
-<%= link_to 'Lagerhaltungskosten', view_storagecosts_path%>         <br/>
-<%= link_to 'Lageranfangsbestände', view_storagestarts_path%>       <br/>
-<%= link_to 'Maximale Zusatzkapazität', view_maxaddcaps_path%>      <br/>
-<%= link_to 'Kosten für Zusatzkapazität', view_addcapcosts_path%>   <br/>
-
-<%= button_to "Optimiere", :controller => 'problems', :action => 'optimize' %>
-<br/><br/>
-
-<%= link_to 'Lösungsübersicht', solutions_path%>   <br/>
-
-
+        <% @problems.each { |problems| %>
+            <tr>
+              <td>
+                <% %>
+                <%= link_to problems.problemname+" laden", :controller => "problems", :action => "show", :id => problems.id %>
+                <%= button_to problems.problemname+" löschen", {:controller => "problems", :action => "destroy", :id => problems.id},
+                              :confirm => "Are you sure?", :method => :delete %>
+                <br/>
+              </td>
+            </tr>
+        <% } %>
+    <% else %>
+    <% end %>
 
 <% else %>
-<%= render 'shared/redirect_to_signin' %>
+    <%= render 'shared/redirect_to_signin' %>
 <% end %>

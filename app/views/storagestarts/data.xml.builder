@@ -2,7 +2,7 @@
 xml.instruct! :xml, :version=>"1.0"
 
  xml.tag!("rows") do
-     Storagestart.all.each do |storagestart|
+     Storagestart.find_all_by_problem_id($current_problem).each do |storagestart|
          xml.tag!("row",{ "id" => storagestart.id }) do
              xml.tag!("cell", Product.find_by_id(storagestart.product_id).productname)
              #zeige zu Produktid zugehörigen Produktnamen

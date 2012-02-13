@@ -2,7 +2,7 @@
 xml.instruct! :xml, :version=>"1.0"
 
  xml.tag!("rows") do
-     Addcapcost.all.each do |addcapcost|
+     Addcapcost.find_all_by_problem_id($current_problem).each do |addcapcost|
          xml.tag!("row",{ "id" => addcapcost.id }) do
            if Timestep.find_by_id(addcapcost.timestep_id)==nil
            else

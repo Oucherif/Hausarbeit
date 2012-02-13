@@ -3,7 +3,7 @@ class TimestepsController < ApplicationController
          @timesteps = Timestep.new
      end
      def data
-         @timesteps = Timestep.all()
+         @timesteps = Timestep.find_all_by_problem_id($current_problem.id)
      end
      def dbaction
          #called for all db actions
@@ -15,6 +15,7 @@ class TimestepsController < ApplicationController
          case @mode
              when "inserted"
                  timestep = Timestep.new
+                 timestep.problem_id = $current_problem.id
                  timestep.stepnumber = stepnumber
                  timestep.save!
 
@@ -29,6 +30,7 @@ class TimestepsController < ApplicationController
 
              when "updated"
                  timestep=Timestep.find(@id)
+                 timestep.problem_id = $current_problem.id
                  timestep.stepnumber = stepnumber
                  timestep.save!
 

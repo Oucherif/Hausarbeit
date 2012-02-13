@@ -15,6 +15,7 @@ class ProdcapsController < ApplicationController
          case @mode
              when "inserted"
                  prodcap = Prodcap.new
+                 prodcap.problem_id = $current_problem.id
                  if Segment.find_by_segmentname(segmentname)==nil
                    prodcap.segment_id=nil
                  else  #finde zu Segmentnamen zugehörige ID
@@ -37,6 +38,7 @@ class ProdcapsController < ApplicationController
                  @tid = @id
              when "updated"
                  prodcap=Prodcap.find(@id)
+                 prodcap.problem_id = $current_problem.id
                  if Segment.find_by_segmentname(segmentname)==nil
                    prodcap.segment_id=nil
                  else  #finde zu Segmentnamen zugehörige ID

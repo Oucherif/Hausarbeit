@@ -22,8 +22,9 @@ class SolprodstorsController < ApplicationController
     storageamountvalue=vector[3].delete " "
 
     @solprodstor=Solprodstor.new
-    @solprodstor.product_id=Product.all[product.to_i-1].id
-    @solprodstor.timestep_id=Timestep.all[timestep.to_i-1].id
+    @solprodstor.problem_id=$current_problem.id
+    @solprodstor.product_id=Product.find_all_by_problem_id($current_problem)[product.to_i-1].id
+    @solprodstor.timestep_id=Timestep.find_all_by_problem_id($current_problem)[timestep.to_i-1].id
     @solprodstor.productionvalue=productionvalue
     @solprodstor.storageamountvalue=storageamountvalue
     @solprodstor.save!}

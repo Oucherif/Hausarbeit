@@ -15,6 +15,7 @@ class AddcapcostsController < ApplicationController
          case @mode
              when "inserted"
                  addcapcost = Addcapcost.new
+                 addcapcost.problem_id = $current_problem.id
                  if Timestep.find_by_stepnumber(stepnumber)==nil
                    addcapcost.timestep_id=nil
                  else  #finde zu Segmentnamen zugehörige ID
@@ -32,6 +33,7 @@ class AddcapcostsController < ApplicationController
                  @tid = @id
              when "updated"
                  addcapcost=Addcapcost.find(@id)
+                 addcapcost.problem_id = $current_problem.id
                  if Timestep.find_by_stepnumber(stepnumber)==nil
                    addcapcost.timestep_id=nil
                  else  #finde zu Segmentnamen zugehörige ID

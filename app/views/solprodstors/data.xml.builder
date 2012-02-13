@@ -2,7 +2,7 @@
 xml.instruct! :xml, :version=>"1.0"
 
  xml.tag!("rows") do
-     Solprodstor.all.each do |solprodstor|
+    Solprodstor.find_all_by_problem_id($current_problem).each do |solprodstor|
          xml.tag!("row",{ "id" => solprodstor.id }) do
            if Product.find_by_id(solprodstor.product_id)==nil
            else

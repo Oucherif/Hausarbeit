@@ -15,6 +15,7 @@ class StoragecostsController < ApplicationController
          case @mode
              when "inserted"
                  storagecost = Storagecost.new
+                 storagecost.problem_id = $current_problem.id
                  if Product.find_by_productname(productname)==nil
                    storagecost.product_id=nil
                  else  #finde zu Produktnamen zugehörige ID
@@ -31,6 +32,7 @@ class StoragecostsController < ApplicationController
                  @tid = @id
              when "updated"
                  storagecost=Storagecost.find(@id)
+                 storagecost.problem_id = $current_problem.id
                  if Product.find_by_productname(productname)==nil
                    storagecost.product_id=nil
                  else  #finde zu Produktnamen zugehörige ID

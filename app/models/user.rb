@@ -14,6 +14,8 @@
 # Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl
 
 class User < ActiveRecord::Base
+
+  has_many :problems, :dependent => :destroy
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation
 

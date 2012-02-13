@@ -16,6 +16,7 @@ class MaxaddcapsController < ApplicationController
          case @mode
              when "inserted"
                  maxaddcap = Maxaddcap.new
+                 maxaddcap.problem_id = $current_problem.id
                  if Segment.find_by_segmentname(segmentname)==nil
                    maxaddcap.segment_id=nil
                  else  #finde zu Segmentnamen zugehörige ID
@@ -39,6 +40,7 @@ class MaxaddcapsController < ApplicationController
                  @tid = @id
              when "updated"
                  maxaddcap=Maxaddcap.find(@id)
+                 maxaddcap.problem_id = $current_problem.id
                  if Segment.find_by_segmentname(segmentname)==nil
                    maxaddcap.segment_id=nil
                  else  #finde zu Segmentnamen zugehörige ID

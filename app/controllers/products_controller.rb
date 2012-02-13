@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
          case @mode
              when "inserted"
                  product = Product.new
+                 product.problem_id = $current_problem.id
                  product.productname = productname
                  product.save!
                  
@@ -24,6 +25,7 @@ class ProductsController < ApplicationController
                  @tid = @id
              when "updated"
                  product=Product.find(@id)
+                 product.problem_id = $current_problem.id
                  product.productname = productname
                  product.save!
                  

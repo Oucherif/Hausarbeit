@@ -2,7 +2,7 @@
 xml.instruct! :xml, :version=>"1.0"
 
  xml.tag!("rows") do
-     Solseg.all.each do |solseg|
+     Solseg.find_all_by_problem_id($current_problem).each do |solseg|
          xml.tag!("row",{ "id" => solseg.id }) do
            if Segment.find_by_id(solseg.segment_id)==nil
            else
