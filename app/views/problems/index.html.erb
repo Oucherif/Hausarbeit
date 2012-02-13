@@ -1,23 +1,23 @@
 <%# Struktur übernommen aus "Ruby on Rails Tutorial" von Michael Hartl%>
 
 <% if signed_in? %>
-    <h1>Optimierungsproblem Übersicht</h1>
-    <%= link_to 'Neues Optimierungsproblem anlegen', new_problem_path%><br/><br/>
-    Existierendes Optimierungsproblem laden: <br/>
-    <% if @problem!=nil%>
+   <%#  <h1>Optimierungsproblem Übersicht</h1>
+   <%#  <%= link_to 'Neues Optimierungsproblem anlegen', new_problem_path%><br/><br/>
+   <%#  Existierendes Optimierungsproblem laden: <br/>
+   <%#  <% if @problem!=nil%>
 
-    <% @problem.each {|problems| %>
-        <tr>
-          <td>
-            <% %>
-            <%= link_to problems.problemname, problems_path(problems)%>
-
-            <br/>
-          </td>
-        </tr>
-    <%}%>
-    <%else %>
-    <%end%>
+   <%#  <% @problem.each {|problems| %>
+   <%#      <tr>
+   <%#        <td>
+   <%#          <% %>
+   <%#          <%= link_to problems.problemname, problems_path(problems)%>
+   <%#
+   <%#          <br/>
+   <%#        </td>
+   <%#      </tr>
+   <%#  <%}%>
+   <%#  <%else %>
+   <%#  <%end%>
 
 
 

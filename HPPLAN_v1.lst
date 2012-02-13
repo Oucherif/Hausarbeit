@@ -1,4 +1,4 @@
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/12/12 11:12:07 Page 1
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/13/12 16:18:26 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -76,7 +76,7 @@ INCLUDE    C:\Sites\Hausarbeit\HPPLAN_v1_Input_Instanz1.inc
   71   
   72  Parameter u(t)
   73   /t1 5.0
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/12/12 11:12:07 Page 2
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/13/12 16:18:26 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -154,7 +154,7 @@ C o m p i l a t i o n
  144  ,j3.t6 100.0
  145  ,j3.t7 100.0
  146  ,j3.t8 100.0
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/12/12 11:12:07 Page 3
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/13/12 16:18:26 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -232,7 +232,7 @@ C o m p i l a t i o n
  217           UV(j,t) =l= Umax(j,t);
  218   
  219  * Zusatzbedingung dass die Produkte anfangs je nach Vorperiodenanzahl noch nicht gefertigt werden koennen
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/12/12 11:12:07 Page 4
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/13/12 16:18:26 Page 4
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -291,7 +291,7 @@ C o m p i l a t i o n
 **** LINE     86 INPUT       C:\Sites\Hausarbeit\HPPLAN_v1.gms
  260   
  261  put /
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/12/12 11:12:07 Page 5
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/13/12 16:18:26 Page 5
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Error Messages
 
@@ -303,7 +303,7 @@ Error Messages
 282  Unable to open include file
 
 **** 6 ERROR(S)   0 WARNING(S)
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/12/12 11:12:07 Page 6
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/13/12 16:18:26 Page 6
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Include File Summary
 
@@ -314,7 +314,7 @@ Include File Summary
      2       21 INCLUDE        1      21  .C:\Sites\Hausarbeit\HPPLAN_v1_Input_Instanz1.inc
 
 
-COMPILATION TIME     =        0.047 SECONDS      3 Mb  WEX237-237 Jul 21, 2011
+COMPILATION TIME     =        0.000 SECONDS      3 Mb  WEX237-237 Jul 21, 2011
 
 
 USER: GAMS Development Corporation, Washington, DC   G871201/0000CA-ANY

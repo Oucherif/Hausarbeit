@@ -1,7 +1,31 @@
 <%# Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl%>
 <h1>FAQ</h1>
 <p>
-  Hier finden Sie häufig gestellte Fragen und die entsprechenden Antworten.
+  Hier finden Sie Antworten auf häufig gestellte Fragen.
   Sollten weiterhin Probleme oder Unklarheiten bestehen, so wenden Sie sich bitte an die
   <%= link_to "Kontaktadresse", kontakt_path %>.
 </p>
+
+<br/>
+<br/>
+
+<h4>Welche Voraussetzungen müssen für die erfolgreiche Nutzung dieser Applikation erfüllt sein?</h4>
+Sie benötigen eine lizensierte Version der Optimierungssoftware <%= link_to "GAMS", "http://www.gams.com/" %> und
+eine stabile Internet-verbindung. Empfohlen wird die Benutzung von Firefox, Internet Explorer, Opera oder Chrome.
+<br/>
+<br/>
+
+<h4>Die Anmeldung gelingt, aber ich werde direkt danach wieder ausgeloggt. Was mache ich falsch?</h4>
+Sie müssen die Cookies dieser Seite zulassen, damit der Anmeldestatus gespeichert werden kann. Bei den meisten Browsern
+können Sie dies entsprechend einstellen.
+ <br/>
+<br/>
+<h4>Warum wird meine Dateneingabe nicht gespeichert?</h4>
+Achten Sie darauf, dass Sie zunächst die Produkte, Segmente, Zeitpunkte und Vorlaufperioden definieren. Wenn Sie
+ungültige Dateneingaben vornehmen, werden diese nicht gespeichert. Dazu gehören nicht definierte Produktnamen,
+Segmentnamen, Zeitpunkte und Vorlaufperioden aber auch z.B. Buchstaben-eingaben bei Zeitpunkten.
+  <br/>
+<br/>
+<h4>Warum kommt beim Start der Optimierung eine Fehlermeldung?</h4>
+In diesem Fall liegt sehr wahrscheinlich ein Fehler mit der Optimierungssoftware vor. Überprüfen Sie die ordnungsgemäße
+Installation.
