@@ -24,10 +24,11 @@
         <% @problems.each { |problems| %>
             <tr>
               <td>
-                <% %>
+                <%if problems.problemname!=nil %>
                 <%= link_to problems.problemname+" laden", :controller => "problems", :action => "show", :id => problems.id %>
                 <%= button_to problems.problemname+" löschen", {:controller => "problems", :action => "destroy", :id => problems.id},
                               :confirm => "Are you sure?", :method => :delete %>
+                <%end%>
                 <br/>
               </td>
             </tr>
