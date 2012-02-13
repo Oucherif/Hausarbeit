@@ -5,7 +5,7 @@ class ConfigurationsController < ApplicationController
 
   def optimize
     if File.exist?("HPPLAN_v1_Input_Instanz1.inc")
-       #File.delete("HPPLAN_v1_Input_Instanz1.inc")
+       File.delete("HPPLAN_v1_Input_Instanz1.inc")
     end
     f=File.new("HPPLAN_v1_Input_Instanz1.inc", "w")
 
