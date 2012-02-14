@@ -2,7 +2,11 @@ class ProblemsController < ApplicationController
 
   def destroy
     @problem=Problem.find(params[:id])
+    if @problem=$current_problem
+      $current_problem=nil
+    end
     @problem.destroy
+
     redirect_to :back
   end
 
@@ -15,7 +19,7 @@ class ProblemsController < ApplicationController
 
      respond_to do |format|
        if @problem.save
-         format.html {redirect_to '/problems', notice: 'Problem wurde erfolgreich erstellt.'}
+         format.html {redirect_to '/problems', notice: @problem.problemname+' wurde erfolgreich erstellt.'}
          format.json {render json: @problem, status: :created, location: @problem}
        else
          format.html {render action: "new"}
@@ -26,7 +30,9 @@ class ProblemsController < ApplicationController
 
   def show
     $current_problem=Problem.find(params[:id])
-    redirect_to problems_path
+    respond_to do |format|
+    format.html {redirect_to problems_path, notice: $current_problem.problemname+' wurde geladen.'}
+    end
   end
 
   def index
