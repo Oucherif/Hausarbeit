@@ -19,4 +19,18 @@
 
     </ul>
   </nav>
+
+  <nav class="round">
+    <ul>
+      <% if signed_in? %>
+          <%if $current_problem==nil%>
+          <%else%>
+          <li><%= link_to "Aktuell geladenes Optimierungsproblem: "+$current_problem.problemname, "/configurations/view" %> </li>
+          <%end%>
+      <% else %>
+      <% end %>
+
+
+    </ul>
+  </nav>
 </header>

@@ -6,9 +6,7 @@
 
     <%if $current_problem==nil%>
     <%else%>
-    Aktuell geladenes Optimierungsproblem:
-    <%= $current_problem.problemname %>
-        <br/>
+
      <%= link_to 'Geladenes Optimierungsproblem konfigurieren', "configurations/view" %><br/>
     <%end%>
     <br/>

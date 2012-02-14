@@ -7,13 +7,6 @@
     <h1>Lösung</h1>
     <% if File.exist?("HPPLAN_v1_OFV.txt") %>
 
-        <% if $current_problem==nil %>
-        <% else %>
-        Aktuell geladenes Optimierungsproblem:
-        <%= $current_problem.problemname %>
-        <br/>
-        <% end %>
-
         <h4>Der Zielfunktionswert ist <%= @objective_function_value %></h4>
 
         <%= link_to 'Produktion und Lagerung', view_solprodstors_path %>              <br/>
@@ -24,13 +17,6 @@
         Entweder liegt ein Fehler in der Dateneingabe vor oder das Problem ist mit den gegebenen Restriktionen
         nicht lösbar.
     <% end %>
-
-    <br/> <br/>
-
-    <%= render 'shared/problemkonfiguration_link' %>   <br/>
-
-
-
 
 
 <% else %>

@@ -2,10 +2,6 @@
 
 <h1>Problemkonfiguration</h1>
 
-     Aktuell geladenes Optimierungsproblem:
-     <%=$current_problem.problemname%>
-
-    <br/><br/>
 
 <%= link_to 'Planungsintervall', view_timesteps_path%>              <br/>
 <%= link_to 'Produkte', view_products_path%>                        <br/>
@@ -21,8 +17,6 @@
 
 <%= button_to "Optimiere", :controller => 'configurations', :action => 'optimize' %>
 <br/><br/>
-
-<%= link_to 'Lösungsübersicht', solutions_path%>   <br/>
 
 <% else %>
 <%= render 'shared/redirect_to_signin' %>
