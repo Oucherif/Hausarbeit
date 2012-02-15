@@ -41,6 +41,7 @@ class SolsegsController < ApplicationController
       printf(f, problemname+" , "+segmentname+" , "+stepnumber.to_s+" , "+addcapusagevalue.to_s+" \n")
       i=i+1
     end
+    f.close
     send_file "HPPLAN_v1_Solution_Segm_excel.txt"
   end
 end

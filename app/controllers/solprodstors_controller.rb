@@ -52,6 +52,7 @@ class SolprodstorsController < ApplicationController
       i=i+1
 
     end
+    f.close
     send_file "HPPLAN_v1_Solution_Prod_excel.txt"
   end
 
