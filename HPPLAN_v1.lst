@@ -1,4 +1,4 @@
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/15/12 13:21:24 Page 1
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/15/12 15:37:43 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -25,159 +25,147 @@ C o m p i l a t i o n
   20   
 INCLUDE    C:\Sites\Hausarbeit\HPPLAN_v1_Input_Instanz1.inc
   22  set j /
-  23  /
-****  $460
-**** LINE      2 INCLUDE     C:\Sites\Hausarbeit\HPPLAN_v1_Input_Instanz1.inc
-**** LINE     21 INPUT       C:\Sites\Hausarbeit\HPPLAN_v1.gms
-  24   
-  25  k /
-  26  k1
-  27  /
-  28   
-  29  t /
-  30  t1
-  31  t2
-  32  /
-  33   
-  34  z /
-  35  /;
-****  $460
-**** LINE     14 INCLUDE     C:\Sites\Hausarbeit\HPPLAN_v1_Input_Instanz1.inc
-**** LINE     21 INPUT       C:\Sites\Hausarbeit\HPPLAN_v1.gms
-  36   
-  37  Parameter i(z)
-  38   // ;
-****    $460
-**** LINE     17 INCLUDE     C:\Sites\Hausarbeit\HPPLAN_v1_Input_Instanz1.inc
-**** LINE     21 INPUT       C:\Sites\Hausarbeit\HPPLAN_v1.gms
-  39   
-  40  Parameter h(k)
-  41   /k1 0.0
-  42  / ;
-  43   
-  44  Parameter y0(k)
-  45   // ;
-****    $460
-**** LINE     24 INCLUDE     C:\Sites\Hausarbeit\HPPLAN_v1_Input_Instanz1.inc
-**** LINE     21 INPUT       C:\Sites\Hausarbeit\HPPLAN_v1.gms
+  23  j1
+  24  /
+  25   
+  26  k /
+  27  k1
+  28  /
+  29   
+  30  t /
+  31  t1
+  32  t2
+  33  /
+  34   
+  35  z /
+  36  z1
+  37  /;
+  38   
+  39  Parameter i(z)
+  40   /z1 0
+  41  / ;
+  42   
+  43  Parameter h(k)
+  44   /k1 0.0
+  45  / ;
   46   
-  47  Parameter u(t)
+  47  Parameter y0(k)
   48   // ;
 ****    $460
 **** LINE     27 INCLUDE     C:\Sites\Hausarbeit\HPPLAN_v1_Input_Instanz1.inc
 **** LINE     21 INPUT       C:\Sites\Hausarbeit\HPPLAN_v1.gms
   49   
-  50  Parameter f(j,k,z)
-  51   // ;
-****    $460
-**** LINE     30 INCLUDE     C:\Sites\Hausarbeit\HPPLAN_v1_Input_Instanz1.inc
-**** LINE     21 INPUT       C:\Sites\Hausarbeit\HPPLAN_v1.gms
-  52   
-  53  Parameter b(j,t)
-  54   // ;
-****    $460
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/15/12 13:21:24 Page 2
+  50  Parameter u(t)
+  51   /t1 0.0
+  52  / ;
+  53   
+  54  Parameter f(j,k,z)
+  55   /j1.k1.z1 0
+  56  / ;
+  57   
+  58  Parameter b(j,t)
+  59   /j1.t1 0
+  60  ,j1.t2 0
+  61  / ;
+  62   
+  63  Parameter d(k,t)
+  64   /k1.t1 0
+  65  ,k1.t2 0
+  66  / ;
+  67   
+  68  Parameter Umax(j,t)
+  69   /j1.t1 0
+  70  ,j1.t2 0
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/15/12 15:37:43 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
 
-**** LINE     33 INCLUDE     C:\Sites\Hausarbeit\HPPLAN_v1_Input_Instanz1.inc
-**** LINE     21 INPUT       C:\Sites\Hausarbeit\HPPLAN_v1.gms
-  55   
-  56  Parameter d(k,t)
-  57   /k1.t1 0
-  58  ,k1.t2 0
-  59  / ;
-  60   
-  61  Parameter Umax(j,t)
-  62   // ;
-****    $460
-**** LINE     41 INCLUDE     C:\Sites\Hausarbeit\HPPLAN_v1_Input_Instanz1.inc
-**** LINE     21 INPUT       C:\Sites\Hausarbeit\HPPLAN_v1.gms
-  63   
-  64   
-  65  variables ZF Zielfunktionswert;
-  66  positive variables       UV(j,t) genutzte Zusatzkapazität in Produktionssegment j in Periode t
-  67                           x(k,t) Produktionsmenge von Produkt k in Periode t
-  68                           y(k,t) Lagerbestand für Produkt k am Ende von Periode t;
-  69   
-  70  Equations
-  71  Zielfunktion Minimierung der Lagerkosten und Kosten für Zusatzkapazitäten
-  72  Lagerbedingung(k,t) Produktionsmenge und Lagerbestand müssen gleich dem neuen Lagerbestand und der Nachfrage sein
-  73  Kapazitaetsbelastung(j,t) Die genutzte Kapazität darf die maximale nur um Zusatzkapazität überschreiten
-  74  maximale_Zusatzkapazitaet(j,t) Die Zusatzkapazität darf die maximale Zusatzkapazität nicht überschreiten;
-  75   
-  76  Zielfunktion..
-  77           ZF =e=  sum((k,t),h(k)*y(k,t))+sum((t,j),u(t)*UV(j,t));
+  71  / ;
+  72   
+  73   
+  74  variables ZF Zielfunktionswert;
+  75  positive variables       UV(j,t) genutzte Zusatzkapazität in Produktionssegment j in Periode t
+  76                           x(k,t) Produktionsmenge von Produkt k in Periode t
+  77                           y(k,t) Lagerbestand für Produkt k am Ende von Periode t;
   78   
-  79  Lagerbedingung(k,t)..
-  80           x(k,t)+y0(k)$(ord(t)=1)+y(k,t-1)$(ord(t)>1)-y(k,t) =e= d(k,t);
-  81   
-  82  Kapazitaetsbelastung(j,t)..
-  83           sum((k,z),f(j,k,z)*x(k,t+i(z)))-UV(j,t) =l= b(j,t);
+  79  Equations
+  80  Zielfunktion Minimierung der Lagerkosten und Kosten für Zusatzkapazitäten
+  81  Lagerbedingung(k,t) Produktionsmenge und Lagerbestand müssen gleich dem neuen Lagerbestand und der Nachfrage sein
+  82  Kapazitaetsbelastung(j,t) Die genutzte Kapazität darf die maximale nur um Zusatzkapazität überschreiten
+  83  maximale_Zusatzkapazitaet(j,t) Die Zusatzkapazität darf die maximale Zusatzkapazität nicht überschreiten;
   84   
-  85  maximale_Zusatzkapazitaet(j,t)..
-  86           UV(j,t) =l= Umax(j,t);
+  85  Zielfunktion..
+  86           ZF =e=  sum((k,t),h(k)*y(k,t))+sum((t,j),u(t)*UV(j,t));
   87   
-  88  * Zusatzbedingung dass die Produkte anfangs je nach Vorperiodenanzahl noch nicht gefertigt werden koennen
-INCLUDE    C:\Sites\Hausarbeit\HPPLAN_v1_Input_Zusatzbedingung.inc
+  88  Lagerbedingung(k,t)..
+  89           x(k,t)+y0(k)$(ord(t)=1)+y(k,t-1)$(ord(t)>1)-y(k,t) =e= d(k,t);
   90   
-  91  model HPPLANv1 /
-  92                   Zielfunktion
-  93                   , Lagerbedingung
-  94                   , Kapazitaetsbelastung
-  95                   , maximale_Zusatzkapazitaet
-  96                   /;
-  97   
-  98   
+  91  Kapazitaetsbelastung(j,t)..
+  92           sum((k,z),f(j,k,z)*x(k,t+i(z)))-UV(j,t) =l= b(j,t);
+  93   
+  94  maximale_Zusatzkapazitaet(j,t)..
+  95           UV(j,t) =l= Umax(j,t);
+  96   
+  97  * Zusatzbedingung dass die Produkte anfangs je nach Vorperiodenanzahl noch nicht gefertigt werden koennen
+INCLUDE    C:\Sites\Hausarbeit\HPPLAN_v1_Input_Zusatzbedingung.inc
   99   
- 100  display b, d, f, h, u, Umax, y0, i;
- 101   
- 102  solve HPPLANv1 minimizing ZF using lp;
+ 100  model HPPLANv1 /
+ 101                   Zielfunktion
+ 102                   , Lagerbedingung
+ 103                   , Kapazitaetsbelastung
+ 104                   , maximale_Zusatzkapazitaet
+ 105                   /;
+ 106   
+ 107   
+ 108   
+ 109  display b, d, f, h, u, Umax, y0, i;
+ 110   
+ 111  solve HPPLANv1 minimizing ZF using lp;
 ****                                       $257
 **** LINE     60 INPUT       C:\Sites\Hausarbeit\HPPLAN_v1.gms
- 103   
- 104  display x.l;
+ 112   
+ 113  display x.l;
 ****            $141
 **** LINE     62 INPUT       C:\Sites\Hausarbeit\HPPLAN_v1.gms
- 105   
- 106  file outputfile1 / 'HPPLAN_v1_Solution_Prod.txt'/;
- 107  put outputfile1;
- 108   
- 109   
- 110  loop(k,
- 111      loop(t,
- 112          put k.tl:0, ' ; ' t.tl:0 ' ; ' x.l(k,t) ' ; ' y.l(k,t) /
+ 114   
+ 115  file outputfile1 / 'HPPLAN_v1_Solution_Prod.txt'/;
+ 116  put outputfile1;
+ 117   
+ 118   
+ 119  loop(k,
+ 120      loop(t,
+ 121          put k.tl:0, ' ; ' t.tl:0 ' ; ' x.l(k,t) ' ; ' y.l(k,t) /
 ****                                                          $141
 **** LINE     70 INPUT       C:\Sites\Hausarbeit\HPPLAN_v1.gms
- 113          );
- 114      );
- 115   
- 116  file outputfile2 / 'HPPLAN_v1_Solution_Segm.txt'/;
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/15/12 13:21:24 Page 3
-G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-C o m p i l a t i o n
-
-
- 117  put outputfile2;
- 118   
- 119  loop(j,
- 120      loop(t,
- 121          put j.tl:0, ' ; ' t.tl:0 ' ; ' UV.l(j,t) /
-****                                            $141
-**** LINE     79 INPUT       C:\Sites\Hausarbeit\HPPLAN_v1.gms
  122          );
  123      );
  124   
- 125  file outputfile3 / 'HPPLAN_v1_OFV.txt'/;
- 126  put outputfile3;
+ 125  file outputfile2 / 'HPPLAN_v1_Solution_Segm.txt'/;
+ 126  put outputfile2;
  127   
- 128  put 'Zielfunktionswert: ', ZF.l/
+ 128  loop(j,
+ 129      loop(t,
+ 130          put j.tl:0, ' ; ' t.tl:0 ' ; ' UV.l(j,t) /
+****                                            $141
+**** LINE     79 INPUT       C:\Sites\Hausarbeit\HPPLAN_v1.gms
+ 131          );
+ 132      );
+ 133   
+ 134  file outputfile3 / 'HPPLAN_v1_OFV.txt'/;
+ 135  put outputfile3;
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/15/12 15:37:43 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 136   
+ 137  put 'Zielfunktionswert: ', ZF.l/
 ****                                $141
 **** LINE     86 INPUT       C:\Sites\Hausarbeit\HPPLAN_v1.gms
- 129   
- 130  put /
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/15/12 13:21:24 Page 4
+ 138   
+ 139  put /
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/15/12 15:37:43 Page 4
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Error Messages
 
@@ -188,8 +176,8 @@ Error Messages
 257  Solve statement not checked because of previous errors
 460  Empty data statements not allowed. You may want to use $ON/OFFEMPTY
 
-**** 13 ERROR(S)   0 WARNING(S)
-GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/15/12 13:21:24 Page 5
+**** 6 ERROR(S)   0 WARNING(S)
+GAMS Rev 237  WEX-WEI 23.7.2 x86_64/MS Windows                                                                                                                                                                                         02/15/12 15:37:43 Page 5
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Include File Summary
 
@@ -198,7 +186,7 @@ Include File Summary
 
      1        1 INPUT          0       0  C:\Sites\Hausarbeit\HPPLAN_v1.gms
      2       21 INCLUDE        1      21  .C:\Sites\Hausarbeit\HPPLAN_v1_Input_Instanz1.inc
-     3       89 INCLUDE        1      47  .C:\Sites\Hausarbeit\HPPLAN_v1_Input_Zusatzbedingung.inc
+     3       98 INCLUDE        1      47  .C:\Sites\Hausarbeit\HPPLAN_v1_Input_Zusatzbedingung.inc
 
 
 COMPILATION TIME     =        0.000 SECONDS      3 Mb  WEX237-237 Jul 21, 2011

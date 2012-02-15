@@ -2,20 +2,63 @@
 
 <h1>Problemkonfiguration</h1>
 
-
+<%if Timestep.find_all_by_problem_id($current_problem).count!=0%>
+<%= link_to check, view_timesteps_path %>
+<%end%>
 <%= link_to '1.  Planungsintervall', view_timesteps_path%>              <br/>
+
+<%if Product.find_all_by_problem_id($current_problem).count!=0%>
+<%= link_to check, view_products_path %>
+<%end%>
 <%= link_to '2.  Produkte', view_products_path%>                        <br/>
+
+<%if Preperiod.find_all_by_problem_id($current_problem).count!=0%>
+<%= link_to check, view_preperiods_path %>
+<%end%>
 <%= link_to '3.  Vorlaufperioden', view_preperiods_path%>               <br/>
+
+<%if Segment.find_all_by_problem_id($current_problem).count!=0%>
+<%= link_to check, view_segments_path %>
+<%end%>
 <%= link_to '4.  Segmente', view_segments_path%>                        <br/>
+
+<%if Prodcap.find_all_by_problem_id($current_problem).count!=0%>
+<%= link_to check, view_prodcaps_path %>
+<%end%>
 <%= link_to '5.  Produktionskapazitäten', view_prodcaps_path%>          <br/>
+
+<%if Demand.find_all_by_problem_id($current_problem).count!=0%>
+<%= link_to check, view_demands_path %>
+<%end%>
 <%= link_to '6.  Nachfrage', view_demands_path%>                        <br/>
+
+<%if Capusage.find_all_by_problem_id($current_problem).count!=0%>
+<%= link_to check, view_capusages_path %>
+<%end%>
 <%= link_to '7.  Kapazitätsbelastung', view_capusages_path%>            <br/>
+
+<%if Storagecost.find_all_by_problem_id($current_problem).count!=0%>
+<%= link_to check, view_storagecosts_path %>
+<%end%>
 <%= link_to '8.  Lagerhaltungskosten', view_storagecosts_path%>         <br/>
+
+<%if Storagestart.find_all_by_problem_id($current_problem).count!=0%>
+<%= link_to check, view_storagestarts_path %>
+<%end%>
 <%= link_to '9.  Lageranfangsbestände', view_storagestarts_path%>       <br/>
+
+<%if Maxaddcap.find_all_by_problem_id($current_problem).count!=0%>
+<%= link_to check, view_maxaddcaps_path %>
+<%end%>
 <%= link_to '10. Maximale Zusatzkapazität', view_maxaddcaps_path%>      <br/>
+
+<%if Addcapcost.find_all_by_problem_id($current_problem).count!=0%>
+<%= link_to check, view_addcapcosts_path %>
+<%end%>
 <%= link_to '11. Kosten für Zusatzkapazität', view_addcapcosts_path%>   <br/>
 
-<%= button_to "Optimiere", :controller => 'configurations', :action => 'optimize' %>
+<br/>
+<%= button_to "Optimiere", :controller => 'configurations', :action => 'optimize'%>
 <br/><br/>
 
 <% else %>
