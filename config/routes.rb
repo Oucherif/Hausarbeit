@@ -121,6 +121,8 @@ SampleApp::Application.routes.draw do
   match 'problems/new', :to => 'problems#new'
   match 'problems/index', :to => 'problems#index'
   match 'configurations/optimize', :to => 'configurations#optimize'
+  match 'solsegs/export', :to => 'solsegs#export'
+  match 'solprodstors/export', :to => 'solprodstors#export'
 
   root :to => 'pages#startseite'
 

@@ -1,3 +1,4 @@
+# encoding: utf-8
 class SolsegsController < ApplicationController
 
   def view
@@ -23,5 +24,33 @@ class SolsegsController < ApplicationController
     fi.close
   end
 
+  def export
+    if File.exist?("HPPLAN_v1_Solution_Segm_excel.txt")
+       File.delete("HPPLAN_v1_Solution_Segm_excel.txt")
+    end
+    f=File.new("HPPLAN_v1_Solution_Segm_excel.txt", "w")
 
+    printf(f, "Problemname, Segmentname, Zeitpunkt, genutzte Zusatzkapazitaet \n")
+    i=0
+    while Solseg.find_all_by_problem_id($current_problem.id)[i]!=nil
+      @solseg=Solseg.find_all_by_problem_id($current_problem.id)[i]
+      problemname=Problem.find_by_id(@solseg.problem_id).problemname
+      segmentname=Segment.find_by_id(@solseg.segment_id).segmentname
+      stepnumber=Timestep.find_by_id(@solseg.timestep_id).stepnumber
+      addcapusagevalue=@solseg.addcapusagevalue
+      printf(f, problemname+" , "+segmentname+" , "+stepnumber.to_s+" , "+addcapusagevalue.to_s+" \n")
+      i=i+1
+    end
+    send_file "HPPLAN_v1_Solution_Segm_excel.txt"
+  end
 end
+
+
+
+
+
+
+
+
+
+#dependent destroy solsegs und solstor!

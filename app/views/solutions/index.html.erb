@@ -9,9 +9,10 @@
 
         <h4>Der Zielfunktionswert ist <%= @objective_function_value %></h4>
 
-        <%= link_to 'Produktion und Lagerung', view_solprodstors_path %>              <br/>
+        <%= link_to 'Produktion und Lagerung', view_solprodstors_path %>
+        <%= button_to "Excel-Export", "/solprodstors/export"%><br/>
         <%= link_to 'Genutzte Zusatzkapazitäten', view_solsegs_path %>               <br/>
-
+        <%= button_to "Excel-Export", "/solsegs/export"%><br/>
     <% else %>
         <h4>Das Problem konnte nicht gelöst werden!</h4>
         Entweder liegt ein Fehler in der Dateneingabe vor oder das Problem ist mit den gegebenen Restriktionen

@@ -1,3 +1,4 @@
+# encoding: utf-8
 class SolprodstorsController < ApplicationController
 
     def view
@@ -31,5 +32,27 @@ class SolprodstorsController < ApplicationController
 
     fi.close
     end
+
+  def export
+    if File.exist?("HPPLAN_v1_Solution_Prod_excel.txt")
+       File.delete("HPPLAN_v1_Solution_Prod_excel.txt")
+    end
+    f=File.new("HPPLAN_v1_Solution_Prod_excel.txt", "w")
+
+    printf(f, "Problemname, Produktname, Zeitpunkt, Produktionsmenge, Lagerbestand \n")
+    i=0
+    while Solprodstor.find_all_by_problem_id($current_problem.id)[i]!=nil
+      @solprodstor=Solprodstor.find_all_by_problem_id($current_problem.id)[i]
+      problemname=Problem.find_by_id(@solprodstor.problem_id).problemname
+      productname=Product.find_by_id(@solprodstor.product_id).productname
+      stepnumber=Timestep.find_by_id(@solprodstor.timestep_id).stepnumber
+      productionvalue=@solprodstor.productionvalue
+      storageamountvalue=@solprodstor.storageamountvalue
+      printf(f, problemname+" , "+productname+" , "+stepnumber.to_s+" , "+productionvalue.to_s+" , "+storageamountvalue.to_s+" \n")
+      i=i+1
+
+    end
+    send_file "HPPLAN_v1_Solution_Prod_excel.txt"
+  end
 
 end

@@ -1,0 +1,17 @@
+Problemname, Produktname, Zeitpunkt, Produktionsmenge, Lagerbestand 
+Test , A , 1 , 0.0 , 0.0 
+Test , A , 2 , 47.5 , 2.5 
+Test , A , 3 , 27.5 , 0.0 
+Test , A , 4 , 31.25 , 21.25 
+Test , A , 5 , 31.25 , 22.5 
+Test , A , 6 , 27.5 , 0.0 
+Test , A , 7 , 10.0 , 0.0 
+Test , A , 8 , 20.0 , 0.0 
+Test , B , 1 , 0.0 , 0.0 
+Test , B , 2 , 0.0 , 0.0 
+Test , B , 3 , 30.0 , 5.0 
+Test , B , 4 , 25.0 , 0.0 
+Test , B , 5 , 25.0 , 0.0 
+Test , B , 6 , 30.0 , 0.0 
+Test , B , 7 , 20.0 , 0.0 
+Test , B , 8 , 10.0 , 0.0 

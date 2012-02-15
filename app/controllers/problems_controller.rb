@@ -1,3 +1,4 @@
+# encoding: utf-8
 class ProblemsController < ApplicationController
 
   def destroy
@@ -6,7 +7,7 @@ class ProblemsController < ApplicationController
       $current_problem=nil
     end
     @problem.destroy
-
+    flash[:success]='Das Problem wurde gelöscht'
     redirect_to :back
   end
 
@@ -30,9 +31,8 @@ class ProblemsController < ApplicationController
 
   def show
     $current_problem=Problem.find(params[:id])
-    respond_to do |format|
-    format.html {redirect_to problems_path, notice: $current_problem.problemname+' wurde geladen.'}
-    end
+    flash[:success]= $current_problem.problemname+' wurde geladen.'
+    redirect_to problems_path
   end
 
   def index
