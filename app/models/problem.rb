@@ -22,6 +22,8 @@ class Problem < ActiveRecord::Base
   has_many :storagecosts, :dependent => :destroy
   has_many :storagestarts, :dependent => :destroy
   has_many :timesteps, :dependent => :destroy
+  has_many :solprodstors, :dependent => :destroy
+  has_many :solsegs, :dependent => :destroy
 
   validates :user_id,     :presence   => true
     validate :user_id_exists

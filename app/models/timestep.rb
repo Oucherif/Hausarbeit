@@ -10,7 +10,7 @@
 #
 
 class Timestep < ActiveRecord::Base
-
+  belongs_to :problem
   has_many :prodcaps, :dependent => :destroy
   has_many :demands, :dependent => :destroy
   has_many :maxaddcaps, :dependent => :destroy

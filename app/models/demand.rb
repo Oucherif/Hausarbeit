@@ -12,7 +12,7 @@
 #
 
 class Demand < ActiveRecord::Base
-
+  belongs_to :problem
   belongs_to :product
   belongs_to :timestep
   validates :product_id,     :presence   => true

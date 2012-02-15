@@ -10,7 +10,7 @@
 #
 
 class Product < ActiveRecord::Base
-
+  belongs_to :problem
   has_many :preperiods, :dependent => :destroy
   has_many :demands, :dependent => :destroy
   has_many :capusages, :dependent => :destroy

@@ -11,7 +11,7 @@
 #
 
 class Addcapcost < ActiveRecord::Base
-
+  belongs_to :problem
   belongs_to :timestep
   validates :timestep_id,     :presence   => true
   validates :addcapcostvalue, :presence   => true

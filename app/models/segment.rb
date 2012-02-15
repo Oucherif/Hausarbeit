@@ -10,7 +10,7 @@
 #
 
 class Segment < ActiveRecord::Base
-
+  belongs_to :problem
   has_many :prodcaps, :dependent => :destroy
   has_many :capusages, :dependent => :destroy
   has_many :maxaddcaps, :dependent => :destroy

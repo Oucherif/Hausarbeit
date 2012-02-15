@@ -13,7 +13,7 @@
 #
 
 class Capusage < ActiveRecord::Base
-
+  belongs_to :problem
   belongs_to :product
   belongs_to :segment
   belongs_to :preperiod

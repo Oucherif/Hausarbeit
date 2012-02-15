@@ -12,7 +12,7 @@
 #
 
 class Maxaddcap < ActiveRecord::Base
-
+  belongs_to :problem
   belongs_to :segment
   belongs_to :timestep
   validates :segment_id,     :presence   => true

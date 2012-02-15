@@ -12,4 +12,6 @@
 #
 
 class Solseg < ActiveRecord::Base
+
+  belongs_to :problem
 end

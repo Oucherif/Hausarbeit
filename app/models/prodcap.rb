@@ -12,7 +12,7 @@
 #
 
 class Prodcap < ActiveRecord::Base
-
+  belongs_to :problem
   belongs_to :segment
   belongs_to :timestep
 

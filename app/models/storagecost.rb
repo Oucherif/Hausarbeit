@@ -11,7 +11,7 @@
 #
 
 class Storagecost < ActiveRecord::Base
-
+  belongs_to :problem
   belongs_to :product
   validates :product_id,     :presence   => true
   validate :product_id_exists

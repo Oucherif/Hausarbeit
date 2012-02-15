@@ -13,7 +13,7 @@
 class Preperiod < ActiveRecord::Base
 
 
-
+  belongs_to :problem
   belongs_to :product
   has_many :capusages, :dependent => :destroy
 
