@@ -2,7 +2,7 @@ class ProblemsController < ApplicationController
 
   def destroy
     @problem=Problem.find(params[:id])
-    if @problem=$current_problem
+    if @problem==$current_problem
       $current_problem=nil
     end
     @problem.destroy

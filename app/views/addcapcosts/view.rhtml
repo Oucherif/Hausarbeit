@@ -25,22 +25,22 @@
              dp = new dataProcessor("/addcapcosts/dbaction.xml");
              dp.init(grid);
          </script>
-         <%if Timestep.first==nil%> <%#wenn noch kein Eintrag vorhanden, dann gib Warnung%>
+         <%if Timestep.find_all_by_problem_id($current_problem.id).first==nil%> <%#wenn noch kein Eintrag vorhanden, dann gib Warnung%>
          Bitte definieren Sie zunächst die Zeitpunkte!
          <%else%>
-            <%if Addcapcost.last==nil%>
+            <%if Addcapcost.find_all_by_problem_id($current_problem.id).last==nil%>
                 <%#Gib alten Datenvorschlag und lade Seite nach 500ms neu%>
-                <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Timestep.first.stepnumber%>,0.0'); javascript:timedRefresh(500)">
-                <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+                <input type="button" value="Neu" onclick="grid.addRow(grid.uid(),'<%=Timestep.find_all_by_problem_id($current_problem.id).first.stepnumber%>,0.0'); javascript:timedRefresh(500)">
+                <input type="button" value="Löschen" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
             <%else%>
                 <%if Timestep.find_by_id(Addcapcost.last.timestep_id).stepnumber+1>Timestep.all.count%>
                     <%#Gib alten Datenvorschlag und lade Seite nach 500ms neu%>
-                    <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Timestep.find_by_id(Addcapcost.last.timestep_id).stepnumber%>, <%=Addcapcost.last.addcapcostvalue%>'); javascript:timedRefresh(500)">
-                    <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+                    <input type="button" value="Neu" onclick="grid.addRow(grid.uid(),'<%=Timestep.find_by_id(Addcapcost.last.timestep_id).stepnumber%>, <%=Addcapcost.last.addcapcostvalue%>'); javascript:timedRefresh(500)">
+                    <input type="button" value="Löschen" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
                 <%else%>
                     <%#Gib neuen Datenvorschlag und lade Seite nach 500ms neu%>
-                    <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Timestep.find_by_id(Addcapcost.last.timestep_id).stepnumber+1%>, <%=Addcapcost.last.addcapcostvalue%>'); javascript:timedRefresh(500)">
-                    <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+                    <input type="button" value="Neu" onclick="grid.addRow(grid.uid(),'<%=Timestep.find_by_id(Addcapcost.last.timestep_id).stepnumber+1%>, <%=Addcapcost.last.addcapcostvalue%>'); javascript:timedRefresh(500)">
+                    <input type="button" value="Löschen" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
                 <%end%>
             <%end%>
          <%end%>

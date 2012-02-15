@@ -9,7 +9,7 @@ class SolprodstorsController < ApplicationController
     @objective_function_value=sa[1]                               #speichere Wert zur Ausgabe
     end
 
-    @solprodstor=Solprodstor.all
+    @solprodstor=Solprodstor.find_all_by_problem_id($current_problem.id)
     @solprodstor.each {|solution|
     solution.destroy}
 

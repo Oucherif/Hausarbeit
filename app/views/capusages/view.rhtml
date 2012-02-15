@@ -25,26 +25,27 @@
              dp = new dataProcessor("/capusages/dbaction.xml");
              dp.init(grid);
          </script>
-          <%if Product.first==nil or Segment.first==nil or Preperiod.first==nil%>
+          <%if Product.find_all_by_problem_id($current_problem.id).first==nil or Segment.find_all_by_problem_id($current_problem.id).first==nil or Preperiod.find_all_by_problem_id($current_problem.id).first==nil%>
           <%#wenn noch kein Eintrag vorhanden, dann gib Warnung%>
           Bitte definieren Sie zunächst die Produkte, Segmente und Vorlaufperioden!
          <%else%>
-            <%if Capusage.last==nil%>
+            <%if Capusage.find_all_by_problem_id($current_problem.id).last==nil%>
                  <%#Gib alten Datenvorschlag und lade Seite nach 500ms neu%>
-                 <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Product.first.productname%>, <%=Segment.first.segmentname%>, <%=Preperiod.first.preperiodnumber%>,0.0'); javascript:timedRefresh(500)">
-                 <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+                 <input type="button" value="Neu" onclick="grid.addRow(grid.uid(),'<%=Product.find_all_by_problem_id($current_problem.id).first.productname%>, <%=Segment.find_all_by_problem_id($current_problem.id).first.segmentname%>, <%=Preperiod.find_all_by_problem_id($current_problem.id).first.preperiodnumber%>,0.0'); javascript:timedRefresh(500)">
+                 <input type="button" value="Löschen" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
             <%else%>
                 <%if Preperiod.find_by_id(Capusage.last.preperiod_id).preperiodnumber+1>Preperiod.find_all_by_product_id(Capusage.last.product_id).count-1%>
                      <%#Gib alten Datenvorschlag und lade Seite nach 500ms neu%>
-                     <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Product.find_by_id(Capusage.last.product_id).productname%>, <%=Segment.find_by_id(Capusage.last.segment_id).segmentname%>, <%=Preperiod.find_by_id(Capusage.last.preperiod_id).preperiodnumber%>,0.0'); javascript:timedRefresh(500)">
-                     <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+                     <input type="button" value="Neu" onclick="grid.addRow(grid.uid(),'<%=Product.find_by_id(Capusage.last.product_id).productname%>, <%=Segment.find_by_id(Capusage.last.segment_id).segmentname%>, <%=Preperiod.find_by_id(Capusage.last.preperiod_id).preperiodnumber%>,0.0'); javascript:timedRefresh(500)">
+                     <input type="button" value="Löschen" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
                 <%else%>
                      <%#Gib neuen Datenvorschlag und lade Seite nach 500ms neu%>
-                     <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Product.find_by_id(Capusage.last.product_id).productname%>, <%=Segment.find_by_id(Capusage.last.segment_id).segmentname%>, <%=Preperiod.find_by_id(Capusage.last.preperiod_id).preperiodnumber+1%>,0.0'); javascript:timedRefresh(500)">
-                     <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+                     <input type="button" value="Neu" onclick="grid.addRow(grid.uid(),'<%=Product.find_by_id(Capusage.last.product_id).productname%>, <%=Segment.find_by_id(Capusage.last.segment_id).segmentname%>, <%=Preperiod.find_by_id(Capusage.last.preperiod_id).preperiodnumber+1%>,0.0'); javascript:timedRefresh(500)">
+                     <input type="button" value="Löschen" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
                 <%end%>
             <%end%>
          <%end%>
+     <br/><br/><%= link_to 'Weiter zu 8.  Lagerhaltungskosten', view_storagecosts_path%>         <br/>
      </body>
 </html>
 

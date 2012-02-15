@@ -2,7 +2,7 @@ class SolsegsController < ApplicationController
 
   def view
 
-    @solseg=Solseg.all
+    @solseg=Solseg.find_all_by_problem_id($current_problem.id)
     @solseg.each {|solseg|
     solseg.destroy}
 

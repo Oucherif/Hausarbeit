@@ -24,8 +24,10 @@
              dp = new dataProcessor("/products/dbaction.xml");
              dp.init(grid);
          </script>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'Neuer Produktname'); javascript:timedRefresh(500)">
-         <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+         <input type="button" value="Neu" onclick="grid.addRow(grid.uid(),'Neuer Produktname'); javascript:timedRefresh(500)">
+         <input type="button" value="Löschen" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+         <br/> <br/>
+        <%= link_to 'Weiter zu 3.  Vorlaufperioden', view_preperiods_path%>               <br/>
      </body>
 </html>
 

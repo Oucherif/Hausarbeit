@@ -23,25 +23,26 @@
              dp = new dataProcessor("/maxaddcaps/dbaction.xml");
              dp.init(grid);
          </script>
-         <%if Segment.first==nil or Timestep.first==nil%>
+         <%if Segment.find_all_by_problem_id($current_problem.id).first==nil or Timestep.find_all_by_problem_id($current_problem.id).first==nil%>
          Bitte definieren Sie zunächst die Segmente und Zeitpunkte!
          <%else%>
-            <%if Maxaddcap.last==nil%>
+            <%if Maxaddcap.find_all_by_problem_id($current_problem.id).last==nil%>
                 <%#Gib alten Datenvorschlag und lade Seite nach 500ms neu%>
-                <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Segment.first.segmentname%>, <%=Timestep.first.stepnumber%>,0.0'); javascript:timedRefresh(500)">
-                <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+                <input type="button" value="Neu" onclick="grid.addRow(grid.uid(),'<%=Segment.find_all_by_problem_id($current_problem.id).first.segmentname%>, <%=Timestep.find_all_by_problem_id($current_problem.id).first.stepnumber%>,0.0'); javascript:timedRefresh(500)">
+                <input type="button" value="Löschen" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
             <%else%>
                 <%if Timestep.find_by_id(Maxaddcap.last.timestep_id).stepnumber+1>Timestep.all.count%>
                 <%#Gib alten Datenvorschlag und lade Seite nach 500ms neu%>
-                <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Segment.find_by_id(Maxaddcap.last.segment_id).segmentname%>, <%=Timestep.find_by_id(Maxaddcap.last.timestep_id).stepnumber%>, <%=Maxaddcap.last.maxaddcapvalue%>'); javascript:timedRefresh(500)">
-                <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+                <input type="button" value="Neu" onclick="grid.addRow(grid.uid(),'<%=Segment.find_by_id(Maxaddcap.last.segment_id).segmentname%>, <%=Timestep.find_by_id(Maxaddcap.last.timestep_id).stepnumber%>, <%=Maxaddcap.last.maxaddcapvalue%>'); javascript:timedRefresh(500)">
+                <input type="button" value="Löschen" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
                 <%else%>
                 <%#Gib neuen Datenvorschlag und lade Seite nach 500ms neu%>
-                <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Segment.find_by_id(Maxaddcap.last.segment_id).segmentname%>, <%=Timestep.find_by_id(Maxaddcap.last.timestep_id).stepnumber+1%>, <%=Maxaddcap.last.maxaddcapvalue%>'); javascript:timedRefresh(500)">
-                <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+                <input type="button" value="Neu" onclick="grid.addRow(grid.uid(),'<%=Segment.find_by_id(Maxaddcap.last.segment_id).segmentname%>, <%=Timestep.find_by_id(Maxaddcap.last.timestep_id).stepnumber+1%>, <%=Maxaddcap.last.maxaddcapvalue%>'); javascript:timedRefresh(500)">
+                <input type="button" value="Löschen" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
                 <%end%>
             <%end%>
          <%end%>
+    <br/><br/> <%= link_to 'Weiter zu 11. Kosten für Zusatzkapazität', view_addcapcosts_path%>   <br/>
      </body>
 </html>
 

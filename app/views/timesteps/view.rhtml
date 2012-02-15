@@ -24,12 +24,14 @@
              dp.init(grid);
          </script>
          <%if Timestep.find_all_by_problem_id($current_problem.id).last==nil%> <%#wenn noch kein Eintrag vorhanden, dann setze 1 ein%>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'1'); javascript:timedRefresh(500)">
-         <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+         <input type="button" value="Neu" onclick="grid.addRow(grid.uid(),'1'); javascript:timedRefresh(500)">
+         <input type="button" value="Löschen" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
          <%else%>  <%#Sonst setze letzten Wert+1 ein%>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'<%=Timestep.find_all_by_problem_id($current_problem.id).last.stepnumber+1%>'); javascript:timedRefresh(500)">
-         <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+         <input type="button" value="Neu" onclick="grid.addRow(grid.uid(),'<%=Timestep.find_all_by_problem_id($current_problem.id).last.stepnumber+1%>'); javascript:timedRefresh(500)">
+         <input type="button" value="Löschen" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
          <%end%>
+         <br/> <br/>
+        <%= link_to 'Weiter zu 2.  Produkte', view_products_path%>                        <br/>
      </body>
 </html>
 

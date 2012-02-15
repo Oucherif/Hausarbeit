@@ -24,8 +24,9 @@
              dp = new dataProcessor("/segments/dbaction.xml");
              dp.init(grid);
          </script>
-         <input type="button" value="Add" onclick="grid.addRow(grid.uid(),'Neuer Segmentname'); javascript:timedRefresh(500)"> <%#Gib erste verfügbare Daten als Eingabebeispiel an%>
-         <input type="button" value="Delete" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+         <input type="button" value="Neu" onclick="grid.addRow(grid.uid(),'Neuer Segmentname'); javascript:timedRefresh(500)"> <%#Gib erste verfügbare Daten als Eingabebeispiel an%>
+         <input type="button" value="Löschen" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
+        <br/><br/> <%= link_to 'Weiter zu 5.  Produktionskapazitäten', view_prodcaps_path%>          <br/>
      </body>
 </html>
 

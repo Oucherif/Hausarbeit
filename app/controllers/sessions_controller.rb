@@ -1,3 +1,4 @@
+# encoding: utf-8
 # Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl
 class SessionsController < ApplicationController
 
@@ -9,7 +10,7 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:session][:email],
                              params[:session][:password])
     if user.nil?
-      flash.now[:error] = "Invalid email/password combination."
+      flash.now[:error] = "Unzulässige E-Mail/Passwort-Kombination."
       @title = "Anmelden"
       render 'new'
     else
