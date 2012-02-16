@@ -30,7 +30,7 @@
           Bitte definieren Sie zunächst die Produkte, Segmente und Vorlaufperioden!
          <%else%>
             <%if Capusage.find_all_by_problem_id($current_problem.id).last==nil%>
-                 <%#Gib alten Datenvorschlag und lade Seite nach 500ms neu%>
+                 <%#Gib ersten Datenvorschlag und lade Seite nach 500ms neu%>
                  <input type="button" value="Neu" onclick="grid.addRow(grid.uid(),'<%=Product.find_all_by_problem_id($current_problem.id).first.productname%>, <%=Segment.find_all_by_problem_id($current_problem.id).first.segmentname%>, <%=Preperiod.find_all_by_problem_id($current_problem.id).first.preperiodnumber%>,0.0'); javascript:timedRefresh(500)">
                  <input type="button" value="Löschen" onclick="grid.deleteSelectedRows(); javascript:timedRefresh(500)">
             <%else%>
