@@ -1,4 +1,5 @@
-# Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl
+# encoding: utf-8
+# Struktur übernommen aus "Ruby on Rails Tutorial" von Michael Hartl
 require 'spec_helper'
 
 describe "Users" do
@@ -47,7 +48,7 @@ describe "Users" do
         fill_in :email,    :with => ""
         fill_in :password, :with => ""
         click_button
-        response.should have_selector("div.flash.error", :content => "Invalid")
+        response.should have_selector("div.flash.error", :content => "Unzulässige E-Mail/Passwort-Kombination.")
       end
     end
 

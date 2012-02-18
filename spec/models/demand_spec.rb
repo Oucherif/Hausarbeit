@@ -19,7 +19,10 @@ describe Demand do
     @attr = {
       :product_id => "1",
       :timestep_id => "1",
-      :demandvalue => "0"}
+      :demandvalue => "0",
+      :problem_id => "1"}
+        @user=Factory(:user)                                      #User erzeugen
+    @problem=Factory(:problem)                                #Problem erzeugen
     @product=Factory(:product)                                #Product mit ID 1 erzeugen
     @timestep=Factory(:timestep)                              #Timestep mit ID 1 erzeugen
   end

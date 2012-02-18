@@ -23,6 +23,7 @@ class Maxaddcap < ActiveRecord::Base
      end
     end
 
+
   validates :timestep_id,     :presence   => true
   validate :timestep_id_exists
     def timestep_id_exists

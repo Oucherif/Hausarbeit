@@ -1,7 +1,9 @@
 # encoding: utf-8
+# Magic Comment für deutsche Sonderzeichen
 class SolprodstorsController < ApplicationController
 
     def view
+      @title = "Lösung: Produktion und Lagerung"
     fi=File.open("HPPLAN_v1_OFV.txt", "r")
     line=fi.readline
     fi.close

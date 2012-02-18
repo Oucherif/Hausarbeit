@@ -1,8 +1,9 @@
 # encoding: utf-8
+# Magic Comment für deutsche Sonderzeichen
 class SolsegsController < ApplicationController
 
   def view
-
+    @title = "Lösung: Genutzte Zusatzkapazitäten"
     @solseg=Solseg.find_all_by_problem_id($current_problem.id)
     @solseg.each {|solseg|
     solseg.destroy}

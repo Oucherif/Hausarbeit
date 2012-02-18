@@ -15,8 +15,11 @@ describe Segment do
 
   before(:each) do
     @attr = {
-      :segmentname => "1",
+      :problem_id => "1",
+      :segmentname => "1"
     }
+    @user=Factory(:user)                                      #User erzeugen
+    @problem=Factory(:problem)                                #Problem erzeugen
   end
 
   it "should create a new instance given valid attributes" do

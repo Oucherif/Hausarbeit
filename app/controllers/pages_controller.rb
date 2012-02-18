@@ -1,6 +1,6 @@
 # encoding: utf-8
-#Magic Comment für deutsche Sonderzeichen
-# Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl
+# Magic Comment für deutsche Sonderzeichen
+# Struktur Uebernommen aus "Ruby on Rails Tutorial" von Michael Hartl
 class PagesController < ApplicationController
 
   def faq
@@ -8,19 +8,15 @@ class PagesController < ApplicationController
   end
 
   def startseite
-    @title = "Startseite"                                                   #Titel der Startseite übersetzt
+    @title = "Startseite"
   end
 
   def kontakt
-    @title = "Kontakt"                                                      #Titel der Kontaktseite übersetzt
+    @title = "Kontakt"
   end
 
   def about
     @title = "Über"
-  end
-
-  def optimierungsproblem
-    @title = "Optimierungproblem"
   end
 
 end

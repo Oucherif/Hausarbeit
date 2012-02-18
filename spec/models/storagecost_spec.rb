@@ -17,7 +17,10 @@ describe Storagecost do
   before(:each) do
     @attr = {
       :product_id => "1",
-      :storagecostvalue => "0"}
+      :storagecostvalue => "0",
+      :problem_id => "1"}
+            @user=Factory(:user)                                      #User erzeugen
+    @problem=Factory(:problem)                                #Problem erzeugen
     @product=Factory(:product)                                #Product mit ID 1 erzeugen
   end
 

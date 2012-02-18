@@ -1,5 +1,9 @@
+# encoding: utf-8
+# Magic Comment für deutsche Sonderzeichen
 class ProductsController < ApplicationController
      def view
+       @title = "Produkte"
+
      end
      def data
          @products = Product.all()

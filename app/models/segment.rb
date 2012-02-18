@@ -18,4 +18,5 @@ class Segment < ActiveRecord::Base
   validates_uniqueness_of :segmentname, :scope => :problem_id
   attr_accessible :segmentname
 
+
 end

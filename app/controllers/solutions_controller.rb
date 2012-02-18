@@ -1,8 +1,11 @@
+# encoding: utf-8
+# Magic Comment für deutsche Sonderzeichen
 class SolutionsController < ApplicationController
 
 
 
   def index
+    @title = "Lösungsübersicht"
     if File.exist?("HPPLAN_v1_OFV.txt")
       fi=File.open("HPPLAN_v1_OFV.txt", "r")
       line=fi.readline

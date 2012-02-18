@@ -17,7 +17,10 @@ describe Addcapcost do
   before(:each) do
     @attr = {
       :timestep_id => "1",
-      :addcapcostvalue => "0"}
+      :addcapcostvalue => "0",
+      :problem_id => "1"}
+    @user=Factory(:user)                                      #User erzeugen
+    @problem=Factory(:problem)                                #Problem erzeugen
     @timestep=Factory(:timestep)                              #Timestep mit ID 1 erzeugen
   end
 

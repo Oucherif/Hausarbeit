@@ -1,5 +1,9 @@
+# encoding: utf-8
+# Magic Comment für deutsche Sonderzeichen
 class SegmentsController < ApplicationController
      def view
+       @title = "Segmente"
+
      end
      def data
          @segments = Segment.all()

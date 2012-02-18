@@ -27,7 +27,10 @@ describe Preperiod do
   before(:each) do
     @attr = {
       :product_id => "1",
-      :preperiodnumber => "0"}
+      :preperiodnumber => "0",
+      :problem_id => "1"}
+        @user=Factory(:user)                                      #User erzeugen
+    @problem=Factory(:problem)                                #Problem erzeugen
     @product=Factory(:product)                                #Produkt mit ID 1 erzeugen
   end
 

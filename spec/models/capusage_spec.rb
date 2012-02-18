@@ -21,7 +21,11 @@ describe Capusage do
       :product_id => "1",
       :segment_id => "1",
       :preperiod_id => "1",
-      :capusagevalue => "0"}
+      :capusagevalue => "0",
+      :problem_id => "1"}
+
+    @user=Factory(:user)                                      #User erzeugen
+    @problem=Factory(:problem)                                #Problem erzeugen
     @product=Factory(:product)                                #Product mit ID 1 erzeugen
     @segment=Factory(:segment)                                #Segment mit ID 1 erzeugen
     @preperiod=Factory(:preperiod)                            #Preperiod mit ID 1 erzeugen

@@ -1,5 +1,9 @@
+# encoding: utf-8
+# Magic Comment für deutsche Sonderzeichen
 class ProdcapsController < ApplicationController
      def view
+       @title = "Produktionskapazitäten"
+
      end
      def data
          @prodcaps = Prodcap.all()

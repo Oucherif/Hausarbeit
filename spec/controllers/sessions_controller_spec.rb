@@ -1,3 +1,5 @@
+# encoding: utf-8
+# Magic Comment für deutsche Sonderzeichen
 # Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl
 require 'spec_helper'
 
@@ -37,7 +39,7 @@ describe SessionsController do
 
       it "should have a flash.now message" do
         post :create, :session => @attr
-        flash.now[:error].should =~ /invalid/i
+        flash.now[:error].should == "Unzulässige E-Mail/Passwort-Kombination."
       end
     end
 

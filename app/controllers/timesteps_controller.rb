@@ -1,5 +1,8 @@
+# encoding: utf-8
+# Magic Comment für deutsche Sonderzeichen
 class TimestepsController < ApplicationController
      def view
+         @title = "Planungsintervall"
          @timesteps = Timestep.new
      end
      def data

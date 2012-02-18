@@ -1,5 +1,8 @@
+# encoding: utf-8
+# Magic Comment für deutsche Sonderzeichen
 class StoragecostsController < ApplicationController
      def view
+        @title = "Lagerhaltungskosten"
      end
      def data
          @storagecosts = Storagecost.all()

@@ -1,5 +1,8 @@
+# encoding: utf-8
+# Magic Comment für deutsche Sonderzeichen
 class AddcapcostsController < ApplicationController
      def view
+       @title = "Kosten für Zusatzkapazitäten"
      end
      def data
          @addcapcosts = Addcapcost.all()

@@ -25,7 +25,10 @@ describe Timestep do
   before(:each) do
     @attr = {
       :stepnumber => "1",
+      :problem_id=>"1"
     }
+            @user=Factory(:user)                                      #User erzeugen
+    @problem=Factory(:problem)                                #Problem erzeugen
   end
 
   it "should create a new instance given valid attributes" do

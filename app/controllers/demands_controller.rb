@@ -1,5 +1,9 @@
+# encoding: utf-8
+# Magic Comment für deutsche Sonderzeichen
 class DemandsController < ApplicationController
      def view
+       @title = "Nachfrage"
+
      end
      def data
          @demands = Demand.all()

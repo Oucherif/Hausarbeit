@@ -20,6 +20,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    $current_problem=nil
     sign_out
     redirect_to root_path
   end

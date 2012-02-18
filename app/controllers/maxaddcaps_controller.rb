@@ -1,5 +1,8 @@
+# encoding: utf-8
+# Magic Comment für deutsche Sonderzeichen
 class MaxaddcapsController < ApplicationController
      def view
+       @title = "Maximale Zusatzkapazitäten"
      end
      def data
          @maxaddcaps = Maxaddcap.all()

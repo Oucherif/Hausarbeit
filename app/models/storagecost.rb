@@ -23,5 +23,4 @@ class Storagecost < ActiveRecord::Base
   validates :storagecostvalue,     :presence   => true
   validates_numericality_of :storagecostvalue
   attr_accessible :product_id, :storagecostvalue
-
 end

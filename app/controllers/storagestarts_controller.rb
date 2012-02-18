@@ -1,5 +1,8 @@
+# encoding: utf-8
+# Magic Comment für deutsche Sonderzeichen
 class StoragestartsController < ApplicationController
      def view
+        @title = "Lageranfangsbestände"
      end
      def data
          @storagestarts = Storagestart.all()

@@ -16,7 +16,10 @@ describe Product do
   before(:each) do
     @attr = {
       :productname => "Auto",
+      :problem_id => "1",
     }
+            @user=Factory(:user)                                      #User erzeugen
+    @problem=Factory(:problem)                                #Problem erzeugen
   end
 
   it "should create a new instance given valid attributes" do

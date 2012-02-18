@@ -19,7 +19,10 @@ describe Maxaddcap do
     @attr = {
       :segment_id => "1",
       :timestep_id => "1",
-      :maxaddcapvalue => "0"}
+      :maxaddcapvalue => "0",
+      :problem_id =>"1"}
+        @user=Factory(:user)                                      #User erzeugen
+    @problem=Factory(:problem)                                #Problem erzeugen
     @segment=Factory(:segment)                                #Segment mit ID 1 erzeugen
     @timestep=Factory(:timestep)                              #Timestep mit ID 1 erzeugen
   end

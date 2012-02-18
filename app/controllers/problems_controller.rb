@@ -1,4 +1,5 @@
 # encoding: utf-8
+# Magic Comment für deutsche Sonderzeichen
 class ProblemsController < ApplicationController
 
   def destroy
@@ -12,6 +13,7 @@ class ProblemsController < ApplicationController
   end
 
   def new
+     @title = "Problem anlegen"
      @problem=Problem.new
   end
 
@@ -39,6 +41,7 @@ class ProblemsController < ApplicationController
     if $current_user==nil  #Bei direktem Aufruf von /problems zunächst auf Startseite verweisen, da sonst "called id on nil"-Fehler auftreten kann
     redirect_to root_path
     else
+    @title = "Problemübersicht"
     @problems=Problem.find_all_by_user_id($current_user.id)
     end
   end

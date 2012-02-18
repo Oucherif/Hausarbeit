@@ -23,4 +23,5 @@ class Storagestart < ActiveRecord::Base
   validates :storagestartvalue,     :presence   => true
   validates_numericality_of :storagestartvalue
   attr_accessible :product_id, :storagestartvalue
+
 end

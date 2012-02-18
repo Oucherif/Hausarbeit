@@ -1,5 +1,8 @@
+# encoding: utf-8
+# Magic Comment für deutsche Sonderzeichen
 class PreperiodsController < ApplicationController
      def view
+       @title = "Vorlaufperioden"
      end
      def data
          @preperiods = Preperiod.all()

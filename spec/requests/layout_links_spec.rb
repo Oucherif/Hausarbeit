@@ -102,6 +102,16 @@ describe "LayoutLinks" do
       response.should have_selector('title', :content => "Anmelden")
     end
 
+    it "should have a problemübersicht page at '/problems'" do
+      get '/problems'
+      response.should have_selector('title', :content => "Problemübersicht")
+    end
+
+    it "should have a Lösungsübersicht page at '/solutions'" do
+      get '/solutions'
+      response.should have_selector('title', :content => "Lösungsübersicht")
+    end
+
     it "should have the right links on the layout" do
       visit root_path
       click_link "Über"
@@ -124,23 +134,24 @@ describe "LayoutLinks" do
                                          :content => "Lösungsübersicht")
     end
 
-    it "should have a optimierungsproblem link" do
+    it "should have a problemübersicht link" do
       visit root_path
       response.should have_selector("a", :href => problems_path,
-                                         :content => "Optimierungsproblem")
+                                         :content => "Problemübersicht")
     end
 
-    describe "on page optimierungsproblem" do
+    describe "on page problemübersicht" do
+
+      it "should have the right links on the layout" do
+        visit problems_path
+        click_link "Neues Optimierungsproblem anlegen"
+        response.should have_selector('title', :content => "Problem anlegen")
+      end
 
       it "should have a new problem link" do
       visit problems_path
       response.should have_selector("a", :href => new_problem_path,
                                          :content => "Neues Optimierungsproblem anlegen")
-      end
-
-      it "should have some load problem links" do
-      pending
-
       end
     end
   end

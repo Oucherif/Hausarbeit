@@ -17,6 +17,7 @@ class Capusage < ActiveRecord::Base
   belongs_to :product
   belongs_to :segment
   belongs_to :preperiod
+
   validates :product_id,     :presence   => true
   validate :product_id_exists
     def product_id_exists
@@ -24,6 +25,8 @@ class Capusage < ActiveRecord::Base
        errors.add(:base, "Produkt muss definiert sein")
      end
     end
+
+
 
   validates :segment_id,     :presence   => true
   validate :segment_id_exists

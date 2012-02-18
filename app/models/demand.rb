@@ -17,6 +17,7 @@ class Demand < ActiveRecord::Base
   belongs_to :timestep
   validates :product_id,     :presence   => true
 
+
   validate :product_id_exists
     def product_id_exists
      if Product.find_by_id(product_id)==nil

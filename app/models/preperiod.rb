@@ -17,7 +17,6 @@ class Preperiod < ActiveRecord::Base
   belongs_to :product
   has_many :capusages, :dependent => :destroy
 
-
   validates :product_id,     :presence   => true
 
   validate :product_id_exists

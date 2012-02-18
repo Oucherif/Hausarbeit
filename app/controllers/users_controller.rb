@@ -1,3 +1,5 @@
+# encoding: utf-8
+# Magic Comment für deutsche Sonderzeichen
 # Übernommen aus "Ruby on Rails Tutorial" von Michael Hartl
 class UsersController < ApplicationController
 

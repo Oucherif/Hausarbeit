@@ -34,6 +34,7 @@ class Problem < ActiveRecord::Base
     end
 
   validates :problemname, :uniqueness => true
+  validates :problemname,  :presence   => true
 
   attr_accessible :user_id, :problemname
 end

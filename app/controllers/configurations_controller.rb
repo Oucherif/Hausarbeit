@@ -1,6 +1,9 @@
+# encoding: utf-8
+# Magic Comment für deutsche Sonderzeichen
 class ConfigurationsController < ApplicationController
 
   def view
+    @title = "Problemkonfiguration"
   end
 
   def optimize

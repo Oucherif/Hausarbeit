@@ -50,12 +50,12 @@
 <%if Maxaddcap.find_all_by_problem_id($current_problem).count!=0%>
 <%= link_to check, view_maxaddcaps_path %>
 <%end%>
-<%= link_to '10. Maximale Zusatzkapazität', view_maxaddcaps_path%>      <br/>
+<%= link_to '10. Maximale Zusatzkapazitäten', view_maxaddcaps_path%>      <br/>
 
 <%if Addcapcost.find_all_by_problem_id($current_problem).count!=0%>
 <%= link_to check, view_addcapcosts_path %>
 <%end%>
-<%= link_to '11. Kosten für Zusatzkapazität', view_addcapcosts_path%>   <br/>
+<%= link_to '11. Kosten für Zusatzkapazitäten', view_addcapcosts_path%>   <br/>
 
 <br/>
 <%= button_to "Optimiere", :controller => 'configurations', :action => 'optimize'%>

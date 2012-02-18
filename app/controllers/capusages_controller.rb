@@ -1,5 +1,8 @@
+# encoding: utf-8
+# Magic Comment für deutsche Sonderzeichen
 class CapusagesController < ApplicationController
      def view
+       @title = "Kapazitätsbelastung"
      end
      def data
          @capusages = Capusage.all()
